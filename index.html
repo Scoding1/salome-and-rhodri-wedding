@@ -647,7 +647,7 @@
     .section-sub { max-width: 600px; margin: 0.75rem auto 0; font-size: 0.85rem; color: var(--text-soft); text-align: center; line-height: 1.7; }
     .explore-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
       margin-top: 2.5rem;
     }
@@ -662,10 +662,38 @@
     }
     .explore-photo {
       width: 100%;
-      height: 160px;
+      height: 200px;
       object-fit: cover;
       display: block;
+      transition: opacity 0.18s ease;
     }
+    .explore-photo-slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(42,50,24,0.55);
+      color: var(--parchment);
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 3;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .slider-btn:hover { background: rgba(42,50,24,0.85); }
+    .slider-prev { left: 0.5rem; }
+    .slider-next { right: 0.5rem; }
     .explore-card-body {
       padding: 1.1rem 1.1rem 1.3rem;
       display: flex;
@@ -1276,7 +1304,7 @@
 
 <!-- ═══════ WELCOME BAND ═══════ -->
 <div class="welcome-band reveal">
-  <p>Croeso 🏡 Welkom — the countdown is on and we couldn't be more excited to celebrate with you in Tuscany. Find everything you need for the weekend below.</p>
+  <p>Croeso 🏡 Welkom — the countdown is on and we honestly can't wait. Everything you need for the weekend is right here below.</p>
 </div>
 
 <!-- ═══════ RSVP / SONG REQUEST ═══════ -->
@@ -1286,7 +1314,7 @@
   <div class="reveal">
     <div class="rsvp-eyebrow">A Little Favour</div>
     <div class="rsvp-heading">Tell Us Your Details</div>
-    <div class="rsvp-sub">We can't wait to celebrate with you all in Tuscany! Just two quick things from us before the big day — let us know about any dietary requirements (please be specific, we'll flag everything with the kitchen!) and drop us a song that'll get you on the dance floor. See you there 💛</div>
+    <div class="rsvp-sub">We can't wait to celebrate with you all in Tuscany! Just two quick things before the big day — let us know about any dietary requirements (please do be specific, we'll pass everything on to the kitchen!) and drop us a song that'll get you on the dance floor. 💛</div>
   </div>
 
   <div id="rsvpForm" class="reveal">
@@ -1537,7 +1565,7 @@
       <div class="tip-icon">🚌</div>
       <div>
         <div class="tip-title">Getting To & From Events</div>
-        <div class="tip-body">We're running a <strong>shuttle service</strong> for all off-site guests between events — no need to stress about transport! Your individual pick-up time will be sent to you directly ahead of the wedding. If you haven't already sent us your accommodation address, please do so soon so we can get your time locked in!</div>
+        <div class="tip-body">We're running a <strong>shuttle service</strong> for all off-site guests between events — no need to stress about transport! Your individual pick-up time will be sent to you directly ahead of the wedding. We just ask that you're ready and waiting when your shuttle arrives, so we can keep everyone on schedule and no one gets left behind! 🚌</div>
       </div>
     </div>
 
@@ -1569,7 +1597,7 @@
       <div class="tip-icon">🛏️</div>
       <div>
         <div class="tip-title">Accommodation</div>
-        <div class="tip-body">Everyone's sorted with places to stay — exciting! If you haven't confirmed your accommodation details with us yet, please do so ASAP so we can lock in your shuttle pick-up. We need your address to sort timings.</div>
+        <div class="tip-body">Everyone's sorted with places to stay — exciting! If you haven't already sent us your accommodation address, please do so soon so we can lock in your shuttle pick-up time.</div>
       </div>
     </div>
 
@@ -1577,7 +1605,7 @@
       <div class="tip-icon">🧒</div>
       <div>
         <div class="tip-title">Adults Only</div>
-        <div class="tip-body">We've made this an <strong>18+ event</strong> — we hope you can use it as the perfect excuse for a grown-up trip to Tuscany! If you have any concerns about this, please reach out to us directly.</div>
+        <div class="tip-body">We've made this an <strong>18+ event</strong> — we hope you can use it as the perfect excuse for a grown-up trip to Tuscany!</div>
       </div>
     </div>
 
@@ -1593,7 +1621,7 @@
   <div class="reveal">
     <div class="section-eyebrow">Arrival & Travel</div>
     <div class="section-heading-serif">Getting There</div>
-    <div class="section-sub reveal">Il Verreno is nestled in the Tuscan hills between Arezzo and Siena — stunning to arrive at, but it does require a little planning. Here's what you need to know.</div>
+    <div class="section-sub reveal">Il Verreno is tucked in the Tuscan hills between Arezzo and Siena — stunning to arrive at, but it does need a little planning. Here's everything you need to know.</div>
   </div>
 
   <div class="travel-grid">
@@ -1652,62 +1680,64 @@
   <div class="reveal">
     <div class="section-eyebrow">While You're There</div>
     <div class="section-heading-serif">Explore Tuscany</div>
-    <div class="section-sub reveal">You're in one of the most beautiful corners of Italy — make the most of it! Here are our favourite places to visit before or after the wedding weekend.</div>
+    <div class="section-sub reveal">You're in one of the most beautiful corners of Italy — please make the most of it! Here are our favourite places, from ones we've spent years exploring together to ones we keep going back to.</div>
   </div>
 
   <div class="explore-grid">
 
+    <!-- AREZZO -->
     <div class="explore-card reveal">
-    <img class="explore-photo" src="https://www.visittuscany.com/shared/visittuscany/immagini/arezzo-piazza-grande-one-day-arezzo.jpg?__scale=w:800,h:500,t:2,q:85" alt="Arezzo" loading="lazy" />
+      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407175/IMG_7347_hhig2e","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_7362_yy4edk"]'>
+        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407175/IMG_7347_hhig2e" alt="Aperol in Ambra near Arezzo" loading="lazy" />
+        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
+        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
+      </div>
       <div class="explore-card-body">
         <div class="explore-name">Arezzo</div>
         <div class="explore-dist">~30 min drive</div>
-        <div class="explore-desc">A proper Tuscan city with a stunning medieval piazza, famous frescoes by Piero della Francesca, and a fantastic antiques market on the first Sunday of each month. Far less touristy than Florence — a real local gem.</div>
+        <div class="explore-desc">Honestly one of those places where you turn a corner and go "wait, this is incredible." Most tourists head straight to Florence and miss it entirely — their loss. The Piazza Grande is stunning, the frescoes in San Francesco are worth the trip alone, and the whole town just feels wonderfully lived-in. We'd also really recommend looking up a Tuscan cooking class while you're in the area — a fun way to spend a morning before lunch becomes the meal.</div>
       </div>
     </div>
 
+    <!-- CHIANTI -->
     <div class="explore-card reveal">
-      <img class="explore-photo" src="https://lunzerwine.com/cdn/shop/articles/xChianti-region.jpg.pagespeed.ic.maTnEpeu2Q.webp?v=1649768640" alt="Chianti vineyards" loading="lazy" />
+      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407170/IMG_7282_jwfjtc","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_7085_aydbam","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407171/IMG_7108_atrvcd","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407173/IMG_7150_t1lixn","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407170/IMG_2428_xndtzk","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407179/IMG_2437_osmm65"]'>
+        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407170/IMG_7282_jwfjtc" alt="Chianti vineyards" loading="lazy" />
+        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
+        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
+      </div>
       <div class="explore-card-body">
-        <div class="explore-name">Chianti Wine Region</div>
+        <div class="explore-name">Chianti</div>
         <div class="explore-dist">~45 min drive</div>
-        <div class="explore-desc">Rolling vineyards, cypress-lined roads, and some of Italy's finest wine. Rent a car and wander — stop at any cantina that takes your fancy. The Chianti Classico around Radda and Gaiole is especially beautiful.</div>
+        <div class="explore-desc">This region means a lot to us — Radda in Chianti was where we went on our first big trip together, not long after we met. We've been back a few times since and it never gets old. Do a wine tour if you can — sitting on a terrace with a glass of Chianti Classico looking out over the valley is hard to beat. The drive through the hills alone is worth it.</div>
       </div>
     </div>
 
+    <!-- SIENA -->
     <div class="explore-card reveal">
-      <img class="explore-photo" src="https://www.visittuscany.com/shared/visittuscany/immagini/siena_piazza-del-campo_ramirocastroxiques01.jpg?__scale=w:800,h:500,t:2,q:85" alt="Siena" loading="lazy" />
+      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407173/IMG_4603_r3d2cl","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407181/IMG_4604_ik5ve4","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407181/IMG_4598_yqbkvq","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407184/IMG_4599_aly1xy"]'>
+        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407173/IMG_4603_r3d2cl" alt="Siena Piazza del Campo" loading="lazy" />
+        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
+        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
+      </div>
       <div class="explore-card-body">
         <div class="explore-name">Siena</div>
         <div class="explore-dist">~1h drive</div>
-        <div class="explore-desc">One of Italy's most spectacular medieval cities. The Piazza del Campo alone is worth the trip — have an Aperol Spritz and soak it all in. Don't miss the Duomo, which is utterly jaw-dropping inside.</div>
+        <div class="explore-desc">Go. Just go. Sit in the Piazza del Campo with an Aperol and take it all in — it's one of those places that's even better in real life than in photos. The Duomo is genuinely jaw-dropping (the striped marble, the floor, all of it). The streets around it are great for wandering and getting a bit lost. Give it a full day if you can.</div>
       </div>
     </div>
 
+    <!-- FLORENCE -->
     <div class="explore-card reveal">
-      <img class="explore-photo" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg" alt="Florence" loading="lazy" />
+      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407183/IMG_7049_l6kegk","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_7050_svizgf","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407183/IMG_7053_dsc2qw","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407163/IMG_7071_fjpbg2","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_6925_bgltsx","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407164/IMG_7374_otjaqd"]'>
+        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407183/IMG_7049_l6kegk" alt="Gelato in Florence" loading="lazy" />
+        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
+        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
+      </div>
       <div class="explore-card-body">
         <div class="explore-name">Florence</div>
         <div class="explore-dist">~1h 30min drive</div>
-        <div class="explore-desc">The birthplace of the Renaissance. The Uffizi, Brunelleschi's Dome, the Ponte Vecchio — it's all there. Catch the train from Arezzo or Bucine if you'd rather skip the drive into the city.</div>
-      </div>
-    </div>
-
-    <div class="explore-card reveal">
-      <img class="explore-photo" src="https://www.to-tuscany.com/cmsdata/db/images/infopages/content/c/ttd.jpg" alt="Cortona" loading="lazy" />
-      <div class="explore-card-body">
-        <div class="explore-name">Cortona</div>
-        <div class="explore-dist">~45 min drive</div>
-        <div class="explore-desc">A perfectly preserved hilltop town with sweeping valley views. Think cobbled lanes, ancient Etruscan walls, and incredible trattorias. Made famous by <em>Under the Tuscan Sun</em> — it absolutely lives up to it.</div>
-      </div>
-    </div>
-
-    <div class="explore-card reveal">
-      <img class="explore-photo" src="https://cdn4.tuscanynowandmore.com/storage/app/uploads/public/959/afb/d52/thumb__1920_0_0_0_auto.jpg" alt="Pienza" loading="lazy" />
-      <div class="explore-card-body">
-        <div class="explore-name">Pienza & Val d'Orcia</div>
-        <div class="explore-dist">~1h drive</div>
-        <div class="explore-desc">A UNESCO World Heritage village famous for its pecorino cheese and cinematic Tuscan landscape. The road between Pienza and Montalcino is the one from every Italian postcard — cypress trees, golden hills, the works.</div>
+        <div class="explore-desc">Worth at least a full day, ideally two. The Duomo, the Uffizi, Ponte Vecchio, Piazzale Michelangelo at sunset — all brilliant. A Vespa tour is a great way to cover a lot of ground without the walking. There are also free walking tours that are genuinely good for first-timers. And eat the gelato. Seriously. Train from Arezzo is dead easy if you'd rather not drive in.</div>
       </div>
     </div>
 
@@ -1827,7 +1857,20 @@ async function submitForm() {
   }
 }
 
-/* ── ACTIVE NAV ── */
+/* ── PHOTO SLIDERS ── */
+function slidePhoto(btn, dir) {
+  const slider = btn.closest('.explore-photo-slider');
+  const img = slider.querySelector('.explore-photo');
+  const photos = JSON.parse(slider.dataset.photos);
+  const current = photos.indexOf(img.getAttribute('src').split('/').pop().split('?')[0]);
+  const next = (current + dir + photos.length) % photos.length;
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = photos[next];
+    img.style.opacity = '1';
+  }, 180);
+}
+
 const navBtns = document.querySelectorAll('.fnav-btn[data-s]');
 const so = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -1837,8 +1880,8 @@ const so = new IntersectionObserver(entries => {
       if (a) a.classList.add('active');
     }
   });
-}, { threshold: 0.25 });
-['home','schedule','venue','tips','rsvp'].forEach(id => {
+}, { threshold: 0.15, rootMargin: '0px 0px -50% 0px' });
+['home','rsvp','schedule','venue','tips','getting-there','explore','photos'].forEach(id => {
   const el = document.getElementById(id);
   if (el) so.observe(el);
 });
