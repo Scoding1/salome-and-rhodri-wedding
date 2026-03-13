@@ -1717,29 +1717,14 @@ async function submitForm() {
   btn.disabled = true;
   btn.textContent = 'Sending…';
 
-  // Google Form field mapping (entry IDs in question order)
-  // Q1: Person 1 Name           → entry.866431787
-  // Q2: Person 2 Name           → entry.10733325
-  // Q3: Person 1 Dietary        → entry.160866054
-  // Q4: Person 2 Dietary        → entry.1190239322
-  // Q5: Allergies               → entry.1172436560
-  // Q6: Song request            → entry.1280975
-  // Q7: Anything else           → entry.689808528
-  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSenBg-Kyyz61CykWayq8h5sy3Y-yHPgm91cEIuBugpLcq52pA/formResponse';
-
-  const body = new URLSearchParams({
-    'entry.866431787':  name,
-    'entry.10733325':   p2name || '',
-    'entry.160866054':  p1diet,
-    'entry.1190239322': p2diet || 'N/A — solo',
-    'entry.1172436560': allergy || 'None',
-    'entry.1280975':    song || '',
-    'entry.689808528':  notes || '',
-  });
-
   try {
-    // Submit via no-cors (Google Forms doesn't allow CORS but still records the response)
-    await fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body });
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrGWuJ7DDGgEZKH_yh8bXwvNXP332TUFd8KCBlludLfZ6h9eVRRRORRazpFNLZLURn/exec';
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ p1name: name, p1diet, p2name, p2diet, allergy, song, notes })
+    });
     document.getElementById('rsvpForm').style.display = 'none';
     document.getElementById('formSuccess').classList.add('visible');
   } catch(err) {
