@@ -167,8 +167,10 @@
     .ornament {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.8rem;
-      margin: 1.8rem 0;
+      margin: 1.8rem auto;
+      width: 100%;
       animation: fadeDown 1s 0.25s ease both;
     }
     .ornament-line {
@@ -653,13 +655,24 @@
       background: var(--white);
       border: 1px solid var(--olive-pale);
       border-radius: 12px;
-      padding: 1.5rem 1.25rem;
+      overflow: hidden;
       text-align: center;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
     }
-    .explore-emoji { font-size: 2rem; }
+    .explore-photo {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .explore-card-body {
+      padding: 1.1rem 1.1rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
     .explore-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.15rem;
@@ -668,6 +681,51 @@
     }
     .explore-dist { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; }
     .explore-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.65; margin-top: 0.25rem; }
+
+    /* ── PHOTO UPLOAD SECTION ── */
+    .photos-bg { background: var(--parchment-d); }
+    .photo-upload-card {
+      max-width: 580px;
+      margin: 2.5rem auto 0;
+      background: var(--white);
+      border: 1px solid var(--olive-pale);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .photo-upload-icon { font-size: 2.8rem; margin-bottom: 0.75rem; }
+    .photo-upload-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--olive);
+      margin-bottom: 0.5rem;
+    }
+    .photo-upload-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .photo-upload-btn {
+      display: inline-block;
+      background: var(--olive);
+      color: var(--gold-pale);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .photo-upload-btn:hover { background: var(--olive-mid); transform: translateY(-1px); }
+    .photo-upload-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-ghost);
+    }
 
     /* ── ALREADY DONE BAND ── */
     .already-done-band {
@@ -1200,12 +1258,13 @@
     </div>
 
     <div class="hero-btns">
-      <a href="#rsvp" class="btn btn-primary">Song & Dietary ↓</a>
+      <a href="#rsvp" class="btn btn-primary">Dietary Requests ↓</a>
       <a href="#schedule" class="btn btn-secondary">Schedule</a>
       <a href="#venue" class="btn btn-secondary">Venue</a>
       <a href="#tips" class="btn btn-secondary">Info</a>
       <a href="#getting-there" class="btn btn-secondary">Getting There</a>
       <a href="#explore" class="btn btn-secondary">Explore</a>
+      <a href="#photos" class="btn btn-secondary">We Need You 🫵</a>
     </div>
   </div>
 
@@ -1375,7 +1434,8 @@
       <div class="ev-time">4:00 PM — Late</div>
       <div class="ev-title">Ceremony &amp; Reception</div>
       <div class="ev-desc">The big day! Take the morning at your own pace — breakfast by the pool, a hillside walk, or a trip into nearby Arezzo. Then gather in the garden for the afternoon ceremony, followed by dinner and dancing under the Tuscan night sky.</div>
-      <div class="ev-desc" style="margin-top:0.5rem; font-style:italic; opacity:0.85;">🚌 <strong>Off-site guests:</strong> Shuttle pickups begin from <strong>2:00 PM</strong> — your individual pick-up time will be sent to you directly. Please be ready!</div>
+      <div class="ev-desc" style="margin-top:0.4rem; opacity:0.9;">👗 <strong>Dress Code:</strong> Garden Cocktail</div>
+      <div class="ev-desc" style="margin-top:0.5rem; font-style:italic; opacity:0.85;">🚌 <strong>Off-site guests:</strong> Your shuttle pick-up time will be sent to you directly. Pickups begin from <strong>2:00 PM</strong> for a <strong>2:45 PM arrival</strong>.</div>
       <div class="ev-tags">
         <span class="ev-tag loc">📍 Il Verreno — Garden</span>
         <span class="ev-tag dress-g">Garden Cocktail</span>
@@ -1406,12 +1466,6 @@
     </div>
   </div>
 
-  <!-- SHUTTLE NOTE -->
-  <div class="event-card ev-shuttle reveal">
-    <div class="ev-time">🚌 Important</div>
-    <div class="ev-title">Shuttle Bus Arrangements</div>
-    <div class="ev-desc">Il Verreno is tucked away in the Tuscan hills — Ubers and taxis are few and far between in the area, so we wouldn't rely on them. We're running a shuttle service between events for off-site guests. <strong>Pick-up times will be sent to you directly.</strong> We kindly ask off-site guests to stay within a 15-minute drive of the venue.</div>
-  </div>
 
 </div>
 </div>
@@ -1456,6 +1510,9 @@
           <div class="venue-stat-val">Toscana, Italy</div>
         </div>
       </div>
+      <div style="margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--olive-pale); font-family:'Jost',sans-serif; font-size:0.85rem; line-height:1.9; color:var(--text-mid); font-weight:300;">
+        Il Verreno sits in the Valdambra — a quiet valley named after the Ambra stream, tucked between the hills of Chianti and the upper Arno. The area around Ambra has been inhabited since Etruscan times, and was a medieval crossroads contested between Florence, Siena and Arezzo for centuries. Today it's all rolling vineyards, cypress-lined roads and olive groves — classic Tuscany, almost untouched. We couldn't think of a more beautiful corner of the world to get married in. 🌿
+      </div>
     </div>
   </div>
 
@@ -1477,6 +1534,22 @@
   <div class="tips-grid">
 
     <div class="tip-card reveal">
+      <div class="tip-icon">🚌</div>
+      <div>
+        <div class="tip-title">Getting To & From Events</div>
+        <div class="tip-body">We're running a <strong>shuttle service</strong> for all off-site guests between events — no need to stress about transport! Your individual pick-up time will be sent to you directly ahead of the wedding. If you haven't already sent us your accommodation address, please do so soon so we can get your time locked in!</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
+      <div class="tip-icon">☀️</div>
+      <div>
+        <div class="tip-title">Tuscany in June</div>
+        <div class="tip-body">June in Tuscany is warm and sunny — expect daytime temperatures around <strong>25–32°C</strong>. Evenings can be pleasantly cooler, especially outdoors, so a light wrap or jacket for later in the night is a good idea.</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
       <div class="tip-icon">👠</div>
       <div>
         <div class="tip-title">What to Wear on Your Feet</div>
@@ -1485,26 +1558,10 @@
     </div>
 
     <div class="tip-card reveal">
-      <div class="tip-icon">☀️</div>
+      <div class="tip-icon">🪩</div>
       <div>
-        <div class="tip-title">Tuscany in June</div>
-        <div class="tip-body">June in Tuscany is warm and sunny — expect daytime temperatures around <strong>25–32°C</strong>. Evenings can be pleasantly cooler, especially outdoors, so a light wrap or jacket for later in the night is a good idea. Sunscreen is non-negotiable for the pool day!</div>
-      </div>
-    </div>
-
-    <div class="tip-card reveal">
-      <div class="tip-icon">🚌</div>
-      <div>
-        <div class="tip-title">Getting To & From Events</div>
-        <div class="tip-body">Ubers and taxis are few and far between in the area — we wouldn't rely on them! We're running a <strong>shuttle service</strong> for all off-site guests between events — your personal pick-up times will be sent to you directly. For the wedding day (Thu 18 Jun), pickups begin from <strong>2:00 PM</strong> ahead of the 4pm ceremony. If you haven't already confirmed your accommodation address with us, please do so as soon as possible so we can finalise timings.</div>
-      </div>
-    </div>
-
-    <div class="tip-card reveal">
-      <div class="tip-icon">🧒</div>
-      <div>
-        <div class="tip-title">Adults Only</div>
-        <div class="tip-body">We've made this an <strong>18+ event</strong> — we hope you can use it as the perfect excuse for a grown-up trip to Tuscany! If you have any concerns about this, please reach out to us directly.</div>
+        <div class="tip-title">Pool Party Fancy Dress — It's Compulsory!</div>
+        <div class="tip-body">The Friday recovery party has a <strong>70's theme</strong> and fancy dress is not optional — we mean it! Think ABBA, Saturday Night Fever, Studio 54, Woodstock. Disco glam, flares, bold prints. Get creative, have fun with it — the more the merrier!</div>
       </div>
     </div>
 
@@ -1517,10 +1574,10 @@
     </div>
 
     <div class="tip-card reveal">
-      <div class="tip-icon">🪩</div>
+      <div class="tip-icon">🧒</div>
       <div>
-        <div class="tip-title">Pool Party Fancy Dress — It's Compulsory!</div>
-        <div class="tip-body">The Friday recovery party has a <strong>70's theme</strong> and fancy dress is not optional — we mean it! Think ABBA, Saturday Night Fever, Studio 54, Woodstock. Disco glam, flares, platform shoes (finally a good time for platforms!), bold prints. Get creative, have fun with it.</div>
+        <div class="tip-title">Adults Only</div>
+        <div class="tip-body">We've made this an <strong>18+ event</strong> — we hope you can use it as the perfect excuse for a grown-up trip to Tuscany! If you have any concerns about this, please reach out to us directly.</div>
       </div>
     </div>
 
@@ -1553,17 +1610,6 @@
     </div>
 
     <div class="travel-card reveal">
-      <div class="travel-icon">🚂</div>
-      <div class="travel-title">By Train</div>
-      <div class="travel-body">
-        <p>The nearest useful stations are <strong>Arezzo</strong> (~40 min drive to venue) and <strong>Montevarchi</strong> (~30 min drive). Both are well connected from Florence and Rome.</p>
-        <div class="travel-row" style="margin-top:0.75rem"><span class="travel-label">Florence → Arezzo</span><span class="travel-dist">~40 min</span></div>
-        <div class="travel-row"><span class="travel-label">Rome → Arezzo</span><span class="travel-dist">~2h (via Trenitalia)</span></div>
-        <p class="travel-note">⚠️ There is no public transport from the station to the venue — you'll need a taxi, car hire, or to arrange a lift with another guest.</p>
-      </div>
-    </div>
-
-    <div class="travel-card reveal">
       <div class="travel-icon">🚗</div>
       <div class="travel-title">By Car (Recommended)</div>
       <div class="travel-body">
@@ -1573,10 +1619,21 @@
     </div>
 
     <div class="travel-card reveal">
+      <div class="travel-icon">🚂</div>
+      <div class="travel-title">By Train</div>
+      <div class="travel-body">
+        <p>The nearest useful stations are <strong>Arezzo</strong> (~40 min drive to venue) and <strong>Montevarchi</strong> (~30 min drive). Both are well connected from Florence and Rome.</p>
+        <div class="travel-row" style="margin-top:0.75rem"><span class="travel-label">Florence → Arezzo</span><span class="travel-dist">~40 min</span></div>
+        <div class="travel-row"><span class="travel-label">Rome → Arezzo</span><span class="travel-dist">~2h (via Trenitalia)</span></div>
+        <p class="travel-note">🚌 There is a local bus from <strong>Bucine station → Ambra village</strong> (Autolinee Toscane, ~16 min, every 4 hrs, Mon–Sat) but it doesn't reach the venue itself — you'd still need a short taxi or lift from Ambra. We wouldn't rely on this as your main plan, but it's there if needed!</p>
+      </div>
+    </div>
+
+    <div class="travel-card reveal">
       <div class="travel-icon">💡</div>
       <div class="travel-title">A Few Tips</div>
       <div class="travel-body">
-        <p><strong>Car hire:</strong> Book early — Tuscany in June fills up fast. Florence Airport has the best availability.</p>
+        <p><strong>Car hire:</strong> Book early — Tuscany in June fills up fast. We'd recommend sorting this well in advance.</p>
         <p><strong>International licence:</strong> If hiring in Italy, check whether you need an International Driving Permit (usually required + costs very little).</p>
         <p><strong>GPS dead zones:</strong> The Tuscan hills can have patchy signal. Screenshot your route beforehand just in case.</p>
         <p><strong>City rules:</strong> Florence and Rome have restricted traffic zones (ZTL) — avoid driving into the centre unless you know where to park.</p>
@@ -1601,48 +1658,83 @@
   <div class="explore-grid">
 
     <div class="explore-card reveal">
-      <div class="explore-emoji">🏛️</div>
-      <div class="explore-name">Arezzo</div>
-      <div class="explore-dist">~30 min drive</div>
-      <div class="explore-desc">A proper Tuscan city with a stunning medieval piazza, famous frescoes by Piero della Francesca, and a fantastic antiques market on the first Sunday of each month. Far less touristy than Florence — a real local gem.</div>
+    <img class="explore-photo" src="https://www.visittuscany.com/shared/visittuscany/immagini/arezzo-piazza-grande-one-day-arezzo.jpg?__scale=w:800,h:500,t:2,q:85" alt="Arezzo" loading="lazy" />
+      <div class="explore-card-body">
+        <div class="explore-name">Arezzo</div>
+        <div class="explore-dist">~30 min drive</div>
+        <div class="explore-desc">A proper Tuscan city with a stunning medieval piazza, famous frescoes by Piero della Francesca, and a fantastic antiques market on the first Sunday of each month. Far less touristy than Florence — a real local gem.</div>
+      </div>
     </div>
 
     <div class="explore-card reveal">
-      <div class="explore-emoji">🍷</div>
-      <div class="explore-name">Chianti Wine Region</div>
-      <div class="explore-dist">~45 min drive</div>
-      <div class="explore-desc">Rolling vineyards, cypress-lined roads, and some of Italy's finest wine. Rent a car and wander — stop at any cantina that takes your fancy. The Chianti Classico around Radda and Gaiole is especially beautiful.</div>
+      <img class="explore-photo" src="https://lunzerwine.com/cdn/shop/articles/xChianti-region.jpg.pagespeed.ic.maTnEpeu2Q.webp?v=1649768640" alt="Chianti vineyards" loading="lazy" />
+      <div class="explore-card-body">
+        <div class="explore-name">Chianti Wine Region</div>
+        <div class="explore-dist">~45 min drive</div>
+        <div class="explore-desc">Rolling vineyards, cypress-lined roads, and some of Italy's finest wine. Rent a car and wander — stop at any cantina that takes your fancy. The Chianti Classico around Radda and Gaiole is especially beautiful.</div>
+      </div>
     </div>
 
     <div class="explore-card reveal">
-      <div class="explore-emoji">🦒</div>
-      <div class="explore-name">Siena</div>
-      <div class="explore-dist">~1h drive</div>
-      <div class="explore-desc">One of Italy's most spectacular medieval cities. The Piazza del Campo alone is worth the trip — have an Aperol Spritz and soak it all in. Don't miss the Duomo, which is utterly jaw-dropping inside.</div>
+      <img class="explore-photo" src="https://www.visittuscany.com/shared/visittuscany/immagini/siena_piazza-del-campo_ramirocastroxiques01.jpg?__scale=w:800,h:500,t:2,q:85" alt="Siena" loading="lazy" />
+      <div class="explore-card-body">
+        <div class="explore-name">Siena</div>
+        <div class="explore-dist">~1h drive</div>
+        <div class="explore-desc">One of Italy's most spectacular medieval cities. The Piazza del Campo alone is worth the trip — have an Aperol Spritz and soak it all in. Don't miss the Duomo, which is utterly jaw-dropping inside.</div>
+      </div>
     </div>
 
     <div class="explore-card reveal">
-      <div class="explore-emoji">🌸</div>
-      <div class="explore-name">Florence</div>
-      <div class="explore-dist">~1h 30min drive</div>
-      <div class="explore-desc">The birthplace of the Renaissance. The Uffizi, Brunelleschi's Dome, the Ponte Vecchio — it's all there. Catch the train from Arezzo or Bucine if you'd rather skip the drive into the city.</div>
+      <img class="explore-photo" src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg" alt="Florence" loading="lazy" />
+      <div class="explore-card-body">
+        <div class="explore-name">Florence</div>
+        <div class="explore-dist">~1h 30min drive</div>
+        <div class="explore-desc">The birthplace of the Renaissance. The Uffizi, Brunelleschi's Dome, the Ponte Vecchio — it's all there. Catch the train from Arezzo or Bucine if you'd rather skip the drive into the city.</div>
+      </div>
     </div>
 
     <div class="explore-card reveal">
-      <div class="explore-emoji">💒</div>
-      <div class="explore-name">Cortona</div>
-      <div class="explore-dist">~45 min drive</div>
-      <div class="explore-desc">A perfectly preserved hilltop town with sweeping valley views. Think cobbled lanes, ancient Etruscan walls, and incredible trattorias. Made famous by <em>Under the Tuscan Sun</em> — it absolutely lives up to it.</div>
+      <img class="explore-photo" src="https://www.to-tuscany.com/cmsdata/db/images/infopages/content/c/ttd.jpg" alt="Cortona" loading="lazy" />
+      <div class="explore-card-body">
+        <div class="explore-name">Cortona</div>
+        <div class="explore-dist">~45 min drive</div>
+        <div class="explore-desc">A perfectly preserved hilltop town with sweeping valley views. Think cobbled lanes, ancient Etruscan walls, and incredible trattorias. Made famous by <em>Under the Tuscan Sun</em> — it absolutely lives up to it.</div>
+      </div>
     </div>
 
     <div class="explore-card reveal">
-      <div class="explore-emoji">🧀</div>
-      <div class="explore-name">Pienza & Val d'Orcia</div>
-      <div class="explore-dist">~1h drive</div>
-      <div class="explore-desc">A UNESCO World Heritage village famous for its pecorino cheese and cinematic Tuscan landscape. The road between Pienza and Montalcino is the one from every Italian postcard — cypress trees, golden hills, the works.</div>
+      <img class="explore-photo" src="https://cdn4.tuscanynowandmore.com/storage/app/uploads/public/959/afb/d52/thumb__1920_0_0_0_auto.jpg" alt="Pienza" loading="lazy" />
+      <div class="explore-card-body">
+        <div class="explore-name">Pienza & Val d'Orcia</div>
+        <div class="explore-dist">~1h drive</div>
+        <div class="explore-desc">A UNESCO World Heritage village famous for its pecorino cheese and cinematic Tuscan landscape. The road between Pienza and Montalcino is the one from every Italian postcard — cypress trees, golden hills, the works.</div>
+      </div>
     </div>
 
   </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ PHOTO UPLOAD ═══════ -->
+<div class="photos-bg">
+<div class="section" id="photos">
+
+  <div class="reveal">
+    <div class="section-eyebrow">A Little Favour</div>
+    <div class="section-heading-serif">We Need You 🫵</div>
+    <div class="section-sub">Got a favourite photo of us as a couple, or a memory of us you'd love to share? We'd absolutely love to see them — upload them here and they'll go straight to us. 📸</div>
+  </div>
+
+  <div class="photo-upload-card reveal">
+    <div class="photo-upload-icon">📷</div>
+    <div class="photo-upload-title">Share your snaps with us</div>
+    <div class="photo-upload-desc">Old memories, recent adventures, throwbacks — we want them all. Any photos of us, with us, or just ones that make you think of us. Upload via the form below, or send them straight to us on WhatsApp — whatever's easiest!</div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdka-D9itNdyTGt6xlrblGJQ_825uXf2YI0Fh0sZUjZct3elw/viewform?usp=publish-editor" target="_blank" class="photo-upload-btn">📸 Upload Your Photos</a>
+    <div class="photo-upload-note">Note: Google will ask you to sign in to upload 💛</div>
+  </div>
+
 </div>
 </div>
 
@@ -1660,12 +1752,13 @@
 <!-- ═══════ FLOATING NAV ═══════ -->
 <nav class="floatnav" id="floatnav">
   <a href="#home"          class="fnav-btn active" data-s="home">Home</a>
+  <a href="#rsvp"          class="fnav-btn" data-s="rsvp">Dietary</a>
   <a href="#schedule"      class="fnav-btn" data-s="schedule">Schedule</a>
   <a href="#venue"         class="fnav-btn" data-s="venue">Venue</a>
   <a href="#tips"          class="fnav-btn" data-s="tips">Info</a>
   <a href="#getting-there" class="fnav-btn" data-s="getting-there">Getting There</a>
   <a href="#explore"       class="fnav-btn" data-s="explore">Explore</a>
-  <a href="#rsvp"          class="fnav-btn" data-s="rsvp">Song & Dietary</a>
+  <a href="#photos"        class="fnav-btn" data-s="photos">We Need You</a>
 </nav>
 
 <script>
