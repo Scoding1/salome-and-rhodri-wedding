@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salomé & Rhodri — Tuscany 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────
+       PALETTE — pulled directly from invitation
+       Parchment bg · Olive text · Tuscan golds
+    ───────────────────────────────────────── */
+    :root {
+      --parchment:   #f5f0e6;
+      --parchment-d: #ede5d0;
+      --parchment-dd:#e0d5bc;
+      --olive:       #3a4a28;
+      --olive-mid:   #5a6e3a;
+      --olive-soft:  #8a9e6a;
+      --olive-pale:  #d4dcbe;
+      --olive-ghost: #eef2e4;
+      --gold:        #c4952a;
+      --gold-light:  #d4b060;
+      --gold-pale:   #f2e6c0;
+      --terracotta:  #b8694a;
+      --terra-pale:  #f2ddd4;
+      --wheat:       #d4b896;
+      --text:        #2a3218;
+      --text-mid:    #4a5830;
+      --text-soft:   #7a8a5a;
+      --text-ghost:  #a8b890;
+      --white:       #fdfaf4;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--parchment);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* Paper texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 3rem 1.5rem 5rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,149,42,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 20% 100%, rgba(90,110,58,0.1) 0%, transparent 60%),
+        var(--parchment);
+    }
+
+    /* Cypress trees — SVG drawn background elements */
+    .cypress {
+      position: absolute;
+      bottom: 0;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    .cypress-l { left: 4%; width: 40px; }
+    .cypress-r { right: 6%; width: 32px; }
+    .cypress-r2 { right: 12%; width: 24px; bottom: 20px; }
+    .cypress-l2 { left: 10%; width: 28px; bottom: 15px; }
+
+    /* Decorative border frame */
+    .hero-frame {
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(196,149,42,0.25);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .hero-frame::before, .hero-frame::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+    .hero-frame::before {
+      top: -1px; left: -1px;
+      border-width: 2px 0 0 2px;
+    }
+    .hero-frame::after {
+      bottom: -1px; right: -1px;
+      border-width: 0 2px 2px 0;
+    }
+
+    /* Monogram */
+    .monogram {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: var(--olive-mid);
+      opacity: 0.6;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      animation: fadeDown 1s ease both;
+    }
+
+    .hero-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.62rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 2rem;
+      animation: fadeDown 1s 0.1s ease both;
+    }
+
+    .hero-names {
+      text-align: center;
+      animation: fadeDown 1s 0.15s ease both;
+    }
+    .hero-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.2rem, 11vw, 6.5rem);
+      color: var(--olive);
+      line-height: 1.05;
+      display: block;
+    }
+    .hero-amp {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      color: var(--gold);
+      display: block;
+      margin: 0.1em 0;
+      letter-spacing: 0.1em;
+    }
+
+    /* Ornamental divider */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.8rem 0;
+      animation: fadeDown 1s 0.25s ease both;
+    }
+    .ornament-line {
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light));
+    }
+    .ornament-line:last-child {
+      background: linear-gradient(90deg, var(--gold-light), transparent);
+    }
+    .ornament-diamond {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+    .ornament-dot {
+      width: 3px; height: 3px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .hero-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 300;
+      color: var(--text-mid);
+      text-align: center;
+      animation: fadeDown 1s 0.3s ease both;
+      margin-bottom: 0.4rem;
+    }
+    .hero-place {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: fadeDown 1s 0.35s ease both;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3rem;
+      animation: fadeDown 1s 0.4s ease both;
+    }
+    .cd-unit {
+      text-align: center;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--parchment-dd);
+      border-radius: 8px;
+      padding: 0.7rem 0.9rem;
+      min-width: 56px;
+      backdrop-filter: blur(4px);
+    }
+    .cd-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--olive);
+      line-height: 1;
+      display: block;
+    }
+    .cd-label {
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-ghost);
+      display: block;
+      margin-top: 0.2rem;
+    }
+    .cd-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      padding-bottom: 0.8rem;
+    }
+
+    /* CTA buttons */
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      animation: fadeDown 1s 0.5s ease both;
+    }
+    .btn {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.6rem;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.25s ease;
+    }
+    .btn-primary {
+      background: var(--olive);
+      color: var(--parchment);
+    }
+    .btn-primary:hover {
+      background: var(--olive-mid);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(58,74,40,0.2);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-mid);
+      border: 1px solid var(--parchment-dd);
+    }
+    .btn-secondary:hover {
+      background: var(--white);
+      border-color: var(--olive-pale);
+      transform: translateY(-1px);
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.35;
+      animation: fadeDown 1s 1s ease both;
+    }
+    .scroll-hint span {
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, var(--gold-light), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ═══════════════════════════════════════
+       WELCOME BAND
+    ═══════════════════════════════════════ */
+    .welcome-band {
+      background: var(--olive);
+      color: var(--parchment);
+      padding: 2.2rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(196,149,42,0.15) 0%, transparent 70%);
+    }
+    .welcome-band p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      line-height: 1.8;
+      color: rgba(245,240,230,0.85);
+      max-width: 540px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION BASE
+    ═══════════════════════════════════════ */
+    .section {
+      padding: 4.5rem 1.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--text-ghost);
+      margin-bottom: 0.6rem;
+    }
+    .section-heading {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 7vw, 3.8rem);
+      color: var(--olive);
+      line-height: 1;
+      margin-bottom: 2.5rem;
+    }
+    .section-heading-serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: var(--olive);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ═══════════════════════════════════════
+       SCHEDULE
+    ═══════════════════════════════════════ */
+    .schedule-bg {
+      background:
+        linear-gradient(180deg, var(--parchment) 0%, var(--white) 100%);
+    }
+
+    .day-block { margin-bottom: 3rem; }
+
+    .day-header {
+      display: flex;
+      align-items: stretch;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .day-date {
+      background: var(--olive);
+      color: var(--parchment);
+      border-radius: 6px;
+      padding: 0.7rem 0.9rem;
+      text-align: center;
+      flex-shrink: 0;
+      min-width: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .day-date.wedding-day { background: var(--gold); color: var(--olive); }
+    .day-date-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .day-date-m {
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+    .day-info { display: flex; flex-direction: column; justify-content: center; }
+    .day-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--text);
+    }
+    .day-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-ghost);
+      margin-top: 2px;
+    }
+
+    /* Event cards */
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--parchment-dd);
+      border-radius: 6px;
+      padding: 1.3rem 1.4rem;
+      margin-bottom: 0.8rem;
+      border-left: 3px solid var(--olive-pale);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card::after {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, rgba(196,149,42,0.07), transparent 70%);
+      pointer-events: none;
+    }
+    .event-card:hover {
+      box-shadow: 0 4px 24px rgba(58,74,40,0.1);
+      transform: translateY(-1px);
+    }
+    .event-card.ev-welcome { border-left-color: var(--olive-soft); }
+    .event-card.ev-ceremony { border-left-color: var(--gold); background: linear-gradient(135deg, var(--white), var(--gold-pale) 200%); }
+    .event-card.ev-party { border-left-color: var(--terracotta); }
+    .event-card.ev-travel { border-left-color: var(--wheat); }
+    .event-card.ev-shuttle {
+      background: var(--olive-ghost);
+      border: 1px solid var(--olive-pale);
+      border-left: 3px solid var(--olive-soft);
+    }
+
+    .ev-time {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-ghost);
+      margin-bottom: 0.4rem;
+    }
+    .ev-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.55rem;
+      line-height: 1.2;
+    }
+    .ev-desc {
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 0.8rem;
+    }
+    .ev-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .ev-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.7rem;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .ev-tag.loc { background: var(--olive-ghost); color: var(--olive-mid); border: 1px solid var(--olive-pale); }
+    .ev-tag.dress-g { background: var(--gold-pale); color: var(--gold); border: 1px solid rgba(196,149,42,0.25); }
+    .ev-tag.dress-r { background: var(--terra-pale); color: var(--terracotta); border: 1px solid rgba(184,105,74,0.25); }
+
+    /* ═══════════════════════════════════════
+       VENUE SECTION
+    ═══════════════════════════════════════ */
+    .venue-bg {
+      background: linear-gradient(180deg, var(--olive-ghost) 0%, var(--parchment) 100%);
+    }
+
+    .venue-card {
+      background: var(--white);
+      border: 1px solid var(--parchment-dd);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 40px rgba(58,74,40,0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .venue-hero-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      position: relative;
+    }
+
+    .venue-img-overlay {
+      position: relative;
+    }
+    .venue-img-overlay::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(42,50,24,0.4), transparent);
+      pointer-events: none;
+    }
+
+    .venue-maps-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(245,240,230,0.92);
+      backdrop-filter: blur(6px);
+      color: var(--olive);
+      border: 1px solid var(--parchment-dd);
+      border-radius: 2px;
+      padding: 0.45rem 0.9rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      z-index: 2;
+    }
+    .venue-maps-btn:hover { background: var(--white); }
+
+    .venue-info { padding: 1.6rem; }
+    .venue-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .venue-address {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 1.2rem;
+    }
+    .venue-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    .venue-stat {
+      background: var(--olive-ghost);
+      border: 1px solid var(--olive-pale);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+    }
+    .venue-stat-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-ghost);
+      margin-bottom: 0.3rem;
+    }
+    .venue-stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    /* ═══════════════════════════════════════
+       GUEST TIPS
+    ═══════════════════════════════════════ */
+    /* ── GETTING THERE ── */
+    .travel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .travel-card {
+      background: var(--white);
+      border: 1px solid var(--parchment-dd);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .travel-icon { font-size: 1.75rem; }
+    .travel-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--olive);
+    }
+    .travel-body { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.82rem; line-height: 1.65; color: var(--text-mid); }
+    .travel-row { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dotted var(--parchment-dd); padding-bottom: 0.3rem; }
+    .travel-label { font-weight: 400; }
+    .travel-dist { font-size: 0.75rem; color: var(--gold); font-weight: 400; white-space: nowrap; margin-left: 1rem; }
+    .travel-note { font-size: 0.78rem; color: var(--text-soft); font-style: italic; margin-top: 0.5rem; }
+
+    /* ── EXPLORE ── */
+    .explore-bg { background: linear-gradient(180deg, var(--parchment) 0%, var(--olive-ghost) 100%); }
+    .section-sub { max-width: 600px; margin: 0.75rem auto 0; font-size: 0.85rem; color: var(--text-soft); text-align: center; line-height: 1.7; }
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .explore-card {
+      background: var(--white);
+      border: 1px solid var(--olive-pale);
+      border-radius: 12px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .explore-emoji { font-size: 2rem; }
+    .explore-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--olive);
+    }
+    .explore-dist { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; }
+    .explore-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.65; margin-top: 0.25rem; }
+
+    /* ── ALREADY DONE BAND ── */
+    .already-done-band {
+      background: var(--olive);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 1.25rem 2rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+    }
+
+    .tips-bg { background: linear-gradient(180deg, var(--parchment) 0%, var(--gold-pale) 100%); }
+
+    .tips-grid { display: grid; gap: 0.8rem; }
+    .tip-card {
+      background: var(--white);
+      border: 1px solid var(--parchment-dd);
+      border-left: 3px solid var(--gold);
+      border-radius: 6px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .tip-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .tip-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .tip-body {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--text-mid);
+    }
+    .tip-body strong { color: var(--text); font-weight: 400; }
+
+    /* ═══════════════════════════════════════
+       RSVP / SONG FORM
+    ═══════════════════════════════════════ */
+    .rsvp-bg { background: var(--olive); }
+
+    .rsvp-section {
+      padding: 4.5rem 1.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .rsvp-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(245,240,230,0.4);
+      margin-bottom: 0.6rem;
+    }
+    .rsvp-heading {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .rsvp-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(245,240,230,0.55);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+    .form-label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,240,230,0.55);
+      margin-bottom: 0.45rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(245,240,230,0.18);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.88rem;
+      color: var(--parchment);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(245,240,230,0.3); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold-light);
+      background: rgba(255,255,255,0.1);
+    }
+    .form-select option { background: var(--olive); color: var(--parchment); }
+    .form-textarea { resize: vertical; min-height: 80px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-divider {
+      height: 1px;
+      background: rgba(245,240,230,0.12);
+      margin: 1.6rem 0;
+    }
+    .form-section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(245,240,230,0.5);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .form-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(245,240,230,0.12);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--olive);
+      border: none;
+      border-radius: 3px;
+      padding: 0.9rem 1.5rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: all 0.25s ease;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    .form-success.visible { display: block; }
+    .form-success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .form-success-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .form-success-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: rgba(245,240,230,0.6);
+      font-size: 1rem;
+    }
+
+    /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq-bg { background: var(--parchment); }
+
+    .faq-grid { display: grid; gap: 0.8rem; }
+    .faq-card {
+      background: var(--white);
+      border: 1px solid var(--parchment-dd);
+      border-radius: 6px;
+      padding: 1.4rem 1.5rem;
+      transition: transform 0.2s ease;
+    }
+    .faq-card:hover { transform: translateY(-1px); box-shadow: 0 2px 20px rgba(58,74,40,0.07); }
+    .faq-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .faq-icon { flex-shrink: 0; font-size: 1rem; }
+    .faq-a {
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+    }
+    .faq-a strong { color: var(--text); font-weight: 400; }
+
+    /* ═══════════════════════════════════════
+       GUEST TIPS
+    ═══════════════════════════════════════ */
+    .tips-bg { background: var(--parchment); }
+    .travel-grid { grid-template-columns: 1fr; }
+    .explore-grid { grid-template-columns: 1fr; }
+    .tips-grid { display: grid; gap: 0.9rem; }
+    .tip-card {
+      background: var(--white);
+      border: 1px solid var(--parchment-dd);
+      border-left: 3px solid var(--gold);
+      border-radius: 6px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .tip-icon { font-size: 1.4rem; flex-shrink: 0; padding-top: 0.1rem; }
+    .tip-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+    .tip-body { font-size: 0.82rem; line-height: 1.75; color: var(--text-mid); }
+    .tip-body strong { color: var(--text); font-weight: 400; }
+
+    /* ═══════════════════════════════════════
+       RSVP / SONG FORM
+    ═══════════════════════════════════════ */
+    .rsvp-bg { background: var(--olive); }
+    .rsvp-section {
+      padding: 4.5rem 1.5rem 5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .rsvp-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(245,240,230,0.4);
+      margin-bottom: 0.6rem;
+    }
+    .rsvp-heading {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      color: var(--gold-light);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .rsvp-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(245,240,230,0.5);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,240,230,0.5);
+      margin-bottom: 0.4rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(245,240,230,0.18);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.88rem;
+      color: var(--parchment);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(245,240,230,0.28); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold-light);
+      background: rgba(255,255,255,0.1);
+    }
+    .form-select option { background: #3a4a28; color: #f5f0e6; }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .form-divider { height: 1px; background: rgba(245,240,230,0.1); margin: 1.6rem 0; }
+    .form-section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(245,240,230,0.45);
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .form-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(245,240,230,0.1);
+    }
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--olive);
+      border: none;
+      border-radius: 3px;
+      padding: 0.9rem 1.5rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: all 0.25s ease;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .form-success.visible { display: block; }
+    .form-success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .form-success-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .form-success-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: rgba(245,240,230,0.55);
+      font-size: 1rem;
+    }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--olive);
+      color: var(--parchment);
+      text-align: center;
+      padding: 3.5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(196,149,42,0.12) 0%, transparent 60%);
+    }
+    .footer-monogram {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: var(--gold-light);
+      opacity: 0.6;
+      margin-bottom: 0.3rem;
+      position: relative;
+    }
+    .footer-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: rgba(245,240,230,0.9);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .footer-detail {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(245,240,230,0.45);
+      position: relative;
+    }
+
+    /* ═══════════════════════════════════════
+       FLOATING NAV
+    ═══════════════════════════════════════ */
+    .floatnav {
+      position: fixed;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      background: rgba(42,50,24,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(196,149,42,0.2);
+      border-radius: 3px;
+      padding: 0.4rem;
+      display: flex;
+      gap: 0.2rem;
+      box-shadow: 0 8px 32px rgba(42,50,24,0.3);
+    }
+    .fnav-btn {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,230,0.5);
+      background: none;
+      border: none;
+      padding: 0.55rem 1rem;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .fnav-btn:hover, .fnav-btn.active {
+      background: var(--gold);
+      color: var(--olive);
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION DIVIDERS
+    ═══════════════════════════════════════ */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--parchment-dd) 20%, var(--gold-light) 50%, var(--parchment-dd) 80%, transparent 100%);
+    }
+
+    /* ═══════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════ */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.4; }
+      50%       { transform: scaleY(1.15); opacity: 0.8; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 480px) {
+      .hero-frame { inset: 10px; }
+      .section { padding: 3.5rem 1.2rem; }
+      .venue-stats { grid-template-columns: 1fr 1fr; }
+      .cd-unit { min-width: 46px; padding: 0.6rem 0.6rem; }
+      .cd-num { font-size: 1.5rem; }
+      .floatnav { bottom: 0.8rem; }
+      .fnav-btn { padding: 0.5rem 0.75rem; font-size: 0.56rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="home">
+  <div class="hero-frame"></div>
+
+  <!-- Cypress silhouettes -->
+  <svg class="cypress cypress-l" viewBox="0 0 40 120" fill="none">
+    <ellipse cx="20" cy="60" rx="14" ry="60" fill="#3a4a28"/>
+  </svg>
+  <svg class="cypress cypress-l2" viewBox="0 0 28 90" fill="none">
+    <ellipse cx="14" cy="45" rx="10" ry="45" fill="#3a4a28"/>
+  </svg>
+  <svg class="cypress cypress-r" viewBox="0 0 32 100" fill="none">
+    <ellipse cx="16" cy="50" rx="11" ry="50" fill="#3a4a28"/>
+  </svg>
+  <svg class="cypress cypress-r2" viewBox="0 0 24 75" fill="none">
+    <ellipse cx="12" cy="37" rx="8" ry="37" fill="#3a4a28"/>
+  </svg>
+
+  <div style="text-align:center; position:relative; z-index:2;">
+    <div class="monogram">S | R</div>
+    <div class="hero-label">Together with their families</div>
+
+    <div class="hero-names">
+      <span class="hero-name">Salomé Kruger</span>
+      <span class="hero-amp">&amp;</span>
+      <span class="hero-name">Rhodri Clancy</span>
+    </div>
+
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <div class="hero-date">18 June 2026</div>
+    <div class="hero-place">Il Verreno Resort · Ambra, Tuscany</div>
+
+    <div class="countdown">
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-d">--</span>
+        <span class="cd-label">Days</span>
+      </div>
+      <div class="cd-sep">·</div>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-h">--</span>
+        <span class="cd-label">Hrs</span>
+      </div>
+      <div class="cd-sep">·</div>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-m">--</span>
+        <span class="cd-label">Min</span>
+      </div>
+      <div class="cd-sep">·</div>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-s">--</span>
+        <span class="cd-label">Sec</span>
+      </div>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#rsvp" class="btn btn-primary">Song & Dietary ↓</a>
+      <a href="#schedule" class="btn btn-secondary">Schedule</a>
+      <a href="#venue" class="btn btn-secondary">Venue</a>
+      <a href="#tips" class="btn btn-secondary">Info</a>
+      <a href="#getting-there" class="btn btn-secondary">Getting There</a>
+      <a href="#explore" class="btn btn-secondary">Explore</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════ WELCOME BAND ═══════ -->
+<div class="welcome-band reveal">
+  <p>Croeso 🏡 Welkom — the countdown is on and we couldn't be more excited to celebrate with you in Tuscany. Find everything you need for the weekend below.</p>
+</div>
+
+<!-- ═══════ RSVP / SONG REQUEST ═══════ -->
+<div class="rsvp-bg" id="rsvp">
+<div class="rsvp-section">
+
+  <div class="reveal">
+    <div class="rsvp-eyebrow">A Little Favour</div>
+    <div class="rsvp-heading">Tell Us Your Details</div>
+    <div class="rsvp-sub">We can't wait to celebrate with you all in Tuscany! Just two quick things from us before the big day — let us know about any dietary requirements (please be specific, we'll flag everything with the kitchen!) and drop us a song that'll get you on the dance floor. See you there 💛</div>
+  </div>
+
+  <div id="rsvpForm" class="reveal">
+
+    <div class="form-section-label">🌿 Dietary Requirements</div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Person 1 Name</label>
+        <input type="text" class="form-input" id="f-p1name" placeholder="Name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Dietary Requirement</label>
+        <select class="form-select" id="f-p1diet">
+          <option value="none">No restrictions</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="gluten-free">Gluten Free</option>
+          <option value="dairy-free">Dairy Free</option>
+          <option value="halal">Halal</option>
+          <option value="kosher">Kosher</option>
+          <option value="other">Other (specify below)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Person 2 Name <span style="opacity:0.4;">(if applicable)</span></label>
+        <input type="text" class="form-input" id="f-p2name" placeholder="Name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Dietary Requirement</label>
+        <select class="form-select" id="f-p2diet">
+          <option value="none">No restrictions</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="gluten-free">Gluten Free</option>
+          <option value="dairy-free">Dairy Free</option>
+          <option value="halal">Halal</option>
+          <option value="kosher">Kosher</option>
+          <option value="other">Other (specify below)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Allergies or anything else we should know</label>
+      <textarea class="form-textarea" id="f-allergy" placeholder="e.g. nut allergy, coeliac, anything else — please be specific so we can flag it with the kitchen"></textarea>
+    </div>
+
+    <div class="form-divider"></div>
+    <div class="form-section-label">🎵 Song Request</div>
+
+    <div class="form-group">
+      <label class="form-label">Give us a song that'll get you on the dance floor</label>
+      <input type="text" class="form-input" id="f-song" placeholder="Song title & artist" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Anything else? <span style="opacity:0.4;">(optional)</span></label>
+      <textarea class="form-textarea" id="f-notes" placeholder="A message, a second song request, an unreasonable demand... 💛" style="min-height:60px;"></textarea>
+    </div>
+
+    <button class="btn-submit" id="submitBtn" onclick="submitForm()">Send to Salomé & Rhodri ✨</button>
+  </div>
+
+  <div class="form-success" id="formSuccess">
+    <div class="form-success-icon">💛</div>
+    <div class="form-success-title">Thank you!</div>
+    <div class="form-success-text">We've got your details — see you in Tuscany.</div>
+  </div>
+
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ SCHEDULE ═══════ -->
+<div class="schedule-bg">
+<div class="section" id="schedule">
+
+  <div class="reveal">
+    <div class="section-eyebrow">The Programme</div>
+    <div class="section-heading">Schedule of Events</div>
+  </div>
+
+  <!-- SAT 13 JUNE -->
+  <div class="day-block reveal">
+    <div class="day-header">
+      <div class="day-date">
+        <div class="day-date-n">13</div>
+        <div class="day-date-m">Jun</div>
+      </div>
+      <div class="day-info">
+        <div class="day-name">Saturday</div>
+        <div class="day-sub">Arrival · Rome</div>
+      </div>
+    </div>
+    <div class="event-card ev-travel">
+      <div class="ev-time">12:00 PM onwards</div>
+      <div class="ev-title">Pre-Wedding Plans in Rome</div>
+      <div class="ev-desc">Salomé &amp; Rhodri will arrive in Rome on Saturday 13th and plan to be there for a few days — sightseeing, exploring, and shaking off the jet lag — before heading to Tuscany on Wednesday 17th. You're warmly invited to join them for any or all of this; reach out directly for the finer details.</div>
+      <div class="ev-tags">
+        <span class="ev-tag loc">📍 Rome, Italy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WED 17 JUNE -->
+  <div class="day-block reveal">
+    <div class="day-header">
+      <div class="day-date">
+        <div class="day-date-n">17</div>
+        <div class="day-date-m">Jun</div>
+      </div>
+      <div class="day-info">
+        <div class="day-name">Wednesday</div>
+        <div class="day-sub">Arrival · Il Verreno</div>
+      </div>
+    </div>
+    <div class="event-card ev-welcome">
+      <div class="ev-time">7:00 PM – 10:00 PM</div>
+      <div class="ev-title">Welcome Dinner Pizza Party 🍕</div>
+      <div class="ev-desc">Arrive, check in, and join everyone for a relaxed evening at the venue. Pizza, good wine, and the first chance to meet everyone before the big day. Come as you are — no dress code, just good energy.</div>
+      <div class="ev-tags">
+        <span class="ev-tag loc">📍 Il Verreno — Cucina Donnaluisa</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THU 18 JUNE — THE DAY -->
+  <div class="day-block reveal">
+    <div class="day-header">
+      <div class="day-date wedding-day">
+        <div class="day-date-n">18</div>
+        <div class="day-date-m">Jun</div>
+      </div>
+      <div class="day-info">
+        <div class="day-name">Thursday ✨</div>
+        <div class="day-sub">The Wedding Day</div>
+      </div>
+    </div>
+    <div class="event-card ev-ceremony">
+      <div class="ev-time">4:00 PM — Late</div>
+      <div class="ev-title">Ceremony &amp; Reception</div>
+      <div class="ev-desc">The big day! Take the morning at your own pace — breakfast by the pool, a hillside walk, or a trip into nearby Arezzo. Then gather in the garden for the afternoon ceremony, followed by dinner and dancing under the Tuscan night sky.</div>
+      <div class="ev-desc" style="margin-top:0.5rem; font-style:italic; opacity:0.85;">🚌 <strong>Off-site guests:</strong> Shuttle pickups begin from <strong>2:00 PM</strong> — your individual pick-up time will be sent to you directly. Please be ready!</div>
+      <div class="ev-tags">
+        <span class="ev-tag loc">📍 Il Verreno — Garden</span>
+        <span class="ev-tag dress-g">Garden Cocktail</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRI 19 JUNE -->
+  <div class="day-block reveal">
+    <div class="day-header">
+      <div class="day-date">
+        <div class="day-date-n">19</div>
+        <div class="day-date-m">Jun</div>
+      </div>
+      <div class="day-info">
+        <div class="day-name">Friday</div>
+        <div class="day-sub">Recovery Day · Pool</div>
+      </div>
+    </div>
+    <div class="event-card ev-party">
+      <div class="ev-time">2:00 PM – 5:00 PM</div>
+      <div class="ev-title">70's Pool Party &amp; BBQ 🕺🪩</div>
+      <div class="ev-desc">The final hurrah — a 70's-themed pool brunch and BBQ. Think ABBA, Saturday Night Fever, Woodstock. Disco glam or laid-back vintage cool, it's all welcome. <strong>Fancy dress is compulsory!</strong></div>
+      <div class="ev-tags">
+        <span class="ev-tag loc">📍 Il Verreno — Pool</span>
+        <span class="ev-tag dress-r">70's Retro Pool Party 🪩</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHUTTLE NOTE -->
+  <div class="event-card ev-shuttle reveal">
+    <div class="ev-time">🚌 Important</div>
+    <div class="ev-title">Shuttle Bus Arrangements</div>
+    <div class="ev-desc">Il Verreno is tucked away in the Tuscan hills — Ubers and taxis are few and far between in the area, so we wouldn't rely on them. We're running a shuttle service between events for off-site guests. <strong>Pick-up times will be sent to you directly.</strong> We kindly ask off-site guests to stay within a 15-minute drive of the venue.</div>
+  </div>
+
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ VENUE ═══════ -->
+<div class="venue-bg">
+<div class="section" id="venue">
+
+  <div class="reveal">
+    <div class="section-eyebrow">Where It's All Happening</div>
+    <div class="section-heading-serif">Il Verreno Resort</div>
+  </div>
+
+  <!-- Main venue card with aerial hero photo -->
+  <div class="venue-card reveal">
+    <div class="venue-img-overlay" style="position:relative;">
+      <img class="venue-hero-img"
+        src="https://images.squarespace-cdn.com/content/v1/574c4e8d2b8ddef6b34b3e44/1487009876322-WU79R7672Q9UI8VBMOHT/IMG_0080.JPG?format=2500w"
+        alt="Il Verreno aerial view" />
+      <a href="https://maps.google.com/?q=Podere+Verreno+Ambra+Arezzo+Italy" target="_blank" class="venue-maps-btn">Open in Maps ↗</a>
+    </div>
+    <div class="venue-info">
+      <div class="venue-title">Il Verreno Resort</div>
+      <div class="venue-address">Podere Verreno · Ambra · Province of Arezzo · Toscana</div>
+      <div class="venue-stats">
+        <div class="venue-stat">
+          <div class="venue-stat-label">From Florence</div>
+          <div class="venue-stat-val">~1 hr 30 min</div>
+        </div>
+        <div class="venue-stat">
+          <div class="venue-stat-label">From Rome</div>
+          <div class="venue-stat-val">~2 hr 30 min</div>
+        </div>
+        <div class="venue-stat">
+          <div class="venue-stat-label">Nearest City</div>
+          <div class="venue-stat-val">Arezzo</div>
+        </div>
+        <div class="venue-stat">
+          <div class="venue-stat-label">Region</div>
+          <div class="venue-stat-val">Toscana, Italy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ GUEST TIPS ═══════ -->
+<div class="tips-bg">
+<div class="section" id="tips">
+
+  <div class="reveal">
+    <div class="section-eyebrow">Practical Bits</div>
+    <div class="section-heading-serif">Good to Know</div>
+  </div>
+
+  <div class="tips-grid">
+
+    <div class="tip-card reveal">
+      <div class="tip-icon">👠</div>
+      <div>
+        <div class="tip-title">What to Wear on Your Feet</div>
+        <div class="tip-body">A heads up for our shoe lovers — the venue grounds include <strong>pebbles, grass, and paved stone paths</strong>, so the terrain is beautifully rustic but a little uneven underfoot. We'd strongly recommend leaving the stilettos at home for this one! Block heels, wedges, sandals, or flats will serve you much better — and your feet will thank you at midnight. 💛</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
+      <div class="tip-icon">☀️</div>
+      <div>
+        <div class="tip-title">Tuscany in June</div>
+        <div class="tip-body">June in Tuscany is warm and sunny — expect daytime temperatures around <strong>25–32°C</strong>. Evenings can be pleasantly cooler, especially outdoors, so a light wrap or jacket for later in the night is a good idea. Sunscreen is non-negotiable for the pool day!</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
+      <div class="tip-icon">🚌</div>
+      <div>
+        <div class="tip-title">Getting To & From Events</div>
+        <div class="tip-body">Ubers and taxis are few and far between in the area — we wouldn't rely on them! We're running a <strong>shuttle service</strong> for all off-site guests between events — your personal pick-up times will be sent to you directly. For the wedding day (Thu 18 Jun), pickups begin from <strong>2:00 PM</strong> ahead of the 4pm ceremony. If you haven't already confirmed your accommodation address with us, please do so as soon as possible so we can finalise timings.</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
+      <div class="tip-icon">🧒</div>
+      <div>
+        <div class="tip-title">Adults Only</div>
+        <div class="tip-body">We've made this an <strong>18+ event</strong> — we hope you can use it as the perfect excuse for a grown-up trip to Tuscany! If you have any concerns about this, please reach out to us directly.</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
+      <div class="tip-icon">🛏️</div>
+      <div>
+        <div class="tip-title">Accommodation</div>
+        <div class="tip-body">Everyone's sorted with places to stay — exciting! If you haven't confirmed your accommodation details with us yet, please do so ASAP so we can lock in your shuttle pick-up. We need your address to sort timings.</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
+      <div class="tip-icon">🪩</div>
+      <div>
+        <div class="tip-title">Pool Party Fancy Dress — It's Compulsory!</div>
+        <div class="tip-body">The Friday recovery party has a <strong>70's theme</strong> and fancy dress is not optional — we mean it! Think ABBA, Saturday Night Fever, Studio 54, Woodstock. Disco glam, flares, platform shoes (finally a good time for platforms!), bold prints. Get creative, have fun with it.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ GETTING THERE ═══════ -->
+<div class="section" id="getting-there">
+
+  <div class="reveal">
+    <div class="section-eyebrow">Arrival & Travel</div>
+    <div class="section-heading-serif">Getting There</div>
+    <div class="section-sub reveal">Il Verreno is nestled in the Tuscan hills between Arezzo and Siena — stunning to arrive at, but it does require a little planning. Here's what you need to know.</div>
+  </div>
+
+  <div class="travel-grid">
+
+    <div class="travel-card reveal">
+      <div class="travel-icon">✈️</div>
+      <div class="travel-title">Nearest Airports</div>
+      <div class="travel-body">
+        <div class="travel-row"><span class="travel-label">Florence (FLR)</span><span class="travel-dist">~1h 30min drive</span></div>
+        <div class="travel-row"><span class="travel-label">Rome Fiumicino (FCO)</span><span class="travel-dist">~2h 30min drive</span></div>
+        <div class="travel-row"><span class="travel-label">Pisa (PSA)</span><span class="travel-dist">~2h drive</span></div>
+        <p class="travel-note">Car hire at the airport is the easiest option — it unlocks all of Tuscany for the week and gets you right to the venue door.</p>
+      </div>
+    </div>
+
+    <div class="travel-card reveal">
+      <div class="travel-icon">🚂</div>
+      <div class="travel-title">By Train</div>
+      <div class="travel-body">
+        <p>The nearest useful stations are <strong>Arezzo</strong> (~40 min drive to venue) and <strong>Montevarchi</strong> (~30 min drive). Both are well connected from Florence and Rome.</p>
+        <div class="travel-row" style="margin-top:0.75rem"><span class="travel-label">Florence → Arezzo</span><span class="travel-dist">~40 min</span></div>
+        <div class="travel-row"><span class="travel-label">Rome → Arezzo</span><span class="travel-dist">~2h (via Trenitalia)</span></div>
+        <p class="travel-note">⚠️ There is no public transport from the station to the venue — you'll need a taxi, car hire, or to arrange a lift with another guest.</p>
+      </div>
+    </div>
+
+    <div class="travel-card reveal">
+      <div class="travel-icon">🚗</div>
+      <div class="travel-title">By Car (Recommended)</div>
+      <div class="travel-body">
+        <p>Driving is hands-down the best way to experience Tuscany. From the A1 motorway, exit at <strong>Valdarno</strong> (coming from Florence) or <strong>Valdichiana</strong> (coming from Rome), then follow signs toward Bucine and Ambra.</p>
+        <p class="travel-note">📍 Venue address: <strong>Podere Verreno, Ambra, Province of Arezzo</strong> — plug it into Google Maps and it'll take you right there.</p>
+      </div>
+    </div>
+
+    <div class="travel-card reveal">
+      <div class="travel-icon">💡</div>
+      <div class="travel-title">A Few Tips</div>
+      <div class="travel-body">
+        <p><strong>Car hire:</strong> Book early — Tuscany in June fills up fast. Florence Airport has the best availability.</p>
+        <p><strong>International licence:</strong> If hiring in Italy, check whether you need an International Driving Permit (usually required + costs very little).</p>
+        <p><strong>GPS dead zones:</strong> The Tuscan hills can have patchy signal. Screenshot your route beforehand just in case.</p>
+        <p><strong>City rules:</strong> Florence and Rome have restricted traffic zones (ZTL) — avoid driving into the centre unless you know where to park.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ EXPLORE ═══════ -->
+<div class="explore-bg">
+<div class="section" id="explore">
+
+  <div class="reveal">
+    <div class="section-eyebrow">While You're There</div>
+    <div class="section-heading-serif">Explore Tuscany</div>
+    <div class="section-sub reveal">You're in one of the most beautiful corners of Italy — make the most of it! Here are our favourite places to visit before or after the wedding weekend.</div>
+  </div>
+
+  <div class="explore-grid">
+
+    <div class="explore-card reveal">
+      <div class="explore-emoji">🏛️</div>
+      <div class="explore-name">Arezzo</div>
+      <div class="explore-dist">~30 min drive</div>
+      <div class="explore-desc">A proper Tuscan city with a stunning medieval piazza, famous frescoes by Piero della Francesca, and a fantastic antiques market on the first Sunday of each month. Far less touristy than Florence — a real local gem.</div>
+    </div>
+
+    <div class="explore-card reveal">
+      <div class="explore-emoji">🍷</div>
+      <div class="explore-name">Chianti Wine Region</div>
+      <div class="explore-dist">~45 min drive</div>
+      <div class="explore-desc">Rolling vineyards, cypress-lined roads, and some of Italy's finest wine. Rent a car and wander — stop at any cantina that takes your fancy. The Chianti Classico around Radda and Gaiole is especially beautiful.</div>
+    </div>
+
+    <div class="explore-card reveal">
+      <div class="explore-emoji">🦒</div>
+      <div class="explore-name">Siena</div>
+      <div class="explore-dist">~1h drive</div>
+      <div class="explore-desc">One of Italy's most spectacular medieval cities. The Piazza del Campo alone is worth the trip — have an Aperol Spritz and soak it all in. Don't miss the Duomo, which is utterly jaw-dropping inside.</div>
+    </div>
+
+    <div class="explore-card reveal">
+      <div class="explore-emoji">🌸</div>
+      <div class="explore-name">Florence</div>
+      <div class="explore-dist">~1h 30min drive</div>
+      <div class="explore-desc">The birthplace of the Renaissance. The Uffizi, Brunelleschi's Dome, the Ponte Vecchio — it's all there. Catch the train from Arezzo or Bucine if you'd rather skip the drive into the city.</div>
+    </div>
+
+    <div class="explore-card reveal">
+      <div class="explore-emoji">💒</div>
+      <div class="explore-name">Cortona</div>
+      <div class="explore-dist">~45 min drive</div>
+      <div class="explore-desc">A perfectly preserved hilltop town with sweeping valley views. Think cobbled lanes, ancient Etruscan walls, and incredible trattorias. Made famous by <em>Under the Tuscan Sun</em> — it absolutely lives up to it.</div>
+    </div>
+
+    <div class="explore-card reveal">
+      <div class="explore-emoji">🧀</div>
+      <div class="explore-name">Pienza & Val d'Orcia</div>
+      <div class="explore-dist">~1h drive</div>
+      <div class="explore-desc">A UNESCO World Heritage village famous for its pecorino cheese and cinematic Tuscan landscape. The road between Pienza and Montalcino is the one from every Italian postcard — cypress trees, golden hills, the works.</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="already-done-band reveal">
+  <p>Already filled in your details? You're all set — we can't wait to see you! 💛 <a href="#rsvp" style="color:var(--gold-light);text-decoration:underline;">Fill in your details here</a> if you haven't yet.</p>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-monogram">S | R</div>
+  <div class="footer-names">Salomé &amp; Rhodri</div>
+  <div class="footer-detail">18 June 2026 · Il Verreno · Ambra, Toscana</div>
+</footer>
+
+<!-- ═══════ FLOATING NAV ═══════ -->
+<nav class="floatnav" id="floatnav">
+  <a href="#home"          class="fnav-btn active" data-s="home">Home</a>
+  <a href="#schedule"      class="fnav-btn" data-s="schedule">Schedule</a>
+  <a href="#venue"         class="fnav-btn" data-s="venue">Venue</a>
+  <a href="#tips"          class="fnav-btn" data-s="tips">Info</a>
+  <a href="#getting-there" class="fnav-btn" data-s="getting-there">Getting There</a>
+  <a href="#explore"       class="fnav-btn" data-s="explore">Explore</a>
+  <a href="#rsvp"          class="fnav-btn" data-s="rsvp">Song & Dietary</a>
+</nav>
+
+<script>
+/* ── COUNTDOWN ── */
+function tick() {
+  const target = new Date('2026-06-18T15:00:00+02:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    ['cd-d','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent = '🎉');
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+tick();
+setInterval(tick, 1000);
+
+/* ── SCROLL REVEAL ── */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 3) * 0.08}s`;
+  ro.observe(el);
+});
+
+/* ── RSVP FORM — submits silently to Google Forms ── */
+async function submitForm() {
+  const btn = document.getElementById('submitBtn');
+
+  // Field values
+  const name    = document.getElementById('f-p1name').value.trim();
+  const p1diet  = document.getElementById('f-p1diet').value;
+  const p2name  = document.getElementById('f-p2name').value.trim();
+  const p2diet  = document.getElementById('f-p2diet').value;
+  const allergy = document.getElementById('f-allergy').value.trim();
+  const song    = document.getElementById('f-song').value.trim();
+  const notes   = document.getElementById('f-notes').value.trim();
+
+  if (!name) { alert('Please enter your name so we know who this is from 💛'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  // Google Form field mapping (entry IDs in question order)
+  // Q1: Person 1 Name           → entry.866431787
+  // Q2: Person 2 Name           → entry.10733325
+  // Q3: Person 1 Dietary        → entry.160866054
+  // Q4: Person 2 Dietary        → entry.1190239322
+  // Q5: Allergies               → entry.1172436560
+  // Q6: Song request            → entry.1280975
+  // Q7: Anything else           → entry.689808528
+  const FORM_ACTION = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSenBg-Kyyz61CykWayq8h5sy3Y-yHPgm91cEIuBugpLcq52pA/formResponse';
+
+  const body = new URLSearchParams({
+    'entry.866431787':  name,
+    'entry.10733325':   p2name || '',
+    'entry.160866054':  p1diet,
+    'entry.1190239322': p2diet || 'N/A — solo',
+    'entry.1172436560': allergy || 'None',
+    'entry.1280975':    song || '',
+    'entry.689808528':  notes || '',
+  });
+
+  try {
+    // Submit via no-cors (Google Forms doesn't allow CORS but still records the response)
+    await fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body });
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('visible');
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send to Salomé & Rhodri ✨';
+    alert('Something went wrong — please try again or send us a message directly.');
+  }
+}
+
+/* ── ACTIVE NAV ── */
+const navBtns = document.querySelectorAll('.fnav-btn[data-s]');
+const so = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navBtns.forEach(b => b.classList.remove('active'));
+      const a = document.querySelector(`.fnav-btn[data-s="${e.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { threshold: 0.25 });
+['home','schedule','venue','tips','rsvp'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) so.observe(el);
+});
+</script>
+</body>
+</html>
