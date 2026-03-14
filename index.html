@@ -669,14 +669,21 @@
     .explore-dist { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.6rem; }
     .explore-desc { font-size: 0.82rem; color: var(--text-mid); line-height: 1.7; }
 
+    .photo-strip-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
     .photo-strip {
       display: flex;
       gap: 3px;
       overflow-x: auto;
-      padding: 0 0 0 0;
       scrollbar-width: none;
       -ms-overflow-style: none;
       scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      flex: 1;
     }
     .photo-strip::-webkit-scrollbar { display: none; }
 
@@ -689,6 +696,29 @@
       scroll-snap-align: start;
       display: block;
     }
+
+    .strip-scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      background: rgba(42,50,24,0.65);
+      color: var(--parchment);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .strip-scroll-btn:hover { background: rgba(42,50,24,0.9); }
+    .strip-scroll-left { left: 0.5rem; }
+    .strip-scroll-right { right: 0.5rem; }
 
     /* ── PHOTO UPLOAD SECTION ── */
     .photos-bg { background: var(--parchment-d); }
@@ -1670,11 +1700,16 @@
       <div class="explore-item-text">
         <div class="explore-name">Arezzo</div>
         <div class="explore-dist">~30 min drive</div>
-        <div class="explore-desc">Honestly one of those places where you turn a corner and go "wait, this is incredible." Most tourists head straight to Florence and miss it entirely — their loss. The Piazza Grande is stunning, the frescoes in San Francesco are worth the trip alone, and the whole town just feels wonderfully lived-in. We'd also really recommend looking up a Tuscan cooking class while you're in the area — a fun way to spend a morning before lunch becomes the meal.</div>
+        <div class="explore-desc">Honestly one of those places where you turn a corner and go "wait, this is incredible." Most tourists head straight to Florence and miss it entirely — their loss. The Piazza Grande is stunning, the frescoes in San Francesco are worth the trip alone, and the Medici Fortress up on the hill is free to enter and has some of the best views over the Arno valley you'll find anywhere. The whole town just feels wonderfully lived-in. We'd also really recommend looking up a Tuscan cooking class while you're in the area — a fun way to spend a morning before lunch becomes the meal. Oh, and if you're looking for an Aperol — Bar Della Piazza in our little village of Ambra does a very good one. Just saying 🍊</div>
       </div>
-      <div class="photo-strip">
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407175/IMG_7347_hhig2e" alt="Aperol in Ambra" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7362_yy4edk" alt="Arezzo streets" loading="lazy" class="strip-photo" />
+      <div class="photo-strip-wrap">
+        <button class="strip-scroll-btn strip-scroll-left" onclick="scrollStrip(this,-1)">‹</button>
+        <div class="photo-strip">
+          <img src="https://images.unsplash.com/photo-1547981609-2df7f85c9f7c?w=600&q=80" alt="Arezzo Piazza Grande" loading="lazy" class="strip-photo" />
+          <img src="https://images.unsplash.com/photo-1729588725575-cf554b74c8f9?w=600&q=80" alt="Arezzo medieval streets" loading="lazy" class="strip-photo" />
+          <img src="https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?w=600&q=80" alt="Arezzo Medici Fortress views" loading="lazy" class="strip-photo" />
+        </div>
+        <button class="strip-scroll-btn strip-scroll-right" onclick="scrollStrip(this,1)">›</button>
       </div>
     </div>
 
@@ -1685,13 +1720,17 @@
         <div class="explore-dist">~45 min drive</div>
         <div class="explore-desc">This region means a lot to us — Radda in Chianti was where we went on our first big trip together, not long after we met. We've been back a few times since and it never gets old. Do a wine tour if you can — sitting on a terrace with a glass of Chianti Classico looking out over the valley is hard to beat. The drive through the hills alone is worth it.</div>
       </div>
-      <div class="photo-strip">
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407170/IMG_7282_jwfjtc" alt="Chianti sunset" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7085_aydbam" alt="Wine tasting" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407171/IMG_7108_atrvcd" alt="Vineyard views" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407173/IMG_7150_t1lixn" alt="Chianti hills" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407170/IMG_2428_xndtzk" alt="Tuscany landscape" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407179/IMG_2437_osmm65" alt="Chianti farmhouse" loading="lazy" class="strip-photo" />
+      <div class="photo-strip-wrap">
+        <button class="strip-scroll-btn strip-scroll-left" onclick="scrollStrip(this,-1)">‹</button>
+        <div class="photo-strip">
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407170/IMG_7282_jwfjtc" alt="Chianti sunset" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7085_aydbam" alt="Wine tasting" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407171/IMG_7108_atrvcd" alt="Vineyard views" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407173/IMG_7150_t1lixn" alt="Chianti hills" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407170/IMG_2428_xndtzk" alt="Tuscany landscape" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407179/IMG_2437_osmm65" alt="Chianti farmhouse" loading="lazy" class="strip-photo" />
+        </div>
+        <button class="strip-scroll-btn strip-scroll-right" onclick="scrollStrip(this,1)">›</button>
       </div>
     </div>
 
@@ -1702,11 +1741,15 @@
         <div class="explore-dist">~1h drive</div>
         <div class="explore-desc">Go. Just go. Sit in the Piazza del Campo with an Aperol and take it all in — it's one of those places that's even better in real life than in photos. The Duomo is genuinely jaw-dropping (the striped marble, the floor, all of it). The streets around it are great for wandering and getting a bit lost. Give it a full day if you can.</div>
       </div>
-      <div class="photo-strip">
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407173/IMG_4603_r3d2cl" alt="Siena Duomo" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407181/IMG_4604_ik5ve4" alt="Torre del Mangia" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407181/IMG_4598_yqbkvq" alt="Siena streets" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407184/IMG_4599_aly1xy" alt="Piazza del Campo" loading="lazy" class="strip-photo" />
+      <div class="photo-strip-wrap">
+        <button class="strip-scroll-btn strip-scroll-left" onclick="scrollStrip(this,-1)">‹</button>
+        <div class="photo-strip">
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407173/IMG_4603_r3d2cl" alt="Siena Duomo" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407181/IMG_4604_ik5ve4" alt="Torre del Mangia" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407181/IMG_4598_yqbkvq" alt="Siena streets" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407184/IMG_4599_aly1xy" alt="Piazza del Campo" loading="lazy" class="strip-photo" />
+        </div>
+        <button class="strip-scroll-btn strip-scroll-right" onclick="scrollStrip(this,1)">›</button>
       </div>
     </div>
 
@@ -1717,13 +1760,17 @@
         <div class="explore-dist">~1h 30min drive</div>
         <div class="explore-desc">Worth at least a full day, ideally two. The Duomo, the Uffizi, Ponte Vecchio, Piazzale Michelangelo at sunset — all brilliant. A Vespa tour is a great way to cover a lot of ground without the walking. There are also free walking tours that are genuinely good for first-timers. And eat the gelato. Seriously. Train from Arezzo is dead easy if you'd rather not drive in.</div>
       </div>
-      <div class="photo-strip">
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407183/IMG_7049_l6kegk" alt="Gelato in Florence" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7050_svizgf" alt="Florence streets" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407183/IMG_7053_dsc2qw" alt="Duomo" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407163/IMG_7071_fjpbg2" alt="Florence view" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_6925_bgltsx" alt="Arno at sunrise" loading="lazy" class="strip-photo" />
-        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407164/IMG_7374_otjaqd" alt="Ponte Vecchio at night" loading="lazy" class="strip-photo" />
+      <div class="photo-strip-wrap">
+        <button class="strip-scroll-btn strip-scroll-left" onclick="scrollStrip(this,-1)">‹</button>
+        <div class="photo-strip">
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407183/IMG_7049_l6kegk" alt="Gelato in Florence" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7050_svizgf" alt="Florence streets" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407183/IMG_7053_dsc2qw" alt="Duomo" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407163/IMG_7071_fjpbg2" alt="Florence view" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_6925_bgltsx" alt="Arno at sunrise" loading="lazy" class="strip-photo" />
+          <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407164/IMG_7374_otjaqd" alt="Ponte Vecchio at night" loading="lazy" class="strip-photo" />
+        </div>
+        <button class="strip-scroll-btn strip-scroll-right" onclick="scrollStrip(this,1)">›</button>
       </div>
     </div>
 
@@ -1843,6 +1890,12 @@ async function submitForm() {
   }
 }
 
+
+/* ── PHOTO STRIP SCROLL ── */
+function scrollStrip(btn, dir) {
+  const strip = btn.closest('.photo-strip-wrap').querySelector('.photo-strip');
+  strip.scrollBy({ left: dir * 300, behavior: 'smooth' });
+}
 
 const navBtns = document.querySelectorAll('.fnav-btn[data-s]');
 const so = new IntersectionObserver(entries => {
