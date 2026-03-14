@@ -645,70 +645,50 @@
     /* ── EXPLORE ── */
     .explore-bg { background: linear-gradient(180deg, var(--parchment) 0%, var(--olive-ghost) 100%); }
     .section-sub { max-width: 600px; margin: 0.75rem auto 0; font-size: 0.85rem; color: var(--text-soft); text-align: center; line-height: 1.7; }
-    .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-top: 2.5rem;
-    }
-    .explore-card {
+
+    .explore-list { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2.5rem; }
+
+    .explore-item {
       background: var(--white);
       border: 1px solid var(--olive-pale);
       border-radius: 12px;
       overflow: hidden;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
     }
-    .explore-photo {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      transition: opacity 0.18s ease;
+
+    .explore-item-text {
+      padding: 1.5rem 1.5rem 1rem;
     }
-    .explore-photo-slider {
-      position: relative;
-      overflow: hidden;
-    }
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(42,50,24,0.55);
-      color: var(--parchment);
-      border: none;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      font-size: 1rem;
-      line-height: 1;
-      cursor: pointer;
-      z-index: 3;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-    }
-    .slider-btn:hover { background: rgba(42,50,24,0.85); }
-    .slider-prev { left: 0.5rem; }
-    .slider-next { right: 0.5rem; }
-    .explore-card-body {
-      padding: 1.1rem 1.1rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      flex: 1;
-    }
+
     .explore-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
+      font-size: 1.4rem;
       font-weight: 500;
       color: var(--olive);
+      margin-bottom: 0.2rem;
     }
-    .explore-dist { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; }
-    .explore-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.65; margin-top: 0.25rem; }
+    .explore-dist { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .explore-desc { font-size: 0.82rem; color: var(--text-mid); line-height: 1.7; }
+
+    .photo-strip {
+      display: flex;
+      gap: 3px;
+      overflow-x: auto;
+      padding: 0 0 0 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+    }
+    .photo-strip::-webkit-scrollbar { display: none; }
+
+    .strip-photo {
+      height: 200px;
+      width: auto;
+      min-width: 150px;
+      object-fit: cover;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      display: block;
+    }
 
     /* ── PHOTO UPLOAD SECTION ── */
     .photos-bg { background: var(--parchment-d); }
@@ -1683,61 +1663,67 @@
     <div class="section-sub reveal">You're in one of the most beautiful corners of Italy — please make the most of it! Here are our favourite places, from ones we've spent years exploring together to ones we keep going back to.</div>
   </div>
 
-  <div class="explore-grid">
+  <div class="explore-list">
 
     <!-- AREZZO -->
-    <div class="explore-card reveal">
-      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407175/IMG_7347_hhig2e","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_7362_yy4edk"]'>
-        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407175/IMG_7347_hhig2e" alt="Aperol in Ambra near Arezzo" loading="lazy" />
-        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
-        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
-      </div>
-      <div class="explore-card-body">
+    <div class="explore-item reveal">
+      <div class="explore-item-text">
         <div class="explore-name">Arezzo</div>
         <div class="explore-dist">~30 min drive</div>
         <div class="explore-desc">Honestly one of those places where you turn a corner and go "wait, this is incredible." Most tourists head straight to Florence and miss it entirely — their loss. The Piazza Grande is stunning, the frescoes in San Francesco are worth the trip alone, and the whole town just feels wonderfully lived-in. We'd also really recommend looking up a Tuscan cooking class while you're in the area — a fun way to spend a morning before lunch becomes the meal.</div>
       </div>
+      <div class="photo-strip">
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407175/IMG_7347_hhig2e" alt="Aperol in Ambra" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7362_yy4edk" alt="Arezzo streets" loading="lazy" class="strip-photo" />
+      </div>
     </div>
 
     <!-- CHIANTI -->
-    <div class="explore-card reveal">
-      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407170/IMG_7282_jwfjtc","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_7085_aydbam","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407171/IMG_7108_atrvcd","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407173/IMG_7150_t1lixn","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407170/IMG_2428_xndtzk","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407179/IMG_2437_osmm65"]'>
-        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407170/IMG_7282_jwfjtc" alt="Chianti vineyards" loading="lazy" />
-        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
-        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
-      </div>
-      <div class="explore-card-body">
+    <div class="explore-item reveal">
+      <div class="explore-item-text">
         <div class="explore-name">Chianti</div>
         <div class="explore-dist">~45 min drive</div>
         <div class="explore-desc">This region means a lot to us — Radda in Chianti was where we went on our first big trip together, not long after we met. We've been back a few times since and it never gets old. Do a wine tour if you can — sitting on a terrace with a glass of Chianti Classico looking out over the valley is hard to beat. The drive through the hills alone is worth it.</div>
       </div>
+      <div class="photo-strip">
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407170/IMG_7282_jwfjtc" alt="Chianti sunset" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7085_aydbam" alt="Wine tasting" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407171/IMG_7108_atrvcd" alt="Vineyard views" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407173/IMG_7150_t1lixn" alt="Chianti hills" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407170/IMG_2428_xndtzk" alt="Tuscany landscape" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407179/IMG_2437_osmm65" alt="Chianti farmhouse" loading="lazy" class="strip-photo" />
+      </div>
     </div>
 
     <!-- SIENA -->
-    <div class="explore-card reveal">
-      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407173/IMG_4603_r3d2cl","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407181/IMG_4604_ik5ve4","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407181/IMG_4598_yqbkvq","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407184/IMG_4599_aly1xy"]'>
-        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407173/IMG_4603_r3d2cl" alt="Siena Piazza del Campo" loading="lazy" />
-        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
-        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
-      </div>
-      <div class="explore-card-body">
+    <div class="explore-item reveal">
+      <div class="explore-item-text">
         <div class="explore-name">Siena</div>
         <div class="explore-dist">~1h drive</div>
         <div class="explore-desc">Go. Just go. Sit in the Piazza del Campo with an Aperol and take it all in — it's one of those places that's even better in real life than in photos. The Duomo is genuinely jaw-dropping (the striped marble, the floor, all of it). The streets around it are great for wandering and getting a bit lost. Give it a full day if you can.</div>
       </div>
+      <div class="photo-strip">
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407173/IMG_4603_r3d2cl" alt="Siena Duomo" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407181/IMG_4604_ik5ve4" alt="Torre del Mangia" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407181/IMG_4598_yqbkvq" alt="Siena streets" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407184/IMG_4599_aly1xy" alt="Piazza del Campo" loading="lazy" class="strip-photo" />
+      </div>
     </div>
 
     <!-- FLORENCE -->
-    <div class="explore-card reveal">
-      <div class="explore-photo-slider" data-photos='["https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407183/IMG_7049_l6kegk","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_7050_svizgf","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407183/IMG_7053_dsc2qw","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407163/IMG_7071_fjpbg2","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407165/IMG_6925_bgltsx","https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407164/IMG_7374_otjaqd"]'>
-        <img class="explore-photo" src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_800/v1773407183/IMG_7049_l6kegk" alt="Gelato in Florence" loading="lazy" />
-        <button class="slider-btn slider-prev" onclick="slidePhoto(this,-1)">‹</button>
-        <button class="slider-btn slider-next" onclick="slidePhoto(this,1)">›</button>
-      </div>
-      <div class="explore-card-body">
+    <div class="explore-item reveal">
+      <div class="explore-item-text">
         <div class="explore-name">Florence</div>
         <div class="explore-dist">~1h 30min drive</div>
         <div class="explore-desc">Worth at least a full day, ideally two. The Duomo, the Uffizi, Ponte Vecchio, Piazzale Michelangelo at sunset — all brilliant. A Vespa tour is a great way to cover a lot of ground without the walking. There are also free walking tours that are genuinely good for first-timers. And eat the gelato. Seriously. Train from Arezzo is dead easy if you'd rather not drive in.</div>
+      </div>
+      <div class="photo-strip">
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407183/IMG_7049_l6kegk" alt="Gelato in Florence" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_7050_svizgf" alt="Florence streets" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407183/IMG_7053_dsc2qw" alt="Duomo" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407163/IMG_7071_fjpbg2" alt="Florence view" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407165/IMG_6925_bgltsx" alt="Arno at sunrise" loading="lazy" class="strip-photo" />
+        <img src="https://res.cloudinary.com/dg54ktsmt/image/upload/f_auto,q_auto,w_600/v1773407164/IMG_7374_otjaqd" alt="Ponte Vecchio at night" loading="lazy" class="strip-photo" />
       </div>
     </div>
 
@@ -1857,19 +1843,6 @@ async function submitForm() {
   }
 }
 
-/* ── PHOTO SLIDERS ── */
-function slidePhoto(btn, dir) {
-  const slider = btn.closest('.explore-photo-slider');
-  const img = slider.querySelector('.explore-photo');
-  const photos = JSON.parse(slider.dataset.photos);
-  const current = photos.indexOf(img.getAttribute('src').split('/').pop().split('?')[0]);
-  const next = (current + dir + photos.length) % photos.length;
-  img.style.opacity = '0';
-  setTimeout(() => {
-    img.src = photos[next];
-    img.style.opacity = '1';
-  }, 180);
-}
 
 const navBtns = document.querySelectorAll('.fnav-btn[data-s]');
 const so = new IntersectionObserver(entries => {
