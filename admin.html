@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S&R Wedding — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f1409;
+      --bg2: #161d0a;
+      --bg3: #1e2910;
+      --olive: #3a4a28;
+      --olive-mid: #5a6e3a;
+      --olive-light: #8a9e6a;
+      --gold: #c4952a;
+      --gold-light: #d4b060;
+      --parchment: #f5f0e6;
+      --text: #e8e0cc;
+      --text-soft: #a8b890;
+      --text-muted: #5a6e4a;
+      --green: #4a8a4a;
+      --red: #8a3a3a;
+      --orange: #8a5a2a;
+      --blue: #2a5a8a;
+      --border: rgba(138,158,106,0.15);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.6; }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(58,74,40,0.3) 0%, transparent 70%), var(--bg);
+    }
+    .login-box {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg2);
+      max-width: 340px;
+      width: 100%;
+    }
+    .login-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 2.5rem;
+      color: var(--gold-light);
+      margin-bottom: 0.25rem;
+    }
+    .login-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    .login-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      outline: none;
+      margin-bottom: 0.75rem;
+      text-align: center;
+      letter-spacing: 0.1em;
+    }
+    .login-input:focus { border-color: var(--gold); }
+    .login-btn {
+      width: 100%;
+      background: var(--olive);
+      color: var(--parchment);
+      border: none;
+      border-radius: 4px;
+      padding: 0.75rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: var(--olive-mid); }
+    .login-error {
+      color: #c87a7a;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    /* ── ADMIN APP ── */
+    #admin-app { display: none; }
+
+    /* Top bar */
+    .topbar {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+    }
+    .topbar-date {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .topbar-right { display: flex; gap: 1rem; align-items: center; }
+    .logout-btn {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .logout-btn:hover { color: var(--text); }
+
+    /* Nav tabs */
+    .nav-tabs {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 1.5rem;
+    }
+    .nav-tab {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.75rem 1.2rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Jost', sans-serif;
+    }
+    .nav-tab:hover { color: var(--text-soft); }
+    .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* Content */
+    .content { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* Section header */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 0.25rem;
+    }
+    .section-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Tables */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    .data-table th {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+    .data-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid rgba(138,158,106,0.07);
+      vertical-align: top;
+      color: var(--text);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-weight: 400;
+    }
+    .badge-paid { background: rgba(74,138,74,0.2); color: #7ac87a; border: 1px solid rgba(74,138,74,0.3); }
+    .badge-due { background: rgba(196,149,42,0.2); color: var(--gold); border: 1px solid rgba(196,149,42,0.3); }
+    .badge-tbc { background: rgba(90,110,58,0.2); color: var(--text-muted); border: 1px solid var(--border); }
+    .badge-confirmed { background: rgba(74,138,74,0.15); color: #7ac87a; border: 1px solid rgba(74,138,74,0.25); }
+    .badge-pending { background: rgba(196,149,42,0.15); color: var(--gold); border: 1px solid rgba(196,149,42,0.25); }
+    .badge-cash { background: rgba(138,90,42,0.2); color: #c8a87a; border: 1px solid rgba(138,90,42,0.3); }
+    .badge-done { background: rgba(74,138,74,0.2); color: #7ac87a; border: 1px solid rgba(74,138,74,0.3); }
+    .badge-working { background: rgba(42,90,138,0.2); color: #7ab0c8; border: 1px solid rgba(42,90,138,0.3); }
+    .badge-todo { background: rgba(138,90,42,0.15); color: #c8a87a; border: 1px solid rgba(138,90,42,0.2); }
+    .badge-notstarted { background: rgba(90,90,90,0.2); color: #888; border: 1px solid rgba(90,90,90,0.3); }
+
+    /* Priority dots */
+    .p-red { color: #c87a7a; }
+    .p-orange { color: var(--gold); }
+    .p-green { color: #7ac87a; }
+
+    /* Day headers */
+    .day-header {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      margin: 1.25rem 0 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .day-header-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .day-header-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    /* Run sheet timeline */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(138,158,106,0.07);
+      align-items: start;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-time {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      padding-top: 0.1rem;
+    }
+    .timeline-activity { font-size: 0.82rem; color: var(--text); }
+    .timeline-detail { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .timeline-owner { font-size: 0.65rem; color: var(--olive-light); margin-top: 0.2rem; }
+
+    /* Group blocks */
+    .group-block {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+    .group-header {
+      background: var(--bg3);
+      padding: 0.6rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .group-title { font-size: 0.72rem; color: var(--gold-light); font-weight: 400; }
+    .group-meta { font-size: 0.65rem; color: var(--text-muted); }
+    .group-body { padding: 0.75rem 1rem; font-size: 0.78rem; color: var(--text-soft); line-height: 1.7; }
+
+    /* Room grid */
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+    }
+    .room-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+    }
+    .room-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--gold-light);
+      margin-bottom: 0.2rem;
+    }
+    .room-guests { font-size: 0.78rem; color: var(--text); margin-bottom: 0.4rem; }
+    .room-detail { font-size: 0.68rem; color: var(--text-muted); }
+    .room-payment { font-size: 0.65rem; margin-top: 0.4rem; }
+
+    /* Notes box */
+    .note-box {
+      background: rgba(196,149,42,0.08);
+      border: 1px solid rgba(196,149,42,0.2);
+      border-radius: 4px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* Two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* Scroll to top */
+    .amount { font-family: 'Cormorant Garamond', serif; font-size: 1rem; }
+
+    /* Print friendly */
+    @media print {
+      .topbar, .nav-tabs { display: none; }
+      .section { display: block !important; page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-monogram">S & R</div>
+    <div class="login-title">Wedding Admin · Private Access</div>
+    <input type="password" class="login-input" id="pwd-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPwd()" />
+    <button class="login-btn" onclick="checkPwd()">Enter</button>
+    <div class="login-error" id="login-error">Incorrect password</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ADMIN APP
+══════════════════════════════════ -->
+<div id="admin-app">
+
+  <div class="topbar">
+    <div class="topbar-title">S & R — Wedding Admin</div>
+    <div class="topbar-right">
+      <span class="topbar-date">18 June 2026 · Il Verreno · Ambra</span>
+      <button class="logout-btn" onclick="logout()">Lock</button>
+    </div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('runsheet')">📅 Run Sheet</button>
+    <button class="nav-tab" onclick="showTab('suppliers')">🏢 Suppliers</button>
+    <button class="nav-tab" onclick="showTab('payments')">💸 Payments</button>
+    <button class="nav-tab" onclick="showTab('dietaries')">🍽️ Dietaries</button>
+    <button class="nav-tab" onclick="showTab('shuttle')">🚌 Shuttle</button>
+    <button class="nav-tab" onclick="showTab('rooms')">🏡 Rooms</button>
+    <button class="nav-tab" onclick="showTab('tasks')">✅ Tasks</button>
+  </div>
+
+  <div class="content">
+
+    <!-- ══ RUN SHEET ══ -->
+    <div class="section active" id="tab-runsheet">
+      <div class="section-title">Run Sheet</div>
+      <div class="section-sub">Wed 17 · Thu 18 · Fri 19 June 2026 · Il Verreno, Ambra · * = timing TBC</div>
+
+      <div class="note-box">💛 Ceremony 4:00pm Thu 18 · MC: Chris · Coordinator: Jer · Celebrant: Emma · Shuttle operator: Brandi Bus</div>
+
+      <!-- WEDNESDAY -->
+      <div class="day-header"><div class="day-header-dot"></div><div class="day-header-label">☀️ Wednesday 17 June — Welcome Pizza Night</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Time</th><th>Activity</th><th>Food & Drinks</th><th>Owner</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="timeline-time">5:00pm–7:00pm</td><td>Set up — Signage, Lights, AV</td><td>—</td><td>Couple + Jer</td><td>AV system · Outdoor lighting · Signage · Table setup. Lighting TBC</td></tr>
+            <tr><td>5:00pm–7:00pm</td><td>Guest transfers arrive (3 trips)</td><td>—</td><td>Brandi Bus</td><td>Trip 1 @ 5pm · Trip 2 @ 5:20pm · Trip 3 @ 5:45pm</td></tr>
+            <tr><td>7:00pm–10:00pm</td><td>🍕 Pizza Night begins (3hr package)</td><td>7 pizza flavours + Nutella pizza · Beer x1, Wine x2, Cocktail x2 · Gelato cart</td><td>Caterer + bar staff</td><td>2 long tables for 50 + scattered seating. €12,375 total</td></tr>
+            <tr><td>8:30pm*</td><td>Welcome speech</td><td>—</td><td>Rhodri</td><td>Timing TBC. AV system needed</td></tr>
+            <tr><td>10:00pm–12:00am</td><td>Cash bar opens</td><td>Cash bar</td><td>Bar team</td><td>—</td></tr>
+            <tr><td>10:30pm–12:30am</td><td>Guest shuttles to accom (3 runs)</td><td>—</td><td>Brandi Bus</td><td>22:30 · 23:30 · 00:30 — final at midnight</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- THURSDAY -->
+      <div class="day-header"><div class="day-header-dot" style="background:var(--gold-light)"></div><div class="day-header-label">💍 Thursday 18 June — Wedding Day</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Time</th><th>Activity</th><th>Food & Drinks</th><th>Owner</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>TBC*</td><td>Florist arrives & sets up</td><td>—</td><td>A to Z Florist</td><td>Ceremony + reception florals. Confirm arrival time</td></tr>
+            <tr><td>TBC*</td><td>Photobooth arrives & sets up</td><td>—</td><td>Miglianti Studio</td><td>Table · guestbook · audio · signage. Confirm arrival time</td></tr>
+            <tr><td>2:00pm*</td><td>Ceremony space setup</td><td>—</td><td>Jer + Venue</td><td>Chairs · sound test · welcome sign · toilet/reserved/direction signs · fans on chairs</td></tr>
+            <tr><td>2:00pm–2:45pm</td><td>Guest transfers Trip 1</td><td>—</td><td>Brandi Bus</td><td>Piazza Cisterna (E) · Casa Biffoli (F) · La Sevarella (D) → arrive 2:45pm</td></tr>
+            <tr><td>3:00pm–3:15pm</td><td>Guest transfers Trip 2</td><td>—</td><td>Brandi Bus</td><td>Vepri (A) → arrive 3:15pm</td></tr>
+            <tr><td>3:15pm–3:50pm</td><td>💧 Water station</td><td>Water</td><td>Jer + Venue</td><td>Buy water day before. Set up table</td></tr>
+            <tr><td>3:20pm–3:40pm</td><td>Guest transfers Trip 3</td><td>—</td><td>Brandi Bus</td><td>L'Incrociata (C) · Via della Casina (B) → arrive 3:40pm</td></tr>
+            <tr><td>3:45pm–3:55pm</td><td>Guests ushered to seats</td><td>—</td><td>Jer + Venue</td><td>—</td></tr>
+            <tr><td style="color:var(--gold-light);font-weight:500">4:00pm–4:45pm</td><td style="color:var(--gold-light)">💍 CEREMONY</td><td>—</td><td>Emma (celebrant) · Florist · Pianist · Sound tech</td><td>Ceremony signage · Seating · Fans · Biodegradable confetti</td></tr>
+            <tr><td>4:45pm–5:00pm</td><td>Guests ushered to pool for canapés</td><td>—</td><td>Jer + Emma + Venue</td><td>Confirm with Jer: bubble photos before or after?</td></tr>
+            <tr><td>5:00pm–5:05pm</td><td>📸 Group photo</td><td>—</td><td>Photographer + Jer</td><td>Grass in front of pool / ceremony space — confirm location</td></tr>
+            <tr><td>5:00pm–6:30pm</td><td>🎷 Band plays (outside breakfast building)</td><td>—</td><td>Gaje Gipsy Swing</td><td>—</td></tr>
+            <tr><td>5:05pm–6:45pm</td><td>🥂 Cocktail hour (pool area)</td><td>12 canapés · Prosecco · Cash bar</td><td>Catering + bar staff</td><td>⚠️ 12 canapés still to be chosen from venue list</td></tr>
+            <tr><td>5:10pm–5:30pm</td><td>📸 Family photos</td><td>—</td><td>Photographer + Jer</td><td>Tree area (bridal/groom party)</td></tr>
+            <tr><td>5:30pm–6:30pm</td><td>📸 Bridal photos</td><td>Small plate canapés + drinks basket</td><td>Photographer + Venue</td><td>Orchard (bride & groom)</td></tr>
+            <tr><td>4:50pm–6:30pm</td><td>🌸 Ceremony flowers → glasshouse</td><td>—</td><td>Florist</td><td>Repurpose ceremony florals for reception</td></tr>
+            <tr><td>6:30pm–7:00pm*</td><td>Band moves + sets up in glasshouse</td><td>—</td><td>Band + Venue</td><td>Timing TBC</td></tr>
+            <tr><td>6:30pm–6:45pm</td><td>💛 Bride & Groom quiet moment</td><td>1 cocktail each</td><td>—</td><td>A must before entering dinner!</td></tr>
+            <tr><td>6:30pm–6:45pm</td><td>Guests ushered to glasshouse</td><td>—</td><td>Venue + MC Chris + Jer</td><td>Seating chart · bar menu · ribbons · fairy lights · signage · photobooth</td></tr>
+            <tr><td>6:45pm–6:50pm</td><td>📢 MC housekeeping</td><td>—</td><td>MC (Chris)</td><td>Toilet · Photobooth · Bus schedule · Timeline</td></tr>
+            <tr><td>6:50pm</td><td>👰🤵 Bride & Groom entrance</td><td>—</td><td>Music + MC Chris</td><td>—</td></tr>
+            <tr><td>7:00pm–7:30pm</td><td>🎤 Speeches</td><td>—</td><td>MC (Chris)</td><td>Order: Japie · Brendan · Jana · Rhodri · Alex</td></tr>
+            <tr><td>7:00pm–12:00am</td><td>5-hour drinks package starts</td><td>Beer x1 · Wine x2 · Cocktail x3</td><td>Bar team</td><td>7pm–midnight</td></tr>
+            <tr><td>7:30pm–9:00pm</td><td>🍽️ Dinner service</td><td>Antipasto + 2 primi + main + wedding cake. 2–3 btls wine/table + water + coffee</td><td>Catering + bar staff</td><td>Duck Terrine → Ravioli Burrata → Panciotti Rabbit → Rack of Lamb</td></tr>
+            <tr><td>7:30pm–12:30am</td><td>🎷 Band plays in glasshouse</td><td>—</td><td>Gaje Gipsy Swing</td><td>Set times with breaks</td></tr>
+            <tr><td>7:30pm</td><td>📸 Photobooth opens</td><td>—</td><td>Miglianti Studio</td><td>Confirm finish time with Miglianti</td></tr>
+            <tr><td>TBC</td><td>Supplier meals served</td><td>3-course supplier meals</td><td>All vendors</td><td>Confirm timing with venue (photobooth + band earlier?)</td></tr>
+            <tr><td>9:15pm</td><td>🎂 Cake cutting</td><td>Wedding cake</td><td>Couple + MC Chris</td><td>Followed immediately by first dance</td></tr>
+            <tr><td>9:20pm</td><td>💃 First dance</td><td>—</td><td>Couple + MC Chris</td><td>—</td></tr>
+            <tr><td>10:00pm–11:30pm</td><td>🍮 Dessert buffet (13 options)</td><td>Dessert station</td><td>Venue + MC Chris</td><td>MC to announce</td></tr>
+            <tr><td>10:30pm</td><td>Remove alternate tables for dance floor</td><td>—</td><td>Venue</td><td>Keep 6 tables total — 2 top, 2 each side</td></tr>
+            <tr><td>12:00am</td><td>Cash bar opens · Band finishes / AV takes over</td><td>Cash bar</td><td>Band + AV</td><td>—</td></tr>
+            <tr><td>00:30am–2:00am</td><td>🍔 Late-night snacks</td><td>Scrocchiarella + burrata/mortadella · Mini burgers · Mini pizzas</td><td>Venue</td><td>€35pp</td></tr>
+            <tr><td>11:00pm–2:00am</td><td>🚌 Night shuttles to accom</td><td>—</td><td>Brandi Bus</td><td>Multiple runs 11pm–2am. Guests choose time. Last ride 2:00am</td></tr>
+            <tr><td>1:45am</td><td>Last call of drinks</td><td>—</td><td>MC (Chris)</td><td>—</td></tr>
+            <tr><td>2:00am</td><td>Final shuttle leaves</td><td>—</td><td>Brandi Bus + MC Chris</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FRIDAY -->
+      <div class="day-header"><div class="day-header-dot" style="background:#7ab0c8"></div><div class="day-header-label">🌊 Friday 19 June — Recovery Pool Party</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Time</th><th>Activity</th><th>Food & Drinks</th><th>Owner</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>12:00pm</td><td>Set up — Signage, Pool Toys, AV</td><td>—</td><td>Couple</td><td>Pool floaties · Signage · AV system</td></tr>
+            <tr><td>1:00pm–2:00pm</td><td>Guest transfers arrive (3 trips)</td><td>—</td><td>Brandi Bus</td><td>Trip 1 @ 12:45pm · Trip 2 @ 1:40pm · Trip 3 @ 2:00pm — see 🚌 Shuttle tab</td></tr>
+            <tr><td>2:00pm–5:00pm</td><td>🌊 Pool Party 🕺 70's theme — FANCY DRESS COMPULSORY</td><td>Mixed sandwiches · Gelato cart (6 flavours) · Aperol Spritz + Sangria pitchers · Craft beer 3hr tap</td><td>Catering + bar staff</td><td>€3,750 total</td></tr>
+            <tr><td>5:00pm–7:00pm*</td><td>Cash bar + shuttles home</td><td>Cash bar</td><td>Bar staff + Brandi Bus</td><td>Finish time TBC</td></tr>
+            <tr><td>TBC</td><td>Friday evening dinner</td><td>TBC</td><td>TBC</td><td>Venue option: à la carte ~€80-90pp. Decision needed</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SUPPLIERS ══ -->
+    <div class="section" id="tab-suppliers">
+      <div class="section-title">Suppliers & Vendors</div>
+      <div class="section-sub">All confirmed suppliers with contacts, payment status & key notes</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">13</div><div class="stat-label">Confirmed Suppliers</div></div>
+        <div class="stat-card"><div class="stat-num">€10,029</div><div class="stat-label">Paid to Date (AUD $17,537)</div></div>
+        <div class="stat-card"><div class="stat-num">€76,704</div><div class="stat-label">Still Outstanding</div></div>
+        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Pending Contract</div></div>
+      </div>
+
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Supplier</th><th>Vendor</th><th>Category</th><th>Total (EUR)</th><th>Paid</th><th>Remaining</th><th>Status</th><th>Key Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Il Verreno</strong></td><td>Il Verreno Resort</td><td>Venue</td><td>€23,000</td><td>€3,500</td><td>€19,500</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit PAID. €10k due 17 Mar · €10k due 17 May. Rooming list due 2 months before. 2 cots needed.</td></tr>
+            <tr><td><strong>Catering</strong></td><td>Il Verreno</td><td>Catering</td><td>€40,275</td><td>Partial</td><td>€36,525</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Formula 2 €190pp. 75% (€27,393) due 17 May. 25% + pool party at checkout 20 Jun. ⚠️ 12 canapés to choose.</td></tr>
+            <tr><td><strong>Filippo Toti</strong></td><td>Filippo Toti</td><td>Photography + Video</td><td>€4,000</td><td>€1,400</td><td>€2,600</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>2 photographers + 2 videographers · 10hrs · 1000 photos · 10-15min film + 3-5min trailer. €1,300 due 17 May · €1,300 due after delivery.</td></tr>
+            <tr><td><strong>Alec Cortiss</strong></td><td>Alec Cortiss</td><td>Hair & Makeup</td><td>AUD $2,144</td><td>€130 (trial)</td><td>AUD $2,014</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Trial PAID. Wedding day CASH: Bridal €300 + 4x Bridesmaids €180ea + Mother of Groom €180 = €1,070. AUD equiv ~$2,144.</td></tr>
+            <tr><td><strong>Miglianti Studio</strong></td><td>Miglianti Studio</td><td>Photobooth</td><td>€976</td><td>€200</td><td>€776</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit PAID. Balance €776 (incl. €100 travel) due 4 Jun 2026 (2 weeks before). 5hr hire. Guestbook + audio included.</td></tr>
+            <tr><td><strong>Gaje Gipsy Swing</strong></td><td>Gaje Gipsy Swing</td><td>Band</td><td>€2,000</td><td>€200</td><td>€1,800 CASH</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit PAID. 90% = €1,800 CASH on wedding day. Set times Thu from 5pm–midnight with breaks.</td></tr>
+            <tr><td><strong>Florence Pianist</strong></td><td>Florence Pianist</td><td>Entertainment</td><td>€2,260</td><td>€791</td><td>€1,469</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>35% deposit PAID. 65% = €1,469 due 3 May. Wed welcome dinner + Thu ceremony.</td></tr>
+            <tr><td><strong>A to Z Florist</strong></td><td>Anastasia & Alina</td><td>Flowers</td><td>€3,540</td><td>€1,200</td><td>€2,340</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit PAID. Balance €2,340 due 15 Jun (3 days before). ⚠️ Chair deco decision needed by 1 Apr — affects total.</td></tr>
+            <tr><td><strong>Centeral House</strong></td><td>Centeral House di Maurizio Carli</td><td>AV + Lighting</td><td>€3,050</td><td>€1,000 (deposit)</td><td>€2,050 CASH</td><td><span class="badge badge-pending">⚠️ Pending</span></td><td>30% deposit signed 11 Mar. 70% = €2,050 CASH on day (no VAT). Lighting for Wed 17 Jun also.</td></tr>
+            <tr><td><strong>Brandi Bus</strong></td><td>Brandi Bus</td><td>Transport</td><td>€5,610 + 10% VAT</td><td>TBC</td><td>€5,610</td><td><span class="badge badge-pending">⚠️ Sign when ready</span></td><td>30% = €1,683 at signing. 70% = €3,927 CASH on day. 3 days × 3 pickup trips + shuttle windows each night.</td></tr>
+            <tr><td><strong>Tuscan Bridal</strong></td><td>Tuscan Bridal (Perth)</td><td>Dress</td><td>AUD $1,694</td><td>$847</td><td>$847 AUD</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Balance $847 AUD at pickup 18 Mar. ⚠️ DUE SOON</td></tr>
+            <tr><td><strong>Edward McCan</strong></td><td>Edward McCan (Perth)</td><td>Rhodri's Suit</td><td>AUD $2,400</td><td>$1,680</td><td>$720 AUD</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Balance $720 at pickup end of March.</td></tr>
+            <tr><td><strong>Alibaba Favours</strong></td><td>Alibaba</td><td>Favours</td><td>AUD ~$376</td><td>$73</td><td>~$303 AUD</td><td><span class="badge badge-working">Working on it</span></td><td>Sample ordered. Bulk order TBC once sample approved.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+      <div class="card-title">💰 Cash on the Day — Prepare in Advance</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Vendor</th><th>Amount</th><th>Currency</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td>Gaje Gipsy Swing (band)</td><td>€1,800</td><td><span class="badge badge-cash">CASH EUR</span></td><td>Wedding day 18 Jun</td></tr>
+            <tr><td>Centeral House (AV)</td><td>€2,050</td><td><span class="badge badge-cash">CASH EUR</span></td><td>Wedding day 18 Jun (no VAT)</td></tr>
+            <tr><td>Brandi Bus (shuttle)</td><td>€3,927</td><td><span class="badge badge-cash">CASH EUR</span></td><td>Wedding day 18 Jun</td></tr>
+            <tr><td>Alec Cortiss (H&MU)</td><td>AUD $2,144</td><td><span class="badge badge-cash">CASH AUD</span></td><td>Wedding day 18 Jun</td></tr>
+            <tr><td><strong>Total cash needed</strong></td><td><strong>€7,777 + AUD $2,144</strong></td><td>—</td><td>Have ready by 17 Jun</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ PAYMENTS ══ -->
+    <div class="section" id="tab-payments">
+      <div class="section-title">Payment Schedule</div>
+      <div class="section-sub">EUR/AUD rate: 1.6479 (update on Wise) · Total budget: ~AUD $155,116</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">AUD $17,537</div><div class="stat-label">Total Paid</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $123,996</div><div class="stat-label">Total Remaining</div></div>
+        <div class="stat-card"><div class="stat-num">11%</div><div class="stat-label">% Paid</div></div>
+        <div class="stat-card"><div class="stat-num">8/20</div><div class="stat-label">Rooms Paid</div></div>
+      </div>
+
+      <div class="note-box">💶 Wise EUR Balance: €5,000 held @ 1.6479 — earmarked for Il Verreno 50% venue payment due 17 Mar. Remaining €5k still to convert. Friday reminder: transfer remaining venue euros at 0.63+ rate.</div>
+
+      <div class="card-title">✅ PAID</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Date</th><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Aug 2025</td><td>Tuscan Bridal</td><td>Wedding dress deposit</td><td>—</td><td>$847</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Aug 2025</td><td>Il Verreno</td><td>Venue deposit</td><td>€3,500</td><td>$6,366</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Oct 2025</td><td>Filippo Toti</td><td>Photography deposit</td><td>€1,400</td><td>$2,509</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Nov 2025</td><td>Alec Cortiss</td><td>Hair & Makeup trial</td><td>€130</td><td>$229</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Dec 2025</td><td>Edward McCan</td><td>Rhodri's suit — 70% deposit</td><td>—</td><td>$1,680</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Jan 2026</td><td>Miglianti Studio</td><td>Photobooth deposit (incl. €100 travel)</td><td>€200</td><td>$350</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Feb 2026</td><td>Gaje Gipsy Swing</td><td>Band 10% deposit</td><td>€200</td><td>$337</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Feb 2026</td><td>Etsy</td><td>Hand fans</td><td>—</td><td>$146</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Feb 2026</td><td>Florence Pianist</td><td>35% deposit</td><td>€791</td><td>$1,314</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Mar 2026</td><td>Etsy</td><td>Name cards</td><td>—</td><td>$87</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>Mar 2026</td><td>Alibaba</td><td>Sample favours</td><td>—</td><td>$73</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>9 Mar 2026</td><td>A to Z Florist</td><td>Florist deposit</td><td>€1,200</td><td>$1,977</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>11 Mar 2026</td><td>Centeral House</td><td>AV 30% deposit</td><td>€1,000</td><td>$1,620</td><td><span class="badge badge-paid">PAID</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">🟠 DUE — Upcoming Payments</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Due Date</th><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD est.</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(196,149,42,0.08)"><td><strong>18 Mar 2026</strong></td><td>Tuscan Bridal</td><td>Dress balance at pickup</td><td>—</td><td>$847</td><td><span class="badge badge-due">DUE</span></td><td>AUD fixed</td></tr>
+            <tr style="background:rgba(196,149,42,0.08)"><td><strong>17 Mar 2026</strong></td><td>Il Verreno</td><td>50% venue payment</td><td>€10,000</td><td>$16,479</td><td><span class="badge badge-due">DUE</span></td><td>🔵 €5k in Wise — convert remaining €5k before 14 Mar</td></tr>
+            <tr><td>31 Mar 2026</td><td>Edward McCan</td><td>Suit balance</td><td>—</td><td>$720</td><td><span class="badge badge-due">DUE</span></td><td>At pickup end of March</td></tr>
+            <tr><td>3 May 2026</td><td>Florence Pianist</td><td>65% remaining balance</td><td>€1,469</td><td>$2,421</td><td><span class="badge badge-due">DUE</span></td><td>Wise transfer</td></tr>
+            <tr><td>17 May 2026</td><td>Il Verreno</td><td>Final 50% venue payment</td><td>€10,000</td><td>$16,479</td><td><span class="badge badge-due">DUE</span></td><td>1 month before</td></tr>
+            <tr><td>17 May 2026</td><td>Filippo Toti</td><td>Photography 2nd payment</td><td>€1,300</td><td>$2,142</td><td><span class="badge badge-due">DUE</span></td><td>1 month before</td></tr>
+            <tr><td>17 May 2026</td><td>Il Verreno</td><td>Catering 75% (Wed + Thu)</td><td>€27,394</td><td>$45,142</td><td><span class="badge badge-due">DUE</span></td><td>75% of €36,525</td></tr>
+            <tr><td>4 Jun 2026</td><td>Miglianti Studio</td><td>Photobooth balance</td><td>€776</td><td>$1,279</td><td><span class="badge badge-due">DUE</span></td><td>2 weeks before</td></tr>
+            <tr><td>15 Jun 2026</td><td>A to Z Florist</td><td>Florist balance</td><td>€2,340</td><td>$3,856</td><td><span class="badge badge-due">DUE</span></td><td>3 days before. ⚠️ May increase if chair deco added by 1 Apr</td></tr>
+            <tr><td>17 Jun 2026</td><td>Centeral House</td><td>AV 70% balance</td><td>€2,050</td><td>$3,378</td><td><span class="badge badge-cash">CASH</span></td><td>Cash on day — no VAT</td></tr>
+            <tr><td>18 Jun 2026</td><td>Filippo Toti</td><td>Final photography payment</td><td>€1,300</td><td>$2,142</td><td><span class="badge badge-due">DUE</span></td><td>Wedding day</td></tr>
+            <tr><td>18 Jun 2026</td><td>Alec Cortiss</td><td>Hair & Makeup</td><td>—</td><td>$2,144</td><td><span class="badge badge-cash">CASH AUD</span></td><td>5x girls + 1x bridal</td></tr>
+            <tr><td>18 Jun 2026</td><td>Gaje Gipsy Swing</td><td>Band balance</td><td>€1,800</td><td>$2,966</td><td><span class="badge badge-cash">CASH</span></td><td>Cash on day</td></tr>
+            <tr><td>18 Jun 2026</td><td>Brandi Bus</td><td>Shuttle 70% balance</td><td>€3,927</td><td>$6,471</td><td><span class="badge badge-cash">CASH</span></td><td>Cash on day</td></tr>
+            <tr><td>20 Jun 2026</td><td>Il Verreno</td><td>Catering 25% + pool party</td><td>€12,881</td><td>$21,227</td><td><span class="badge badge-due">DUE</span></td><td>At checkout</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ DIETARIES ══ -->
+    <div class="section" id="tab-dietaries">
+      <div class="section-title">Dietary Requirements</div>
+      <div class="section-sub">85 guests attending · Flag all requirements to venue by 17 April 2026</div>
+
+      <div class="note-box">⚠️ Send dietary requirements to Il Verreno by 17 April 2026. This list will update as guests submit via the wedding website form.</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">85</div><div class="stat-label">Confirmed Attending</div></div>
+        <div class="stat-card"><div class="stat-num">81</div><div class="stat-label">Joyfully Accept</div></div>
+        <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Tentative (Liam & Alba Clancy)</div></div>
+        <div class="stat-card"><div class="stat-num">32</div><div class="stat-label">Declined</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Attending Guests — Dietary Status</div>
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Name</th><th>Group</th><th>Dietary</th><th>Allergies</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Alex Clancy</td><td>Alex Clancy</td><td>—</td><td>—</td><td>Awaiting form submission</td></tr>
+            <tr><td>2</td><td>Annie Probert</td><td>Annie & Ellis</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>3</td><td>Ellis Martin</td><td>Annie & Ellis</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>4</td><td>Ceri Davis</td><td>Ceri & Courtney</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>5</td><td>Courtney Davis</td><td>Ceri & Courtney</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>6</td><td>Charles Davis</td><td>Charles & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>7</td><td>Laura Davis</td><td>Charles & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>8</td><td>Chris Williams</td><td>Chris & Alice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>9</td><td>Alice Williams</td><td>Chris & Alice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>10</td><td>Dai Leonard</td><td>Dai & Emma</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>11</td><td>Emma Leonard</td><td>Dai & Emma</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>12</td><td>Elisha Bell</td><td>Elisha & Ross</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>13</td><td>Ross Price</td><td>Elisha & Ross</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>14</td><td>Erin Flemming</td><td>Erin & Emlyn</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>15</td><td>Emlyn Brosnan</td><td>Erin & Emlyn</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>16</td><td>Eugene Clancy</td><td>Eugene & family</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>17</td><td>Fioya Clancy</td><td>Eugene & family</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>18</td><td>Liam Clancy (Oisin)</td><td>Eugene & family</td><td>—</td><td>—</td><td>Tentative</td></tr>
+            <tr><td>19</td><td>Alba Clancy</td><td>Eugene & family</td><td>—</td><td>—</td><td>Tentative</td></tr>
+            <tr><td>20</td><td>Frankie Morgan</td><td>Frankie Morgan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>21</td><td>Gary Thomas</td><td>Gary & Fran</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>22</td><td>Francesca Thomas</td><td>Gary & Fran</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>23</td><td>Greg Clancy</td><td>Greg & Sophie</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>24</td><td>Ivan Bennet</td><td>Ivan & Carmel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>25</td><td>Carmel Bennet</td><td>Ivan & Carmel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>26</td><td>James Bija</td><td>James & Jess</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>27</td><td>Jess Rees</td><td>James & Jess</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>28</td><td>Jamie Williams</td><td>Jamie & Hannah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>29</td><td>Hannah Williams</td><td>Jamie & Hannah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>30</td><td>Jana Kruger</td><td>Jana & Sarah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>31</td><td>Sarah Dermody</td><td>Jana & Sarah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>32</td><td>Japie Kruger</td><td>Japie & Adel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>33</td><td>Adel Kruger</td><td>Japie & Adel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>34</td><td>Jeff Clancy</td><td>Jeff & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>35</td><td>Ann Clancy</td><td>Jeff & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>36</td><td>Jemaine Jehring</td><td>Jemaine & Nat</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>37</td><td>Natalie Jehring</td><td>Jemaine & Nat</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>38</td><td>Joel Moore</td><td>Joel & Deb</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>39</td><td>Deborah Michael</td><td>Joel & Deb</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>40</td><td>Johan Kruger</td><td>Johan & Minke</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>41</td><td>Minke Kruger</td><td>Johan & Minke</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>42</td><td>Jon Clancy</td><td>Jon & Emma (Jayne)</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>43</td><td>Emma Clancy</td><td>Jon & Emma</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>44</td><td>Jordan Grigg</td><td>Jordan Grigg</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>45</td><td>Liam Clancy (young)</td><td>Liam · Sinead · Niamh · Niall</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>46</td><td>Sinead Clancy</td><td>Liam · Sinead · Niamh · Niall</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>47</td><td>Niamh Clancy</td><td>Liam · Sinead · Niamh · Niall</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>48</td><td>Niall Clancy</td><td>Liam · Sinead · Niamh · Niall</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>49</td><td>Matthew Jeffreys</td><td>Matthew & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>50</td><td>Laura Jeffreys</td><td>Matthew & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>51</td><td>Nathan Clancy</td><td>Nathan Clancy</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>52</td><td>Nick Clancy</td><td>Nick & Jo</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>53</td><td>Jo Clancy</td><td>Nick & Jo</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>54</td><td>Nicki Adams</td><td>Nicki & Jeremy</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>55</td><td>Jeremy Adams</td><td>Nicki & Jeremy</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>56</td><td>Oisin Clancy</td><td>Oisin · Sue · Aidan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>57</td><td>Sue Clancy</td><td>Oisin · Sue · Aidan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>58</td><td>Aidan Clancy</td><td>Oisin · Sue · Aidan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>59</td><td>Paul Davies</td><td>Paul & Zoe</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>60</td><td>Zoe Davies</td><td>Paul & Zoe</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>61</td><td>Paul Warlow</td><td>Paul Warlow</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>62</td><td>Richard Singleton</td><td>Richard & Alex</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>63</td><td>Alex Singleton</td><td>Richard & Alex</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>64</td><td>Richard Murphy</td><td>Richard & Nat</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>65</td><td>Natalie Murphy</td><td>Richard & Nat</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>66</td><td>Sam Hughes</td><td>Sam & Beth</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>67</td><td>Beth Roscilli</td><td>Sam & Beth</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>68</td><td>Scott Coleman</td><td>Scotty & Claire</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>69</td><td>Claire Gleeson</td><td>Scotty & Claire</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>70</td><td>Sean Fogarty</td><td>Sean & Liz</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>71</td><td>Liz Fogarty</td><td>Sean & Liz</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>72</td><td>Sean Clancy</td><td>Sean & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>73</td><td>Ann Bradbury</td><td>Sean & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>74</td><td>Ben Sawyer</td><td>Ben & Candice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>75</td><td>Candice Sawyer</td><td>Ben & Candice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>76</td><td>Jayne Clancy</td><td>Jayne (Fattoria 1)</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>77</td><td>Brendan Clancy</td><td>Brendan (Fattoria 1)</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>78</td><td>Frankie Clancy</td><td>Fattoria 2</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>79</td><td>Jer Adams</td><td>Granaio (Coordinator)</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>80</td><td>Andreas Adams</td><td>Granaio</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>81</td><td>Rhodri Clancy</td><td>Bride & Groom</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>82</td><td>Salomé Kruger</td><td>Bride & Groom</td><td>—</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SHUTTLE ══ -->
+    <div class="section" id="tab-shuttle">
+      <div class="section-title">Shuttle Schedule</div>
+      <div class="section-sub">Brandi Bus — 19-pax minibus · Contract: €4,750 + 10% VAT = €5,225 · Group H (Annie & Ellis) — own transport, do NOT include</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">39</div><div class="stat-label">Guests Needing Shuttle</div></div>
+        <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Accommodation Groups</div></div>
+        <div class="stat-card"><div class="stat-num">€5,225</div><div class="stat-label">Total Contract (incl. VAT)</div></div>
+        <div class="stat-card"><div class="stat-num">Group G TBC</div><div class="stat-label">Ben & Candice — TBC</div></div>
+      </div>
+
+      <div class="note-box">⚠️ Group H (Annie Probert & Ellis Martin) staying at Castello di Leonina — own transport. Do NOT include in shuttle numbers.</div>
+
+      <!-- Accommodation Groups -->
+      <div class="card-title">Accommodation Groups & Key Contacts</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Group</th><th>Location</th><th>Address</th><th>Distance</th><th>Pax</th><th>Key Contact</th><th>Booked?</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A</strong></td><td>Airbnb Vepri</td><td>Vepri, 1, 52021 Bucine AR</td><td>9 min</td><td>8</td><td>Sean Clancy</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>B</strong></td><td>Airbnb Ambra</td><td>Via della Casina, 20, Ambra AR</td><td>5 min</td><td>4</td><td>Liam Clancy</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>C</strong></td><td>Agriturismo L'Incrociata</td><td>Loc. L'Incrociata 24, 52021 Pietraviva AR</td><td>9 min</td><td>9</td><td>James Bija / Paul Davies</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>D</strong></td><td>La Sevarella</td><td>Loc. Sevarella, 52021 Badia Agnano</td><td>13 min</td><td>10</td><td>Matthew Jeffreys</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>E</strong></td><td>Piazza Cisterna</td><td>Piazza Cisterna, 52021 Bucine</td><td>7 min</td><td>4</td><td>Richard Singleton / Sean Fogarty</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>F</strong></td><td>Casa Biffoli</td><td>Apartment 'Casa Biffoli', 52021 Badia Agnano</td><td>12 min</td><td>2</td><td>Joel Moore</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>G</strong></td><td>TBC</td><td>TBC (likely near Group E)</td><td>TBC</td><td>2</td><td>TBC</td><td><span class="badge badge-tbc">TBC</span></td></tr>
+            <tr><td><strong>H</strong></td><td>Castello di Leonina</td><td>Strada di Leonina, 53041 Siena</td><td>Own</td><td>2</td><td>Annie Probert</td><td><span class="badge badge-confirmed">YES — OWN TRANSPORT</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Wed pickups -->
+      <div class="day-header"><div class="day-header-dot"></div><div class="day-header-label">☀️ Wednesday 17 June — Welcome Pizza Night Pickups</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Trip</th><th>Depart</th><th>Arrive</th><th>Stops & Guests</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Trip 1</strong></td><td>4:30pm</td><td>5:10pm</td><td><strong>Stop 1</strong> Piazza Cisterna (E): Richard S · Alex S · Sean F · Liz F<br><strong>Stop 2</strong> ~4:45 Casa Biffoli (F): Joel Moore · Deborah Michael<br><strong>Stop 3</strong> ~4:55 La Sevarella (D): Jamie & Hannah W · Matthew & Laura J · Chris & Alice W · Sam H · Beth R · Charles & Laura D</td></tr>
+            <tr><td><strong>Trip 2</strong></td><td>5:20pm</td><td>5:35pm</td><td><strong>Stop 1</strong> L'Incrociata (C): James & Jess · Dai & Emma · Richard & Nat · Paul W · Paul D · Jordan<br><strong>Stop 2</strong> ~5:25 Via della Casina (B): Liam · Sinead · Niamh · Niall</td></tr>
+            <tr><td><strong>Trip 3</strong></td><td>5:45pm</td><td>5:55pm</td><td>Vepri (A): Sean & Ann · Eugene & Fioya · Liam · Oisin · Sue · Aidan</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.75rem; font-size:0.72rem; color:var(--text-muted)">↙ Drop-offs: Run 1 @ 10:30pm · Run 2 @ 11:30pm · Run 3 @ 12:30am</div>
+      </div>
+
+      <!-- Thu pickups -->
+      <div class="day-header"><div class="day-header-dot" style="background:var(--gold-light)"></div><div class="day-header-label">💍 Thursday 18 June — Wedding Day Pickups (ceremony 4pm, all arrive by 3:40pm)</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Trip</th><th>Depart</th><th>Arrive</th><th>Stops & Guests</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Trip 1</strong></td><td>2:00pm</td><td>2:45pm</td><td><strong>Stop 1</strong> Piazza Cisterna (E): Richard S · Alex S · Sean F · Liz F<br><strong>Stop 2</strong> ~2:20 Casa Biffoli (F): Joel Moore · Deborah Michael<br><strong>Stop 3</strong> ~2:25 La Sevarella (D): Jamie & Hannah W · Matthew & Laura J · Chris & Alice W · Sam H · Beth R · Charles & Laura D</td></tr>
+            <tr><td><strong>Trip 2</strong></td><td>3:00pm</td><td>3:15pm</td><td>Vepri (A): Sean & Ann · Eugene & Fioya · Liam · Oisin · Sue · Aidan</td></tr>
+            <tr><td><strong>Trip 3</strong></td><td>3:20pm</td><td>3:40pm ✓</td><td><strong>Stop 1</strong> L'Incrociata (C): James & Jess · Dai & Emma · Richard & Nat · Paul W · Paul D · Jordan<br><strong>Stop 2</strong> ~3:30 Via della Casina (B): Liam · Sinead · Niamh · Niall</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.75rem; font-size:0.72rem; color:var(--text-muted)">↙ Night shuttles: Multiple runs 11pm–2am. Guests choose departure time. Last ride 2:00am.</div>
+      </div>
+
+      <!-- Fri pickups -->
+      <div class="day-header"><div class="day-header-dot" style="background:#7ab0c8"></div><div class="day-header-label">🌊 Friday 19 June — Pool Party Pickups</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Trip</th><th>Depart</th><th>Arrive</th><th>Stops & Guests</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Trip 1</strong></td><td>12:45pm</td><td>1:25pm</td><td><strong>Stop 1</strong> Piazza Cisterna (E) → Stop 2 Casa Biffoli (F) → Stop 3 La Sevarella (D)</td></tr>
+            <tr><td><strong>Trip 2</strong></td><td>1:40pm</td><td>1:55pm</td><td>Vepri (A)</td></tr>
+            <tr><td><strong>Trip 3</strong></td><td>2:00pm</td><td>2:15pm</td><td>L'Incrociata (C) → Via della Casina (B)</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.75rem; font-size:0.72rem; color:var(--text-muted)">↙ Evening drop-offs: 7pm–10pm multiple runs.</div>
+      </div>
+    </div>
+
+    <!-- ══ ROOMS ══ -->
+    <div class="section" id="tab-rooms">
+      <div class="section-title">Onsite Rooms — Il Verreno</div>
+      <div class="section-sub">20 rooms · 41 guests · 12/20 rooms paid · 2 cots needed (Civetta, Rosa) · Passport numbers required before June</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">Total Rooms</div></div>
+        <div class="stat-card"><div class="stat-num">41</div><div class="stat-label">Onsite Guests</div></div>
+        <div class="stat-card"><div class="stat-num">12/20</div><div class="stat-label">Rooms Paid</div></div>
+        <div class="stat-card"><div class="stat-num">2 cots</div><div class="stat-label">Civetta + Rosa</div></div>
+      </div>
+
+      <div class="note-box">⚠️ Passport numbers needed from all guests before June 2026. Rooming list due to venue 2 months before (April).</div>
+
+      <div class="card-title">Main Villa</div>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-name">🌲 Cipresso (Cypress)</div>
+          <div class="room-guests">John + Janine</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🐦 Uccelli (Birds)</div>
+          <div class="room-guests">Alex + Jason</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 14/1/26</span></div>
+        </div>
+        <div class="room-card" style="border-color:rgba(196,149,42,0.4)">
+          <div class="room-name">🌸 Fiori — Flowers (Bridal Suite)</div>
+          <div class="room-guests">Rhodri + Salomé</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-tbc">—</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🦎 Geco (Gecko)</div>
+          <div class="room-guests">Ivan + Carmel</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🦋 Farfalle (Butterfly)</div>
+          <div class="room-guests">Gary + Fran</div>
+          <div class="room-detail">1st Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 2/1/26</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🍇 Uva (Grape) — Deluxe King</div>
+          <div class="room-guests">Nicki + Jeremy</div>
+          <div class="room-detail">1st Floor · 2 pax · ⚠️ NO extra bed</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 3/3/26</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌸 Gigli 1 (Lilies) — Family Suite</div>
+          <div class="room-guests">Jon + Emma + Greg (living room)</div>
+          <div class="room-detail">1st Floor · 4 pax · Shared living room with Gigli 2 · Greg in living room area</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 31/1/26 (Jayne)</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌸 Gigli 2 (Lilies) — Family Suite</div>
+          <div class="room-guests">Nick + Jo</div>
+          <div class="room-detail">1st Floor · 4 pax · Shares living room with Gigli 1</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🐌 Lumaca (Snail)</div>
+          <div class="room-guests">Nathan Clancy</div>
+          <div class="room-detail">Ground Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-pending">Pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🦉 Civetta (Owl) 🛏️ cot</div>
+          <div class="room-guests">Ceri + Courtney</div>
+          <div class="room-detail">Ground Floor · 2 pax · Living room included · Cot needed</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 31/12/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌹 Rosa (Rose) 🛏️ cot</div>
+          <div class="room-guests">TBC</div>
+          <div class="room-detail">Ground Floor · Cot needed</div>
+          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+        </div>
+      </div>
+
+      <div class="card-title" style="margin-top:1.25rem">Barn</div>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-name">🌾 Granaio (Granary)</div>
+          <div class="room-guests">Jer + Andreas</div>
+          <div class="room-detail">Ground Floor · 2 pax · Living room + kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 22/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🐴 Cavalli 1 (Horses) — Family Suite</div>
+          <div class="room-guests">Japie + Adel</div>
+          <div class="room-detail">2nd Floor · 4 pax · Shared living room</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 24/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🐴 Cavalli 2 (Horses) — Family Suite</div>
+          <div class="room-guests">Johan + Minke</div>
+          <div class="room-detail">2nd Floor · 4 pax · Shares living room with Cavalli 1</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">⛪ Cappella 1 (Chapel) — Apartment</div>
+          <div class="room-guests">Elisha + Ross</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 4 pax · Kitchen + living room</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 25/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">⛪ Cappella 2 (Chapel) — Apartment</div>
+          <div class="room-guests">Erin + Emlyn</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 4 pax · Shares kitchen + living room</div>
+          <div class="room-payment"><span class="badge badge-pending">Asked for more time</span></div>
+        </div>
+      </div>
+
+      <div class="card-title" style="margin-top:1.25rem">Farmhouse</div>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-name">🏚️ Cascina 1 (Farmhouse) — Apartment</div>
+          <div class="room-guests">Jana + Sarah</div>
+          <div class="room-detail">Ground Floor · 2 bed / 2 bath · 4 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-pending">Pending (Jana) · <span class="badge badge-paid" style="display:inline">Sarah paid 3/2/26</span></span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🏚️ Cascina 2 (Farmhouse) — Apartment</div>
+          <div class="room-guests">Jemaine + Nat</div>
+          <div class="room-detail">Ground Floor · 2 bed / 2 bath · 4 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 22/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌾 Fattoria 1 (Farm) — Apartment</div>
+          <div class="room-guests">Jayne + Brendan</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 5 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 25/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌾 Fattoria 2 (Farm) — Apartment</div>
+          <div class="room-guests">Jeff + Ann + Frankie</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 5 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 30/1 + 5/2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TASKS ══ -->
+    <div class="section" id="tab-tasks">
+      <div class="section-title">Task List</div>
+      <div class="section-sub">94 tasks total · 25 done · 25 in progress · 44 not started · Last updated from V7 Master Tracker</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num" style="color:#7ac87a">25</div><div class="stat-label">✅ Done</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#7ab0c8">25</div><div class="stat-label">🔄 Working On It</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:var(--gold)">44</div><div class="stat-label">⬜ Not Started</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#c87a7a">10</div><div class="stat-label">🔴 Urgent</div></div>
+      </div>
+
+      <div class="note-box">🔴 Urgent / Before 29 April — Book MR accommodation · Book MR wine tour/bus · Book flights to Rome · Sort wedding rings · Lock in MR ceremony time + witnesses · Find prenup lawyer · Finalise bus pricing</div>
+
+      <div class="card-title">🔴 Urgent — ASAP / Before 29 April</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>26</td><td>Find prenup lawyer / ILA</td><td>Salomé</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Emailed Momentum, DS Family Law, Mandurah Legal. Awaiting quotes.</td></tr>
+            <tr><td>27</td><td>Book Margaret River accommodation</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>28</td><td>Book MR wine tour / bus</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>29</td><td>Book flights to Rome</td><td>Rhodri</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>30</td><td>Finalise bus pricing & timetable</td><td>Rhodri</td><td>ASAP</td><td><span class="badge badge-todo">To Do</span></td><td>—</td></tr>
+            <tr><td>31</td><td>Sort wedding rings</td><td>Both</td><td>Before 29 Apr</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>32</td><td>Lock in MR ceremony time + witnesses</td><td>Both</td><td>This week</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>33</td><td>Find wedding shoes</td><td>Salomé</td><td>Before April</td><td><span class="badge badge-done">Done ✅</span></td><td>Iconic ordered 11 March ✅</td></tr>
+            <tr><td>34</td><td>Confirm groomsmen suits</td><td>Rhodri</td><td>Before April</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">🟠 Before May</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>35</td><td>Table seating chart</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Ask Salomé for layout plan</td></tr>
+            <tr><td>36</td><td>Collect guest images for letters</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-todo">To Do</span></td><td>For slideshow + seating cards</td></tr>
+            <tr><td>37</td><td>Organise parent gifts (all 4)</td><td>Both</td><td>Before May</td><td><span class="badge badge-todo">To Do</span></td><td>Jayne, Brendan, Japie, Adel</td></tr>
+            <tr><td>38</td><td>Write vows & letters</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>—</td></tr>
+            <tr><td>39</td><td>Choose 12 canapés</td><td>Both</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Choose from venue list</td></tr>
+            <tr><td>40</td><td>Pick wedding cake flavour & design</td><td>Both</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Send final decision to venue</td></tr>
+            <tr><td>41</td><td>Confirm Emma's celebrant brief</td><td>Both</td><td>Before May</td><td><span class="badge badge-todo">To Do</span></td><td>—</td></tr>
+            <tr><td>42</td><td>Write seating letter messages (per couple)</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Lovely personal touch 💛</td></tr>
+            <tr><td>43</td><td>Organise gift for Uncle Jer</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Whiskey?</td></tr>
+            <tr><td>44</td><td>Organise gift for Emma (celebrant)</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>TBC</td></tr>
+            <tr><td>45</td><td>Organise bridesmaids + groomsmen gifts</td><td>Both</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Rhodri: boys (maybe watch?). Salomé TBC.</td></tr>
+            <tr><td>46</td><td>Chair decorations decision → florist by 1 Apr</td><td>Both</td><td>1 April</td><td><span class="badge badge-todo">To Do</span></td><td>⚠️ Affects florist balance</td></tr>
+            <tr><td>47</td><td>Send dietaries to venue</td><td>Salomé</td><td>17 April</td><td><span class="badge badge-notstarted">Not Started</span></td><td>⚠️ Deadline: 17 April</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">📋 Before June</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>48</td><td>Sign Brandi Bus contract</td><td>Both</td><td><span class="badge badge-todo">To Do</span></td><td>30% = €1,683 at signing</td></tr>
+            <tr><td>49</td><td>Create photo list for photographer</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Notify family too</td></tr>
+            <tr><td>50</td><td>Create reception slideshow</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Photos + surprise proposal video. Outsource if needed.</td></tr>
+            <tr><td>51</td><td>Buy UE Boom / Hyper Boom speaker</td><td>Rhodri</td><td><span class="badge badge-notstarted">Not Started</span></td><td>$600 AUD — for welcome dinner + pool day</td></tr>
+            <tr><td>52</td><td>Order bulk Alibaba favours</td><td>Salomé</td><td><span class="badge badge-working">Working on it</span></td><td>Waiting on sample to arrive</td></tr>
+            <tr><td>53</td><td>Order photo/guest book for photobooth</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>—</td></tr>
+            <tr><td>54</td><td>Toilet freshening baskets</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Order online</td></tr>
+            <tr><td>55</td><td>Get knee pads for Jon 😂</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>You know why 😂</td></tr>
+            <tr><td>56</td><td>Find 70s pool outfits + toys + spares</td><td>Both</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Commit to the bit 😂</td></tr>
+            <tr><td>57</td><td>Order lawn games (mini golf, Jenga?)</td><td>Both</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Pool + cocktail hour idea</td></tr>
+            <tr><td>58</td><td>Collect passport numbers from all onsite guests</td><td>Both</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Required by venue before June</td></tr>
+            <tr><td>59</td><td>Order signage / misc to venue</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Venue accepts parcels max 7 days before arrival</td></tr>
+            <tr><td>60</td><td>Organise Rhodri's wedding morning surprise gift</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Keep this one quiet 🤫</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /admin-app -->
+
+<script>
+const PASSWORD = 'verreno2026';
+
+function checkPwd() {
+  const val = document.getElementById('pwd-input').value;
+  if (val === PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-app').style.display = 'block';
+    sessionStorage.setItem('weddingAdmin', '1');
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-input').focus();
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('weddingAdmin');
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('admin-app').style.display = 'none';
+  document.getElementById('pwd-input').value = '';
+}
+
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// Auto-login if session active
+if (sessionStorage.getItem('weddingAdmin')) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-app').style.display = 'block';
+}
+</script>
+</body>
+</html>
