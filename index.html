@@ -36,10 +36,10 @@
       --terracotta:  #b8694a;
       --terra-pale:  #f2ddd4;
       --wheat:       #d4b896;
-      --text:        #2a3218;
-      --text-mid:    #4a5830;
-      --text-soft:   #7a8a5a;
-      --text-ghost:  #a8b890;
+      --text:        #1e2a10;
+      --text-mid:    #3a4820;
+      --text-soft:   #5a6840;
+      --text-ghost:  #8a9870;
       --white:       #fdfaf4;
     }
 
@@ -304,8 +304,8 @@
     .scroll-hint {
       position: absolute;
       bottom: 1.8rem;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
+      right: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1157,38 +1157,47 @@
     .floatnav {
       position: fixed;
       bottom: 1.2rem;
+      bottom: calc(1.2rem + env(safe-area-inset-bottom));
       left: 50%;
       transform: translateX(-50%);
       z-index: 200;
-      background: rgba(42,50,24,0.88);
+      background: rgba(22,29,10,0.96);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(196,149,42,0.2);
-      border-radius: 3px;
-      padding: 0.4rem;
+      border: 1px solid rgba(196,149,42,0.35);
+      border-radius: 40px;
+      padding: 0.4rem 0.5rem;
       display: flex;
-      gap: 0.2rem;
-      box-shadow: 0 8px 32px rgba(42,50,24,0.3);
+      gap: 0.15rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      max-width: calc(100vw - 2rem);
+      overflow-x: auto;
+      scrollbar-width: none;
     }
+    .floatnav::-webkit-scrollbar { display: none; }
     .fnav-btn {
       font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(245,240,230,0.5);
+      color: rgba(245,240,230,0.7);
       background: none;
       border: none;
-      padding: 0.55rem 1rem;
-      border-radius: 2px;
+      padding: 0.6rem 0.9rem;
+      border-radius: 30px;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.2s ease;
       white-space: nowrap;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
     }
     .fnav-btn:hover, .fnav-btn.active {
       background: var(--gold);
-      color: var(--olive);
+      color: #1a2008;
+      font-weight: 500;
     }
 
     /* ═══════════════════════════════════════
@@ -1221,14 +1230,42 @@
     /* ═══════════════════════════════════════
        RESPONSIVE
     ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .floatnav {
+        bottom: calc(1rem + env(safe-area-inset-bottom));
+        padding: 0.35rem 0.4rem;
+        border-radius: 35px;
+      }
+      .fnav-btn {
+        font-size: 0.6rem;
+        padding: 0.55rem 0.7rem;
+        letter-spacing: 0.1em;
+        min-height: 44px;
+      }
+    }
     @media (max-width: 480px) {
       .hero-frame { inset: 10px; }
       .section { padding: 3.5rem 1.2rem; }
       .venue-stats { grid-template-columns: 1fr 1fr; }
       .cd-unit { min-width: 46px; padding: 0.6rem 0.6rem; }
       .cd-num { font-size: 1.5rem; }
-      .floatnav { bottom: 0.8rem; }
-      .fnav-btn { padding: 0.5rem 0.75rem; font-size: 0.56rem; }
+      .floatnav {
+        bottom: calc(0.75rem + env(safe-area-inset-bottom));
+        left: 0.75rem;
+        right: 0.75rem;
+        transform: none;
+        max-width: none;
+        justify-content: space-between;
+        border-radius: 30px;
+      }
+      .fnav-btn {
+        font-size: 0.55rem;
+        padding: 0.5rem 0.5rem;
+        letter-spacing: 0.05em;
+        flex: 1;
+        justify-content: center;
+        min-height: 44px;
+      }
     }
   </style>
 </head>
@@ -1314,7 +1351,7 @@
 
 <!-- ═══════ WELCOME BAND ═══════ -->
 <div class="welcome-band reveal">
-  <p>Croeso 🏡 Welkom — the countdown is on and we honestly can't wait. Everything you need for the weekend is right here below.</p>
+  <p>Croeso 🏡 Welkom, the countdown is on and we honestly can't wait. Everything you need for the weekend is right here below.</p>
 </div>
 
 <!-- ═══════ RSVP / SONG REQUEST ═══════ -->
@@ -1324,7 +1361,7 @@
   <div class="reveal">
     <div class="rsvp-eyebrow">A Little Favour</div>
     <div class="rsvp-heading">Tell Us Your Details</div>
-    <div class="rsvp-sub">We can't wait to celebrate with you all in Tuscany! Just two quick things before the big day — let us know about any dietary requirements (please do be specific, we'll pass everything on to the kitchen!) and drop us a song that'll get you on the dance floor. 💛</div>
+    <div class="rsvp-sub">We can't wait to celebrate with you all in Tuscany! Just two quick things before the big day: let us know about any dietary requirements (please do be specific, we'll pass everything on to the kitchen!) and drop us a song that'll get you on the dance floor. 💛</div>
   </div>
 
   <div id="rsvpForm" class="reveal">
@@ -1373,7 +1410,7 @@
 
     <div class="form-group">
       <label class="form-label">Allergies or anything else we should know</label>
-      <textarea class="form-textarea" id="f-allergy" placeholder="e.g. nut allergy, coeliac, anything else — please be specific so we can flag it with the kitchen"></textarea>
+      <textarea class="form-textarea" id="f-allergy" placeholder="e.g. nut allergy, coeliac, anything else, please be specific so we can flag it with the kitchen"></textarea>
     </div>
 
     <div class="form-divider"></div>
@@ -1395,7 +1432,7 @@
   <div class="form-success" id="formSuccess">
     <div class="form-success-icon">💛</div>
     <div class="form-success-title">Thank you!</div>
-    <div class="form-success-text">We've got your details — see you in Tuscany.</div>
+    <div class="form-success-text">We've got your details! See you in Tuscany.</div>
   </div>
 
 </div>
@@ -1425,9 +1462,9 @@
       </div>
     </div>
     <div class="event-card ev-travel">
-      <div class="ev-time">From the 13th — come and go as you please</div>
-      <div class="ev-title">We'll be in Rome — come join us! 🇮🇹</div>
-      <div class="ev-desc">We're arriving in Rome on Saturday the 13th and will be there for a few days before heading to Tuscany on Wednesday. No agenda, no structure — just us exploring, eating, and shaking off the jet lag. If you're around, come find us! We'll be messaging the group with whatever we end up doing — a walking tour one morning, a museum, dinner somewhere good — and you're welcome to join for any of it or none of it. Zero pressure, just the more the merrier. 💛</div>
+      <div class="ev-time">From the 13th, come and go as you please</div>
+      <div class="ev-title">We'll be in Rome, come join us! 🇮🇹</div>
+      <div class="ev-desc">We're arriving in Rome on Saturday the 13th and will be there for a few days before heading to Tuscany on Wednesday. No agenda, no structure, just us exploring, eating, and shaking off the jet lag. If you're around, come find us! We'll be messaging the group with whatever we end up doing — a walking tour one morning, a museum, dinner somewhere good, and you're welcome to join for any of it or none of it. Zero pressure, just the more the merrier. 💛</div>
       <div class="ev-tags">
         <span class="ev-tag loc">📍 Rome, Italy</span>
       </div>
@@ -1449,9 +1486,9 @@
     <div class="event-card ev-welcome">
       <div class="ev-time">7:00 PM – 10:00 PM</div>
       <div class="ev-title">Welcome Dinner Pizza Party 🍕</div>
-      <div class="ev-desc">Arrive, check in, and join everyone for a relaxed evening at the venue. Pizza, good wine, and the first chance to meet everyone before the big day. Come as you are — no dress code, just good energy.</div>
+      <div class="ev-desc">Arrive, check in, and join everyone for a relaxed evening at the venue. Pizza, good wine, and the first chance to meet everyone before the big day. Come as you are, no dress code, just good energy.</div>
       <div class="ev-tags">
-        <span class="ev-tag loc">📍 Il Verreno — Cucina Donnaluisa</span>
+        <span class="ev-tag loc">📍 Il Verreno, Cucina Donnaluisa</span>
       </div>
     </div>
   </div>
@@ -1469,13 +1506,13 @@
       </div>
     </div>
     <div class="event-card ev-ceremony">
-      <div class="ev-time">4:00 PM — Late</div>
+      <div class="ev-time">4:00 PM onwards</div>
       <div class="ev-title">Ceremony &amp; Reception</div>
-      <div class="ev-desc">The big day! As the ceremony doesn't start until 4pm, anyone staying offsite is more than welcome to come and join us at the venue for the morning or early afternoon — hang out by the pool, have some lunch, and soak it all in before the main event.</div>
+      <div class="ev-desc">The big day! As the ceremony doesn't start until 4pm, anyone staying offsite is more than welcome to come and join us at the venue for the morning or early afternoon, hang out by the pool, have some lunch, and soak it all in before the main event.</div>
       <div class="ev-desc" style="margin-top:0.4rem; opacity:0.9;">👗 <strong>Dress Code:</strong> Garden Cocktail</div>
       <div class="ev-desc" style="margin-top:0.5rem; font-style:italic; opacity:0.85;">🚌 <strong>Off-site guests:</strong> Your shuttle pick-up time will be sent to you directly. Pickups begin from <strong>2:00 PM</strong> for a <strong>2:45 PM arrival</strong>.</div>
       <div class="ev-tags">
-        <span class="ev-tag loc">📍 Il Verreno — Garden</span>
+        <span class="ev-tag loc">📍 Il Verreno, Garden</span>
         <span class="ev-tag dress-g">Garden Cocktail</span>
       </div>
     </div>
@@ -1496,9 +1533,9 @@
     <div class="event-card ev-party">
       <div class="ev-time">2:00 PM – 5:00 PM</div>
       <div class="ev-title">70's Pool Party &amp; BBQ 🕺🪩</div>
-      <div class="ev-desc">The final hurrah — a 70's-themed pool party. We're planning on actually getting in the water, so come ready to swim! <strong>Fancy dress is compulsory</strong> — think ABBA, Saturday Night Fever, Studio 54. And don't forget to pack a change of warmer clothes — shuttles back to your accommodation run from <strong>7:00 PM – 10:00 PM</strong> so you'll want something to change into after the pool.</div>
+      <div class="ev-desc">The final hurrah! A 70's-themed pool party. We're planning on actually getting in the water, so come ready to swim! <strong>Fancy dress is compulsory</strong>. Think ABBA, Saturday Night Fever, Studio 54. And don't forget to pack a change of warmer clothes, as shuttles back to your accommodation run from <strong>7:00 PM – 10:00 PM</strong> so you'll want something to change into after the pool.</div>
       <div class="ev-tags">
-        <span class="ev-tag loc">📍 Il Verreno — Pool</span>
+        <span class="ev-tag loc">📍 Il Verreno, Pool</span>
         <span class="ev-tag dress-r">70's Retro Pool Party 🪩</span>
       </div>
     </div>
@@ -1549,7 +1586,7 @@
         </div>
       </div>
       <div style="margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--olive-pale); font-family:'Jost',sans-serif; font-size:0.85rem; line-height:1.9; color:var(--text-mid); font-weight:300;">
-        Il Verreno sits in the Valdambra — a quiet valley named after the Ambra stream, tucked between the hills of Chianti and the upper Arno. The area around Ambra has been inhabited since Etruscan times, and was a medieval crossroads contested between Florence, Siena and Arezzo for centuries. Today it's all rolling vineyards, cypress-lined roads and olive groves — classic Tuscany, almost untouched. We couldn't think of a more beautiful corner of the world to get married in. 🌿
+        Il Verreno sits in the Valdambra, a quiet valley named after the Ambra stream, tucked between the hills of Chianti and the upper Arno. The area around Ambra has been inhabited since Etruscan times, and was a medieval crossroads contested between Florence, Siena and Arezzo for centuries. Today it's all rolling vineyards, cypress-lined roads and olive groves. Classic Tuscany, almost untouched. We couldn't think of a more beautiful corner of the world to get married in. 🌿
       </div>
     </div>
   </div>
@@ -1575,7 +1612,7 @@
       <div class="tip-icon">🚌</div>
       <div>
         <div class="tip-title">Getting To & From Events</div>
-        <div class="tip-body">We're running a <strong>shuttle service</strong> for all off-site guests between events — no need to stress about transport! Your individual pick-up time will be sent to you directly ahead of the wedding. We just ask that you're ready and waiting when your shuttle arrives, so we can keep everyone on schedule and no one gets left behind! 🚌</div>
+        <div class="tip-body">We're running a <strong>shuttle service</strong> for all off-site guests between events, no need to stress about transport! Your individual pick-up time will be sent to you directly ahead of the wedding. We just ask that you're ready and waiting when your shuttle arrives, so we can keep everyone on schedule and no one gets left behind! 🚌</div>
       </div>
     </div>
 
@@ -1583,7 +1620,7 @@
       <div class="tip-icon">☀️</div>
       <div>
         <div class="tip-title">Tuscany in June</div>
-        <div class="tip-body">June in Tuscany is warm and sunny — expect daytime temperatures around <strong>25–32°C</strong>. Evenings can be pleasantly cooler, especially outdoors, so a light wrap or jacket for later in the night is a good idea.</div>
+        <div class="tip-body">June in Tuscany is warm and sunny. Expect daytime temperatures around <strong>25–32°C</strong>. Evenings can be pleasantly cooler, especially outdoors, so a light wrap or jacket for later in the night is a good idea.</div>
       </div>
     </div>
 
@@ -1591,7 +1628,7 @@
       <div class="tip-icon">👠</div>
       <div>
         <div class="tip-title">What to Wear on Your Feet</div>
-        <div class="tip-body">A heads up for our shoe lovers — the venue grounds include <strong>pebbles, grass, and paved stone paths</strong>, so the terrain is beautifully rustic but a little uneven underfoot. We'd strongly recommend leaving the stilettos at home for this one! Block heels, wedges, sandals, or flats will serve you much better — and your feet will thank you at midnight. 💛</div>
+        <div class="tip-body">A heads up for our shoe lovers: the venue grounds include <strong>pebbles, grass, and paved stone paths</strong>, so the terrain is beautifully rustic but a little uneven underfoot, and we'd strongly recommend leaving the stilettos at home for this one! Block heels, wedges, sandals, or flats will serve you much better — and your feet will thank you at midnight. 💛</div>
       </div>
     </div>
 
@@ -1599,23 +1636,7 @@
       <div class="tip-icon">🪩</div>
       <div>
         <div class="tip-title">Pool Party Fancy Dress — It's Compulsory!</div>
-        <div class="tip-body">The Friday recovery party has a <strong>70's theme</strong> and fancy dress is not optional — we mean it! Think ABBA, Saturday Night Fever, Studio 54, Woodstock. Disco glam, flares, bold prints. Get creative, have fun with it — the more the merrier!</div>
-      </div>
-    </div>
-
-    <div class="tip-card reveal">
-      <div class="tip-icon">🛏️</div>
-      <div>
-        <div class="tip-title">Accommodation</div>
-        <div class="tip-body">Everyone's sorted with places to stay — exciting! If you haven't already sent us your accommodation address, please do so soon so we can lock in your shuttle pick-up time.</div>
-      </div>
-    </div>
-
-    <div class="tip-card reveal">
-      <div class="tip-icon">🧒</div>
-      <div>
-        <div class="tip-title">Adults Only</div>
-        <div class="tip-body">We've made this an <strong>18+ event</strong> — we hope you can use it as the perfect excuse for a grown-up trip to Tuscany!</div>
+        <div class="tip-body">The Friday recovery party has a <strong>70's theme</strong> and fancy dress is not optional — we mean it! Think ABBA, Saturday Night Fever, Studio 54, Woodstock. Disco glam, flares, bold prints. We're also planning on actually getting in the water so come ready to swim, and don't forget a change of warmer clothes for afterwards. Shuttles home run from <strong>7:00 PM to 10:00 PM</strong>.</div>
       </div>
     </div>
 
@@ -1631,7 +1652,7 @@
   <div class="reveal">
     <div class="section-eyebrow">Arrival & Travel</div>
     <div class="section-heading-serif">Getting There</div>
-    <div class="section-sub reveal">Il Verreno is tucked in the Tuscan hills between Arezzo and Siena — stunning to arrive at, but it does need a little planning. Here's everything you need to know.</div>
+    <div class="section-sub reveal">Il Verreno is tucked in the Tuscan hills between Arezzo and Siena, stunning to arrive at, but it does need a little planning. Here's everything you need to know.</div>
   </div>
 
   <div class="travel-grid">
@@ -1643,7 +1664,7 @@
         <div class="travel-row"><span class="travel-label">Florence (FLR)</span><span class="travel-dist">~1hr drive</span></div>
         <div class="travel-row"><span class="travel-label">Rome Fiumicino (FCO)</span><span class="travel-dist">~2h 30min drive</span></div>
         <div class="travel-row"><span class="travel-label">Pisa (PSA)</span><span class="travel-dist">~2h drive</span></div>
-        <p class="travel-note">Car hire at the airport is the easiest option — it unlocks all of Tuscany for the week and gets you right to the venue door.</p>
+        <p class="travel-note">Car hire at the airport is the easiest option, unlocking all of Tuscany for the week and gets you right to the venue door.</p>
       </div>
     </div>
 
@@ -1652,7 +1673,7 @@
       <div class="travel-title">By Car (Recommended)</div>
       <div class="travel-body">
         <p>Driving is hands-down the best way to experience Tuscany. From the A1 motorway, exit at <strong>Valdarno</strong> (coming from Florence) or <strong>Valdichiana</strong> (coming from Rome), then follow signs toward Bucine and Ambra.</p>
-        <p class="travel-note">📍 Venue address: <strong>Podere Verreno, Ambra, Province of Arezzo</strong> — plug it into Google Maps and it'll take you right there.</p>
+        <p class="travel-note">📍 Venue address: <strong>Podere Verreno, Ambra, Province of Arezzo</strong>. Plug it into Google Maps and it'll take you right there.</p>
       </div>
     </div>
 
@@ -1663,7 +1684,7 @@
         <p>The nearest useful stations are <strong>Arezzo</strong> (~40 min drive to venue) and <strong>Montevarchi</strong> (~30 min drive). Both are well connected from Florence and Rome.</p>
         <div class="travel-row" style="margin-top:0.75rem"><span class="travel-label">Florence → Arezzo</span><span class="travel-dist">~40 min</span></div>
         <div class="travel-row"><span class="travel-label">Rome → Arezzo</span><span class="travel-dist">~2h (via Trenitalia)</span></div>
-        <p class="travel-note">🚌 There is a local bus from <strong>Bucine station → Ambra village</strong> (Autolinee Toscane, ~16 min, every 4 hrs, Mon–Sat) but it doesn't reach the venue itself — you'd still need a short taxi or lift from Ambra. We wouldn't rely on this as your main plan, but it's there if needed!</p>
+        <p class="travel-note">🚌 There is a local bus from <strong>Bucine station → Ambra village</strong> (Autolinee Toscane, ~16 min, every 4 hrs, Mon–Sat) but it doesn't reach the venue itself, so you'd still need a short taxi or lift from Ambra. We wouldn't rely on this as your main plan, but it's there if needed!</p>
       </div>
     </div>
 
@@ -1671,10 +1692,10 @@
       <div class="travel-icon">💡</div>
       <div class="travel-title">A Few Tips</div>
       <div class="travel-body">
-        <p><strong>Car hire:</strong> Book early — Tuscany in June fills up fast. We'd recommend sorting this well in advance.</p>
+        <p><strong>Car hire:</strong> Book early. Tuscany in June fills up fast. We'd recommend sorting this well in advance.</p>
         <p><strong>International licence:</strong> If hiring in Italy, check whether you need an International Driving Permit (usually required + costs very little).</p>
         <p><strong>GPS dead zones:</strong> The Tuscan hills can have patchy signal. Screenshot your route beforehand just in case.</p>
-        <p><strong>City rules:</strong> Florence and Rome have restricted traffic zones (ZTL) — avoid driving into the centre unless you know where to park.</p>
+        <p><strong>City rules:</strong> Florence and Rome have restricted traffic zones (ZTL), so avoid driving into the centre unless you know where to park.</p>
       </div>
     </div>
 
@@ -1690,7 +1711,7 @@
   <div class="reveal">
     <div class="section-eyebrow">While You're There</div>
     <div class="section-heading-serif">Explore Tuscany</div>
-    <div class="section-sub reveal">You're in one of the most beautiful corners of Italy — please make the most of it! Here are our favourite places to explore while you're in the area.</div>
+    <div class="section-sub reveal">You're in one of the most beautiful corners of Italy, please make the most of it! Here are our favourite places to explore while you're in the area.</div>
   </div>
 
   <div class="explore-list">
@@ -1720,7 +1741,7 @@
       <div class="explore-item-text">
         <div class="explore-name">Chianti</div>
         <div class="explore-dist">~55 min drive</div>
-        <div class="explore-desc">This region means a lot to us — Radda in Chianti was where we went on our first big trip together and it never gets old. Do a wine tour if you can — sitting on a terrace with a glass of Chianti Classico looking out over the valley is hard to beat. There are also some brilliant Tuscan cooking classes in the area if you fancy learning a thing or two before dinner. The drive through the hills alone is worth it.</div>
+        <div class="explore-desc">This region means a lot to us. Radda in Chianti was where we went on our first big trip together and it never gets old. Do a wine tour if you can, sitting on a terrace with a glass of Chianti Classico looking out over the valley is hard to beat. There are also some brilliant Tuscan cooking classes in the area if you fancy learning a thing or two. The drive through the hills alone is worth it.</div>
       </div>
       <div class="photo-strip-wrap">
         <button class="strip-scroll-btn strip-scroll-left" onclick="scrollStrip(this,-1)">‹</button>
@@ -1744,7 +1765,7 @@
       <div class="explore-item-text">
         <div class="explore-name">Siena</div>
         <div class="explore-dist">~40 min drive</div>
-        <div class="explore-desc">Sit in the Piazza del Campo with an Aperol and take it all in — it's one of those places that's even better in real life than in photos. The Cathedral is a site worth seeing. The streets around it are great for wandering and getting a bit lost. Give it a full day if you can.</div>
+        <div class="explore-desc">Sit in the Piazza del Campo with an Aperol and take it all in, it's one of those places that's even better in real life than in photos. The Cathedral is a site worth seeing. The streets around it are great for wandering and getting a bit lost.</div>
       </div>
       <div class="photo-strip-wrap">
         <button class="strip-scroll-btn strip-scroll-left" onclick="scrollStrip(this,-1)">‹</button>
@@ -1766,7 +1787,7 @@
       <div class="explore-item-text">
         <div class="explore-name">Florence</div>
         <div class="explore-dist">~1hr drive</div>
-        <div class="explore-desc">Worth at least a full day, ideally two. The Duomo, the Uffizi, Ponte Vecchio, Piazzale Michelangelo at sunset — all brilliant. A Vespa tour is a great way to cover a lot of ground without the walking (we did one and loved it). We'd also really recommend looking up a free walking tour — a great way to pick up some local knowledge and make sure you don't miss the must-sees.</div>
+        <div class="explore-desc">Worth at least a full day, ideally two. The Duomo, the Uffizi, Ponte Vecchio, Piazzale Michelangelo at sunset, all brilliant. A Vespa tour is a great way to cover a lot of ground without the walking (we did one and loved it). A Vespa or bike wine tour is also a great way to explore the nearby countryside and easily missed hidden gems. We'd also really recommend looking up a free walking tour, a great way to pick up some local knowledge and make sure you don't miss the must-sees.</div>
       </div>
       <div class="photo-strip-wrap">
         <button class="strip-scroll-btn strip-scroll-left" onclick="scrollStrip(this,-1)">‹</button>
@@ -1798,22 +1819,58 @@
   <div class="reveal">
     <div class="section-eyebrow">A Little Favour</div>
     <div class="section-heading-serif">We Need You 🫵</div>
-    <div class="section-sub">Got a favourite photo of us as a couple, or a memory of us you'd love to share? We'd absolutely love to see them — upload them here and they'll go straight to us. 📸</div>
+    <div class="section-sub">Got a favourite photo of us as a couple, or a memory of us you'd love to share? We'd absolutely love to see them. Upload them right here, no sign-in needed! 📸</div>
   </div>
 
   <div class="photo-upload-card reveal">
     <div class="photo-upload-icon">📷</div>
     <div class="photo-upload-title">Share your snaps with us</div>
-    <div class="photo-upload-desc">Old memories, recent adventures, throwbacks — we want them all. Any photos of us, with us, or just ones that make you think of us. Upload via the form below, or send them straight to us on WhatsApp — whatever's easiest!</div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdka-D9itNdyTGt6xlrblGJQ_825uXf2YI0Fh0sZUjZct3elw/viewform?usp=publish-editor" target="_blank" class="photo-upload-btn">📸 Upload Your Photos</a>
-    <div class="photo-upload-note">Note: Google will ask you to sign in to upload 💛</div>
+    <div class="photo-upload-desc">Old memories, recent adventures, throwbacks, we want them all. Any photos of us, with us, or just ones that make you think of us. Select as many as you like!</div>
+
+    <!-- Upload area -->
+    <div id="upload-area" style="margin-top:1.5rem;">
+      <label for="photo-file-input" id="upload-label" style="
+        display:block; cursor:pointer;
+        border: 2px dashed var(--olive-pale);
+        border-radius: 8px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: border-color 0.2s, background 0.2s;
+        background: rgba(255,255,255,0.03);
+      " onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--olive-pale)'">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">🖼️</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);font-weight:400;">Tap to choose photos</div>
+        <div style="font-size:0.78rem;color:var(--text-soft);margin-top:0.3rem;">JPG, PNG, HEIC — multiple files OK</div>
+      </label>
+      <input type="file" id="photo-file-input" accept="image/*" multiple style="display:none" onchange="handlePhotoSelect(this)" />
+    </div>
+
+    <!-- Preview + status -->
+    <div id="upload-previews" style="display:none; margin-top:1.25rem; display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center;"></div>
+    <div id="upload-status" style="margin-top:1rem; font-size:0.85rem; color:var(--text-mid); text-align:center; min-height:1.5rem;"></div>
+    <div id="upload-submit-wrap" style="display:none; margin-top:1rem; text-align:center;">
+      <button onclick="submitPhotos()" style="
+        background:var(--gold); color:#1a2008; border:none; border-radius:4px;
+        padding:0.8rem 2rem; font-family:'Jost',sans-serif; font-size:0.85rem;
+        letter-spacing:0.1em; text-transform:uppercase; cursor:pointer;
+        font-weight:500; transition:background 0.2s;
+      " onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">Send to Salomé &amp; Rhodri 💛</button>
+    </div>
+    <div id="upload-success" style="display:none; margin-top:1rem; text-align:center; color:var(--olive-mid);">
+      <div style="font-size:1.5rem">💛</div>
+      <div style="font-size:0.95rem; margin-top:0.5rem;">Thank you! Your photos are on their way to us.</div>
+    </div>
+
+    <div style="margin-top:1.25rem; font-size:0.78rem; color:var(--text-soft); text-align:center;">
+      Or send them straight to us on WhatsApp, whatever's easiest!
+    </div>
   </div>
 
 </div>
 </div>
 
 <div class="already-done-band reveal">
-  <p>Already filled in your details? You're all set — we can't wait to see you! 💛 <a href="#rsvp" style="color:var(--gold-light);text-decoration:underline;">Fill in your details here</a> if you haven't yet.</p>
+  <p>Already filled in your details? You're all set, we can't wait to see you! 💛 <a href="#rsvp" style="color:var(--gold-light);text-decoration:underline;">Fill in your details here</a> if you haven't yet.</p>
 </div>
 
 <!-- ═══════ FOOTER ═══════ -->
@@ -1897,7 +1954,7 @@ async function submitForm() {
   } catch(err) {
     btn.disabled = false;
     btn.textContent = 'Send to Salomé & Rhodri ✨';
-    alert('Something went wrong — please try again or send us a message directly.');
+    alert('Something went wrong. Please try again or send us a message directly.');
   }
 }
 
@@ -1906,6 +1963,66 @@ async function submitForm() {
 function scrollStrip(btn, dir) {
   const strip = btn.closest('.photo-strip-wrap').querySelector('.photo-strip');
   strip.scrollBy({ left: dir * 300, behavior: 'smooth' });
+}
+
+/* ── CLOUDINARY PHOTO UPLOAD ── */
+let selectedFiles = [];
+
+function handlePhotoSelect(input) {
+  selectedFiles = Array.from(input.files);
+  if (!selectedFiles.length) return;
+
+  const previews = document.getElementById('upload-previews');
+  const submitWrap = document.getElementById('upload-submit-wrap');
+  const status = document.getElementById('upload-status');
+
+  previews.innerHTML = '';
+  previews.style.display = 'flex';
+  selectedFiles.forEach(f => {
+    const url = URL.createObjectURL(f);
+    const img = document.createElement('img');
+    img.src = url;
+    img.style.cssText = 'width:70px;height:70px;object-fit:cover;border-radius:6px;border:1px solid rgba(196,149,42,0.3);';
+    previews.appendChild(img);
+  });
+
+  status.textContent = `${selectedFiles.length} photo${selectedFiles.length > 1 ? 's' : ''} selected`;
+  submitWrap.style.display = 'block';
+}
+
+async function submitPhotos() {
+  if (!selectedFiles.length) return;
+
+  const btn = document.querySelector('#upload-submit-wrap button');
+  const status = document.getElementById('upload-status');
+  btn.disabled = true;
+  btn.textContent = 'Uploading…';
+
+  const CLOUD = 'dg54ktsmt';
+  const PRESET = 'wedding_guest_upload';
+  let uploaded = 0;
+
+  try {
+    for (const file of selectedFiles) {
+      status.textContent = `Uploading ${uploaded + 1} of ${selectedFiles.length}…`;
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('upload_preset', PRESET);
+      fd.append('folder', 'guest-photos');
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD}/image/upload`, { method: 'POST', body: fd });
+      if (!res.ok) throw new Error('Upload failed');
+      uploaded++;
+    }
+    document.getElementById('upload-submit-wrap').style.display = 'none';
+    document.getElementById('upload-previews').style.display = 'none';
+    document.getElementById('upload-status').style.display = 'none';
+    document.getElementById('upload-area').style.display = 'none';
+    document.getElementById('upload-success').style.display = 'block';
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Send to Salomé & Rhodri 💛';
+    status.textContent = 'Something went wrong, please try again or send via WhatsApp.';
+  }
 }
 
 const navBtns = document.querySelectorAll('.fnav-btn[data-s]');
