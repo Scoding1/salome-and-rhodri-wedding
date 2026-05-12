@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f1409;
+      --bg: #ffffff;
       --bg2: #161d0a;
       --bg3: #1e2910;
       --olive: #3a4a28;
@@ -29,7 +29,7 @@
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.7; }
+    body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; }
 
     /* ── LOGIN ── */
     #login-screen {
@@ -432,6 +432,14 @@
       .topbar, .nav-tabs { display: none; }
       .section { display: block !important; page-break-before: always; }
     }
+  
+    #tab-runsheet .data-table th:nth-child(1),
+    #tab-runsheet .data-table td:nth-child(1) { width: 140px; }
+    #tab-runsheet .data-table th:nth-child(2),
+    #tab-runsheet .data-table td:nth-child(2) { width: 20%; }
+    #tab-runsheet .data-table th:nth-child(3),
+    #tab-runsheet .data-table td:nth-child(3) { width: 25%; }
+
   </style>
 </head>
 <body>
@@ -487,7 +495,7 @@
           <tbody>
             <tr><td class="timeline-time">5:00pm–7:00pm</td><td>Set up — Signage, Lights, AV</td><td>—</td><td>Couple + Jer</td><td>AV system · Outdoor lighting · Signage · Table setup. Lighting TBC</td></tr>
             <tr><td>5:10pm–5:55pm</td><td>Guest transfers arrive (3 trips)</td><td>—</td><td>Brandi Bus</td><td>Trip 1 arrives 5:10pm · Trip 2 5:35pm · Trip 3 5:55pm — see 🚌 Shuttle tab</td></tr>
-            <tr><td>7:00pm–10:00pm</td><td>🍕 Pizza Night begins (3hr package)</td><td>7 pizza flavours + Nutella pizza · Beer x1, Wine x2, Cocktail x2 · Gelato cart</td><td>Caterer + bar staff</td><td>2 long tables for 50 + scattered seating. €108,350 total</td></tr>
+            <tr><td>7:00pm–10:00pm</td><td>🍕 Pizza Night begins (3hr package)</td><td>7 pizza flavours + Nutella pizza · Beer x1, Wine x2, Cocktail x2 · Gelato cart</td><td>Caterer + bar staff</td><td>2 long tables for 50 + scattered seating. €12,375 total</td></tr>
             <tr><td>8:30pm*</td><td>Welcome speech</td><td>—</td><td>Rhodri</td><td>Timing TBC. AV system needed</td></tr>
             <tr><td>10:00pm–12:00am</td><td>Cash bar opens</td><td>Cash bar</td><td>Bar team</td><td>—</td></tr>
             <tr><td>10:30pm–12:30am</td><td>Guest shuttles to accom (3 runs)</td><td>—</td><td>Brandi Bus</td><td>22:30 · 23:30 · 00:30 — final at midnight</td></tr>
@@ -563,8 +571,8 @@
 
       <div class="stats-row">
         <div class="stat-card"><div class="stat-num">14</div><div class="stat-label">Confirmed Suppliers</div></div>
-        <div class="stat-card"><div class="stat-num">AUD $57,279</div><div class="stat-label">Paid to Date</div></div>
-        <div class="stat-card"><div class="stat-num">AUD $124,202</div><div class="stat-label">Still Outstanding</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $35,647</div><div class="stat-label">Paid to Date</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $107,170</div><div class="stat-label">Still Outstanding</div></div>
         <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Pending Contract (Brandi Bus)</div></div>
       </div>
 
@@ -572,23 +580,26 @@
         <table class="data-table">
           <thead><tr><th>Supplier</th><th>Vendor</th><th>Category</th><th>Total (EUR)</th><th>Paid</th><th>Remaining</th><th>Status</th><th>Key Notes</th></tr></thead>
           <tbody>
-            <tr><td><strong>Il Verreno</strong></td><td>Venue</td><td>€23,000</td><td>AUD $37,902</td><td>6366</td><td>Remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Il Verreno</strong></td><td>Catering</td><td>€38,555</td><td>AUD $63,535</td><td>Partly</td><td>Remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Filippo Toti</strong></td><td>Photography + Videography</td><td>€4,000</td><td>AUD $6,592</td><td>2509.07</td><td>€2,600 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Alec Cortiss</strong></td><td>Hair & Makeup</td><td>€1,200</td><td>$2,144 AUD</td><td>130</td><td>$2,014 AUD remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Miglianti Studio</strong></td><td>Photobooth</td><td>€976</td><td>AUD $1,608</td><td>200</td><td>€776 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Gaje Gipsy Swing</strong></td><td>Band</td><td>€2,000</td><td>AUD $3,296</td><td>200</td><td>€1,800 remaining (CASH)</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Florence Pianist</strong></td><td>Pianist (Wednesday)</td><td>€2,260</td><td>AUD $3,724</td><td>791</td><td>€1,469 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>A to Z Florist & Decor (Anastasia & Alina)</strong></td><td>Florist</td><td>€3,540</td><td>AUD $5,834</td><td>1977.48</td><td>€2,340 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Centeral House</strong></td><td>AV + Lighting</td><td>€3,050</td><td>AUD $5,027</td><td>€1,000.40 PAID 11/03/26</td><td>€2,050 remaining (CASH day)</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Brandi Bus</strong></td><td>Transport / Shuttle</td><td>€5,225</td><td>AUD $8,610</td><td>TBC</td><td>3800</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Tuscan Bridal (Perth)</strong></td><td>Dress</td><td>$1,694 AUD</td><td>$1,694 AUD</td><td>$1,694 AUD</td><td>— PAID ✅</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>Edward McCan (Perth)</strong></td><td>Suit (Rhodri)</td><td>$2,400 AUD</td><td>$2,400 AUD</td><td>1680</td><td>$720 AUD remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>TBC</strong></td><td>Dress alterations</td><td>$500 AUD est</td><td>$500 AUD est</td><td>—</td><td>$500 est</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
-            <tr><td><strong>TBC</strong></td><td>Bridesmaids dresses</td><td>$600+ AUD</td><td>$600+ AUD</td><td>—</td><td>$600+ est</td><td><span class="badge badge-pending">Working on it</span></td><td></td></tr>
-            <tr><td><strong>TBC</strong></td><td>Speaker (Hyper Boom)</td><td>$600 AUD</td><td>$600 AUD</td><td>—</td><td>$600</td><td><span class="badge badge-tbc">TBC</span></td><td></td></tr>
-            <tr><td><strong>Il Verreno</strong></td><td>Fairy Lights (17 Jun)</td><td>€600</td><td>—</td><td>—</td><td>€600</td><td><span class="badge badge-tbc">TBC</span></td><td></td></tr>
-            <tr><td><strong>Alibaba</strong></td><td>Favours</td><td>€303</td><td>$499 AUD est</td><td>73.23</td><td>$303 remaining</td><td><span class="badge badge-pending">Working on it</span></td><td></td></tr>
+            <tr><td><strong>Il Verreno</strong></td><td>Il Verreno Resort</td><td>Venue</td><td>€23,000</td><td>€13,500</td><td>€9,500</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit €3,500 PAID + 50% €10,000 PAID 17 Mar. Next: €10,000 due 17 May. Rooming list due 2 months before. 2 cots needed.</td></tr>
+            <tr><td><strong>Catering</strong></td><td>Il Verreno</td><td>Catering</td><td>€40,275</td><td>Partial</td><td>€36,525</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Formula 2 €190pp. 75% (€27,393) due 17 May. 25% + pool party at checkout 20 Jun. ⚠️ 12 canapés to choose.</td></tr>
+            <tr><td><strong>Filippo Toti</strong></td><td>Filippo Toti</td><td>Photography + Video</td><td>€4,000</td><td>€1,400</td><td>€2,600</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>2 photographers + 2 videographers · 10hrs · 1000 photos · 10-15min film + 3-5min trailer. €1,300 due 17 May · €1,300 due after delivery.</td></tr>
+            <tr><td><strong>Alec Cortiss</strong></td><td>Alec Cortiss</td><td>Hair & Makeup</td><td>AUD $2,144</td><td>€130 (trial)</td><td>AUD $2,014</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Trial PAID. Wedding day CASH: Bridal €300 + 4x Bridesmaids €180ea + Mother of Groom €180 = €1,070. AUD equiv ~$2,144.</td></tr>
+            <tr><td><strong>Miglianti Studio</strong></td><td>Miglianti Studio</td><td>Photobooth</td><td>€976</td><td>€200</td><td>€776</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit PAID. Balance €776 (incl. €100 travel) due 4 Jun 2026 (2 weeks before). 5hr hire. Guestbook + audio included.</td></tr>
+            <tr><td><strong>Gaje Gipsy Swing</strong></td><td>Gaje Gipsy Swing</td><td>Band</td><td>€2,000</td><td>€200</td><td>€1,800 CASH</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit PAID. 90% = €1,800 CASH on wedding day. Set: 5pm cocktail hour (outside) → glasshouse before dinner → finish 9pm. DJ takes over 9pm–2am. ⚠️ Need to inform band of set times.</td></tr>
+            <tr><td><strong>Florence Pianist</strong></td><td>Florence Pianist</td><td>Entertainment</td><td>€2,260</td><td>€791</td><td>€1,469</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>35% deposit PAID. 65% = €1,469 due 3 May. Wed welcome dinner + Thu ceremony.</td></tr>
+            <tr><td><strong>A to Z Florist</strong></td><td>Anastasia & Alina</td><td>Flowers</td><td>€3,540</td><td>€1,200</td><td>€2,340</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit PAID. Balance €2,340 due 15 Jun (3 days before). ⚠️ Chair deco decision needed by 1 Apr — affects total. Supplier meals: 3 × Thu — 1 vegetarian.</td></tr>
+            <tr><td><strong>Centeral House</strong></td><td>Centeral House di Maurizio Carli</td><td>AV + Lighting</td><td>€3,050</td><td>€1,000 (deposit paid)</td><td>€2,050 CASH</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Deposit €1,000.40 PAID 11/3/26 (Wise rate 1.6194). Balance €2,050 CASH on day — no VAT. Lighting for Wed 17 Jun also.</td></tr>
+            <tr><td><strong>Brandi Bus</strong></td><td>Brandi Bus</td><td>Transport</td><td>€5,610 (incl. VAT)</td><td>TBC</td><td>€5,610</td><td><span class="badge badge-pending">⚠️ Sign when ready</span></td><td>Deposit €1,425 at signing (30%). Balance €3,800 CASH on day (70%). 3 days × 3 pickup trips + shuttle windows each night.</td></tr>
+            <tr><td><strong>Tuscan Bridal</strong></td><td>Tuscan Bridal (Perth)</td><td>Dress</td><td>AUD $1,694</td><td>$1,694 ✅</td><td>—</td><td><span class="badge badge-confirmed">✅ Fully Paid</span></td><td>Deposit $847 PAID 9/8/25. Balance $847 PAID 12/3/26. Fully paid.</td></tr>
+            <tr><td><strong>Edward McCan</strong></td><td>Edward McCan (Perth)</td><td>Rhodri's Suit</td><td>AUD $2,400</td><td>$1,680</td><td>$720 AUD</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td>Balance $720 at pickup end of March.</td></tr>
+            <tr><td><strong>Dress Alterations</strong></td><td>TBC</td><td>Attire</td><td>AUD ~$500</td><td>—</td><td>~$500</td><td><span class="badge badge-confirmed">✅ Booked</span></td><td>Appointment booked — April 13th.</td></tr>
+            <tr><td><strong>Alibaba Favours</strong></td><td>Alibaba</td><td>Favours</td><td>AUD ~$376</td><td>$73</td><td>~$303 AUD</td><td><span class="badge badge-working">Working on it</span></td><td>Sample ordered. Bulk order TBC once sample approved.</td></tr>
+            <tr><td><strong>Bridesmaids Dresses</strong></td><td>TBC</td><td>Attire</td><td>AUD $600+</td><td>—</td><td>$600+ AUD</td><td><span class="badge badge-working">Working on it</span></td><td>Order + ship to compare colours. Azali.</td></tr>
+            <tr><td><strong>Hyper Boom Speaker</strong></td><td>TBC</td><td>Entertainment</td><td>AUD $600</td><td>—</td><td>$600 AUD</td><td><span class="badge badge-todo">To Do</span></td><td>For welcome dinner Wed + pool party Fri. Rhodri to order.</td></tr>
+            <tr><td><strong>Fairy Lights (17 Jun)</strong></td><td>Il Verreno</td><td>Venue Extra</td><td>€600</td><td>—</td><td>€600</td><td><span class="badge badge-tbc">TBC</span></td><td>Confirm with venue.</td></tr>
+            <tr><td><strong>Signage (remaining)</strong></td><td>TBC</td><td>Signage</td><td>€2,500 est</td><td>—</td><td>€2,500 est</td><td><span class="badge badge-working">Working on it</span></td><td>Welcome signs x2, bar signs x3, menu, table cards, photobooth signs. Local print vendor TBC.</td></tr>
+            <tr><td><strong>Name Cards (Etsy)</strong></td><td>Etsy</td><td>Signage</td><td>AUD $87.45</td><td>$87.45 ✅</td><td>—</td><td><span class="badge badge-confirmed">✅ Done</span></td><td>PAID 8/3/26.</td></tr>
+            <tr><td><strong>Hand Fans (Etsy)</strong></td><td>Etsy</td><td>Signage</td><td>AUD $146.08</td><td>$146.08 ✅</td><td>—</td><td><span class="badge badge-confirmed">✅ Done</span></td><td>PAID 19/2/26.</td></tr>
           </tbody>
         </table>
       </div>
@@ -612,112 +623,16 @@
     <!-- ══ PAYMENTS ══ -->
     <div class="section" id="tab-payments">
       <div class="section-title">Payment Schedule</div>
-      <div class="section-sub">EUR/AUD rate: 1.6479 (update on Wise) · Total budget: ~AUD $181,481</div>
+      <div class="section-sub">EUR/AUD rate: 1.6479 (update on Wise) · Total budget: ~AUD $155,900</div>
 
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-num">AUD $57,279</div><div class="stat-label">Total Paid</div></div>
-        <div class="stat-card"><div class="stat-num">AUD $124,202</div><div class="stat-label">Total Remaining</div></div>
-        <div class="stat-card"><div class="stat-num">32%</div><div class="stat-label">% Paid</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $35,647</div><div class="stat-label">Total Paid</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $107,170</div><div class="stat-label">Total Remaining</div></div>
+        <div class="stat-card"><div class="stat-num">23%</div><div class="stat-label">% Paid</div></div>
         <div class="stat-card"><div class="stat-num">12/20</div><div class="stat-label">Rooms Paid</div></div>
       </div>
 
-      <div class="note-box">💚 Il Verreno 50% venue payment (€10,000) PAID 17 Mar 2026. Next due: €10,000 on 17 May 2026 · Wise EUR Balance: ~€3,999 held @ 1.6479</div>
-
-      <div class="card-title">✅ PAID</div>
-      <div class="card">
-        <table class="data-table">
-          <thead><tr><th>Date</th><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>2025-05-11</td><td>Destino Five</td><td>30% at booking -</td><td>—</td><td>$784</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2025-08-09</td><td>Tuscan Bridal</td><td>Wedding Dress — deposit</td><td>—</td><td>$847</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2025-08-21</td><td>Il Verreno</td><td>Venue deposit</td><td>—</td><td>€3,500</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2025-10-24</td><td>Filippo Toti</td><td>Photographer — deposit</td><td>—</td><td>€1,400</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2025-11-02</td><td>Alec Cortiss</td><td>Trial</td><td>—</td><td>€130</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2025-12-20</td><td>Edward McCan</td><td>Rhodri's Suit — 70% deposit</td><td>—</td><td>$1,680</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-01-04</td><td>Miglianti Studio</td><td>Deposit (incl. €100 travel)</td><td>—</td><td>€200</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-02-04</td><td>Gaje Gipsy Swing</td><td>10% deposit</td><td>—</td><td>€200</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-02-19</td><td>Etsy</td><td>Hand Fans</td><td>—</td><td>$146</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-02-27</td><td>Florence Pianist</td><td>35% deposit</td><td>—</td><td>€791</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-08</td><td>Alibaba</td><td>Sample order</td><td>—</td><td>$73</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-08</td><td>Etsy</td><td>Name Cards</td><td>—</td><td>$87</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-09</td><td>A to Z</td><td>Florist deposit — per contract</td><td>—</td><td>€1,200</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-11</td><td>Centeral House</td><td>30% deposit (sign Wednesday)</td><td>—</td><td>€1,000</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-11</td><td>Iconic</td><td>Salome Wedding Shoes</td><td>—</td><td>$125</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-12</td><td>Tuscan Bridal</td><td>Wedding Dress — balance at pickup</td><td>—</td><td>$847</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-15</td><td>Airbnb</td><td>Margaret River accommodation</td><td>—</td><td>$784</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-17</td><td>Brandi Bus</td><td>Shuttle — 30% at signing</td><td>—</td><td>€1,425</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-17</td><td>Il Verreno</td><td>50% venue payment</td><td>—</td><td>€10,000</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-22</td><td>Azazie</td><td>Bridesmaids dresses</td><td>—</td><td>$600</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-03-26</td><td>Hyper Boom</td><td>Speaker for Wed + Fri</td><td>—</td><td>$474</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-04-04</td><td>Alibaba</td><td>Bulk order</td><td>—</td><td>$348</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-04-05</td><td>Qatar</td><td>Bali to Rome via Doha Flights</td><td>—</td><td>$12,213</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-04-09</td><td>Edward McCan</td><td>Rhodri's Suit — 30% balance</td><td>—</td><td>$720</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-04-25</td><td>Ryanair</td><td>Departure time - 11:25
-Arrival time - 13:20</td><td>—</td><td>€193</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-04-25</td><td>Wizz Air Malta</td><td>Departure time - 8:00AM
-Arrival time - 9:55AM</td><td>—</td><td>$231</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-05-03</td><td>Florence Pianist</td><td>65% remaining balance</td><td>—</td><td>€1,469</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-05-07</td><td>Perth Airport</td><td>Car park K - 7:30am 11/6 to 10pm 1/7</td><td>—</td><td>$120</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-05-10</td><td>Booking.com</td><td>Pick up @ 3pm drop off @8:30am</td><td>—</td><td>$680</td><td><span class="badge badge-paid">PAID</span></td></tr>
-            <tr><td>2026-05-11</td><td>Etsy</td><td>Veil</td><td>—</td><td>$250</td><td><span class="badge badge-paid">PAID</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card-title" style="margin-top:1rem">🟠 DUE — Upcoming Payments</div>
-      <div class="card">
-        <table class="data-table">
-          <thead><tr><th>Due Date</th><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD est.</th><th>Status</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td>2026-05-18</td><td>Adore bridal Alterations</td><td>Dress alterations</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-17</td><td>Filippo Toti</td><td>2nd payment</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Final 50% venue payment</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Catering 75% — Wed + Thu (77 pax)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Fairy Lights — 17 Jun</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Supplier Meals x 14</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-19</td><td>Airbnb</td><td>Montepulciano (Sleeps 7)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-23</td><td>Destino Five</td><td>70% remaining of the $2,613 AUD charge in euros (1,609.20)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-05-28</td><td>Anantara Bali</td><td>Booked via discovery w/ KP Travel perks</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-06-04</td><td>Miglianti Studio</td><td>Balance — 5hrs inclusive</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-06-10</td><td>Brandi Bus</td><td>Shuttle — 70% due 1 week before</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-06-15</td><td>A to Z</td><td>Remaining balance (may increase if chair deco added by 1 Apr)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>2026-06-18</td><td>Alec Cortiss</td><td>5x Girls + 1x Bridal — CASH</td><td>—</td><td>—</td><td><span class="badge badge-cash">CASH</span></td><td></td></tr>
-            <tr><td>2026-06-18</td><td>Centeral House</td><td>70% balance — CASH (no VAT)</td><td>—</td><td>—</td><td><span class="badge badge-cash">CASH</span></td><td></td></tr>
-            <tr><td>2026-06-18</td><td>Gaje Gipsy Swing</td><td>90% balance — CASH</td><td>—</td><td>—</td><td><span class="badge badge-cash">CASH</span></td><td></td></tr>
-            <tr><td>2026-06-20</td><td>Il Verreno</td><td>Catering 25% + Pool Party (77 pax)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>Due</td><td>Freely Insurance</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>Due</td><td>TBC</td><td>Still to order</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>TBC</td><td>Booking.com</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>TBC</td><td>Filippo Toti</td><td>Final payment before delivery</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>TBC</td><td>Holafly</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>TBC</td><td>TBC</td><td>Remaining signage budget</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-            <tr><td>TBC</td><td>tbc</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card-title" style="margin-top:1rem">⬜ TBC — Date Not Yet Confirmed</div>
-      <div class="card">
-        <table class="data-table">
-          <thead><tr><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD est.</th><th>Status</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td>Brandi Bus</td><td>Shuttle — 30% deposit at signing</td><td>€1,683</td><td>$2,773</td><td><span class="badge badge-tbc">TBC</span></td><td>Sign contract when ready</td></tr>
-            <tr><td>Alibaba</td><td>Bulk favours order</td><td>—</td><td>$303</td><td><span class="badge badge-tbc">TBC</span></td><td>Once sample approved</td></tr>
-            <tr><td>Il Verreno</td><td>Fairy lights — 17 Jun</td><td>€600</td><td>$988</td><td><span class="badge badge-tbc">TBC</span></td><td>Confirm with venue</td></tr>
-            <tr><td>Hyper Boom</td><td>Speaker for Wed + Fri</td><td>—</td><td>$600</td><td><span class="badge badge-tbc">TBC</span></td><td>Rhodri to order</td></tr>
-            <tr><td>TBC</td><td>Bridesmaids dresses</td><td>—</td><td>$600+</td><td><span class="badge badge-tbc">TBC</span></td><td>Working on it — Azali</td></tr>
-            <tr><td>TBC</td><td>Remaining signage budget</td><td>€2,500 est</td><td>$4,120</td><td><span class="badge badge-tbc">TBC</span></td><td>Welcome signs, bar signs, menu, photobooth etc</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ══ DIETARIES ══ -->
-    <div class="section" id="tab-dietaries">
-      <div class="section-title">Dietary Requirements</div>
-      <div class="section-sub">77 guests attending · Flag all requirements to venue by 17 April 2026</div>
-
-      <div class="note-box">⚠️ Send dietary requirements to Il Verreno by 17 April 2026. Note: Deb Clancy — Regretfully Decline. Liam's group is now 3 not 4.</div>
+      
 
       <div class="stats-row">
         <div class="stat-card"><div class="stat-num">82</div><div class="stat-label">Confirmed Attending</div></div>
@@ -731,17 +646,89 @@ Arrival time - 9:55AM</td><td>—</td><td>$231</td><td><span class="badge badge-
         <table class="data-table">
           <thead><tr><th>#</th><th>Name</th><th>Group</th><th>Dietary</th><th>Allergies</th><th>Notes</th></tr></thead>
           <tbody>
-            <tr><td>Annie Probert</td><td>Annie Probert & Ellis Martin</td><td>dairy-free</td></tr>
-            <tr><td>Laura Davis</td><td>Charles & Laura Davis</td><td>Prawns</td></tr>
-            <tr><td>Chris Williams</td><td>Chris Williams & Alice Williams</td><td>Peanut Allergy</td></tr>
-            <tr><td>Erin Flemming</td><td>Erin Flemming & Emlyn Brosnan</td><td>- No shellfish.
-- No eggs - foods that may contain a small amount of egg white etc in small amounts are tolerable (eg bread) 
-- preferably gluten and dairy free but can tolerate small amounts, so can still eat these.</td></tr>
-            <tr><td>Jana Kruger</td><td>Jana Kruger</td><td>Nut intolerance</td></tr>
-            <tr><td>John Wood</td><td>John Wood & Janine Thomas</td><td>Allergic to Shellfish</td></tr>
-            <tr><td>Oisin Clancy</td><td>Oisin, Sue & Aidan Clancy</td><td>Horses</td></tr>
-            <tr><td>Natalie Murphy</td><td>Richard & Natalie Murphy</td><td>No tomatoes</td></tr>
-            <tr><td>Ann Bradbury</td><td>Sean Clancy & Ann Bradbury</td><td>artichoke or watermelon.</td></tr>
+            <tr><td>1</td><td>Alex Clancy</td><td>Alex Clancy</td><td>—</td><td>—</td><td>Awaiting form submission</td></tr>
+            <tr><td>2</td><td>Annie Probert</td><td>Annie & Ellis</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>3</td><td>Ellis Martin</td><td>Annie & Ellis</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>4</td><td>Ceri Davis</td><td>Ceri & Courtney</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>5</td><td>Courtney Davis</td><td>Ceri & Courtney</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>6</td><td>Charles Davis</td><td>Charles & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>7</td><td>Laura Davis</td><td>Charles & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>8</td><td>Chris Williams</td><td>Chris & Alice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>9</td><td>Alice Williams</td><td>Chris & Alice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>10</td><td>Dai Leonard</td><td>Dai & Emma</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>11</td><td>Emma Leonard</td><td>Dai & Emma</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>12</td><td>Elisha Bell</td><td>Elisha & Ross</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>13</td><td>Ross Price</td><td>Elisha & Ross</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>14</td><td>Erin Flemming</td><td>Erin & Emlyn</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>15</td><td>Emlyn Brosnan</td><td>Erin & Emlyn</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>16</td><td>Eugene Clancy</td><td>Eugene & family</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>17</td><td>Fioya Clancy</td><td>Eugene & family</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>18</td><td>Liam Clancy (Eugene's)</td><td>Eugene & family</td><td>—</td><td>—</td><td>Tentative</td></tr>
+            <tr><td>19</td><td>Frankie Morgan</td><td>Frankie Morgan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>20</td><td>Gary Thomas</td><td>Gary & Fran</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>21</td><td>Francesca Thomas</td><td>Gary & Fran</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>22</td><td>Greg Clancy</td><td>Greg Clancy</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>23</td><td>Ivan Bennet</td><td>Ivan & Carmel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>24</td><td>Carmel Bennet</td><td>Ivan & Carmel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>25</td><td>James Bija</td><td>James & Jess</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>26</td><td>Jess Rees</td><td>James & Jess</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>27</td><td>Jamie Williams</td><td>Jamie & Hannah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>28</td><td>Hannah Williams</td><td>Jamie & Hannah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>29</td><td>Jana Kruger</td><td>Jana & Sarah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>30</td><td>Sarah Dermody</td><td>Jana & Sarah</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>31</td><td>Japie Kruger</td><td>Japie & Adel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>32</td><td>Adel Kruger</td><td>Japie & Adel</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>33</td><td>Jeff Hopkins</td><td>Jeff & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>34</td><td>Ann Hopkins</td><td>Jeff & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>35</td><td>Jemaine Finlay</td><td>Jemaine Finlay</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>36</td><td>Natalie Jehring</td><td>Natalie Jehring</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>37</td><td>Joel Moore</td><td>Joel & Deb</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>38</td><td>Deborah Michael</td><td>Joel & Deb</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>39</td><td>Johan Kruger</td><td>Johan & Minke</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>40</td><td>Minke Kruger</td><td>Johan & Minke</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>41</td><td>John Wood</td><td>John & Janine</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>42</td><td>Janine Thomas</td><td>John & Janine</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>43</td><td>Jon Clancy</td><td>Jon & Emma</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>44</td><td>Emma Clancy</td><td>Jon & Emma</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>45</td><td>Jordan Grigg</td><td>Jordan Grigg</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>46</td><td>Liam Clancy</td><td>Liam · Sinead · Niamh (Deb declined)</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>47</td><td>Sinead Clancy</td><td>Liam · Sinead · Niamh</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>48</td><td>Niamh Clancy</td><td>Liam · Sinead · Niamh</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>49</td><td>Niall Clancy</td><td>Niall Clancy</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>50</td><td>Matthew Jeffreys</td><td>Matthew & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>51</td><td>Laura Jeffreys</td><td>Matthew & Laura</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>52</td><td>Nathan Schipper</td><td>Nathan Schipper</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>53</td><td>Nick Clancy</td><td>Nick & Jo</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>54</td><td>Jo Clancy</td><td>Nick & Jo</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>55</td><td>Nicki Adams</td><td>Nicki & Jeremy Adams</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>56</td><td>Jeremy Adams</td><td>Nicki & Jeremy Adams</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>57</td><td>Oisin Clancy</td><td>Oisin · Sue · Aidan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>58</td><td>Sue Clancy</td><td>Oisin · Sue · Aidan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>59</td><td>Aidan Clancy</td><td>Oisin · Sue · Aidan</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>60</td><td>Paul Davies</td><td>Paul Davies</td><td>—</td><td>—</td><td>Awaiting — note: Zoe declined</td></tr>
+            <tr><td>61</td><td>Jason Landeg</td><td>Jason Landeg</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>62</td><td>Paul Warlow</td><td>Paul Warlow</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>63</td><td>Richard Singleton</td><td>Richard & Alex</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>64</td><td>Alex Singleton</td><td>Richard & Alex</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>65</td><td>Richard Murphy</td><td>Richard & Nat</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>66</td><td>Natalie Murphy</td><td>Richard & Nat</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>67</td><td>Sam Hughes</td><td>Sam & Beth</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>68</td><td>Beth Roscilli</td><td>Sam & Beth</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>69</td><td>Scott Coleman</td><td>Scotty & Claire</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>70</td><td>Claire Gleeson</td><td>Scotty & Claire</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>71</td><td>Sean Fogarty</td><td>Sean & Liz</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>72</td><td>Liz Fogarty</td><td>Sean & Liz</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>73</td><td>Sean Clancy</td><td>Sean & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>74</td><td>Ann Bradbury</td><td>Sean & Ann</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>75</td><td>Ben Sawyer</td><td>Ben & Candice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>76</td><td>Candice Sawyer</td><td>Ben & Candice</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>77</td><td>Jayne Clancy</td><td>Jayne (Fattoria 1)</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>78</td><td>Brendan Clancy</td><td>Brendan (Fattoria 1)</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>79</td><td>Frankie Morgan</td><td>Fattoria 2</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>80</td><td>Jeremy Hopkins (Jer — coordinator)</td><td>Granaio</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>81</td><td>Andreas Hopkins</td><td>Granaio</td><td>—</td><td>—</td><td>Awaiting</td></tr>
+            <tr><td>82</td><td>Rhodri Clancy</td><td>Bride & Groom</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>83</td><td>Salomé Kruger</td><td>Bride & Groom</td><td>—</td><td>—</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
@@ -839,54 +826,133 @@ Arrival time - 9:55AM</td><td>—</td><td>$231</td><td><span class="badge badge-
       <div class="card-title">Main Villa</div>
       <div class="room-grid">
         <div class="room-card">
-          <div class="room-name">DELUXE KING</div>
-          <div class="room-guests">UVA
-Grape</div>
-          <div class="room-detail">1</div>
-          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+          <div class="room-name">🌲 Cipresso (Cypress)</div>
+          <div class="room-guests">John + Janine</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
         </div>
         <div class="room-card">
-          <div class="room-name">FAMILY SUITE</div>
-          <div class="room-guests">GIGLI 1
-Lilies · GIGLI 2
-Lilies</div>
-          <div class="room-detail">2</div>
-          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+          <div class="room-name">🐦 Uccelli (Birds)</div>
+          <div class="room-guests">Alex + Jason</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 14/1/26</span></div>
+        </div>
+        <div class="room-card" style="border-color:rgba(196,149,42,0.4)">
+          <div class="room-name">🌸 Fiori — Flowers (Bridal Suite)</div>
+          <div class="room-guests">Rhodri + Salomé</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-tbc">—</span></div>
         </div>
         <div class="room-card">
-          <div class="room-name">FAMILY SUITE</div>
-          <div class="room-guests">CAVALLI 1
-Horses · CAVALLI 2
-Horses · GRANAIO
-Granary</div>
-          <div class="room-detail">2</div>
-          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+          <div class="room-name">🦎 Geco (Gecko)</div>
+          <div class="room-guests">Ivan + Carmel</div>
+          <div class="room-detail">2nd Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
         </div>
         <div class="room-card">
-          <div class="room-name">APPARTMENT</div>
-          <div class="room-guests">CAPPELLA 1
-Chapel · CAPPELLA 2
-Chapel</div>
-          <div class="room-detail">2</div>
-          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+          <div class="room-name">🦋 Farfalle (Butterfly)</div>
+          <div class="room-guests">Gary + Fran</div>
+          <div class="room-detail">1st Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 2/1/26</span></div>
         </div>
         <div class="room-card">
-          <div class="room-name">APPARTMENT</div>
-          <div class="room-guests">CASCINA 1
-Farmhouse · CASCINA 2
-Farmhouse</div>
-          <div class="room-detail">1</div>
-          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+          <div class="room-name">🍇 Uva (Grape) — Deluxe King</div>
+          <div class="room-guests">Nicki + Jeremy</div>
+          <div class="room-detail">1st Floor · 2 pax · ⚠️ NO extra bed</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 3/3/26</span></div>
         </div>
         <div class="room-card">
-          <div class="room-name">APPARTMENT</div>
-          <div class="room-guests">FATTORIA 1
-Farm · FATTORIA 2
-Farm · TOTAL</div>
-          <div class="room-detail">2</div>
-          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+          <div class="room-name">🌸 Gigli 1 (Lilies) — Family Suite</div>
+          <div class="room-guests">Jon + Emma + Greg (living room)</div>
+          <div class="room-detail">1st Floor · 4 pax · Shared living room with Gigli 2 · Greg in living room area</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 31/1/26 (Jayne)</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌸 Gigli 2 (Lilies) — Family Suite</div>
+          <div class="room-guests">Nick + Jo</div>
+          <div class="room-detail">1st Floor · 4 pax · Shares living room with Gigli 1</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🐌 Lumaca (Snail)</div>
+          <div class="room-guests">Nathan Schipper</div>
+          <div class="room-detail">Ground Floor · 2 pax · Living room included</div>
+          <div class="room-payment"><span class="badge badge-pending">Pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🦉 Civetta (Owl) 🛏️ cot</div>
+          <div class="room-guests">Ceri + Courtney</div>
+          <div class="room-detail">Ground Floor · 2 pax · Living room included · Cot needed</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 31/12/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌹 Rosa (Rose) 🛏️ cot</div>
+          <div class="room-guests">Scotty + Claire</div>
+          <div class="room-detail">Ground Floor · 2 pax · Cot needed</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 23/12/25</span></div>
         </div>
       </div>
+
+      <div class="card-title" style="margin-top:1.25rem">Barn</div>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-name">🌾 Granaio (Granary)</div>
+          <div class="room-guests">Jeremy Hopkins (Jer) + Andreas</div>
+          <div class="room-detail">Ground Floor · 2 pax · Living room + kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 22/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🐴 Cavalli 1 (Horses) — Family Suite</div>
+          <div class="room-guests">Japie + Adel</div>
+          <div class="room-detail">2nd Floor · 4 pax · Shared living room</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 24/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🐴 Cavalli 2 (Horses) — Family Suite</div>
+          <div class="room-guests">Johan + Minke</div>
+          <div class="room-detail">2nd Floor · 4 pax · Shares living room with Cavalli 1</div>
+          <div class="room-payment"><span class="badge badge-pending">Payment pending</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">⛪ Cappella 1 (Chapel) — Apartment</div>
+          <div class="room-guests">Elisha + Ross</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 4 pax · Kitchen + living room</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 25/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">⛪ Cappella 2 (Chapel) — Apartment</div>
+          <div class="room-guests">Erin + Emlyn</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 4 pax · Shares kitchen + living room</div>
+          <div class="room-payment"><span class="badge badge-pending">Asked for more time</span></div>
+        </div>
+      </div>
+
+      <div class="card-title" style="margin-top:1.25rem">Farmhouse</div>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-name">🏚️ Cascina 1 (Farmhouse) — Apartment</div>
+          <div class="room-guests">Jana + Sarah</div>
+          <div class="room-detail">Ground Floor · 2 bed / 2 bath · 4 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-pending">Pending (Jana) · <span class="badge badge-paid" style="display:inline">Sarah paid 3/2/26</span></span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🏚️ Cascina 2 (Farmhouse) — Apartment</div>
+          <div class="room-guests">Jemaine + Nat</div>
+          <div class="room-detail">Ground Floor · 2 bed / 2 bath · 4 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 22/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌾 Fattoria 1 (Farm) — Apartment</div>
+          <div class="room-guests">Jayne + Brendan</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 5 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 25/11/25</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">🌾 Fattoria 2 (Farm) — Apartment</div>
+          <div class="room-guests">Jeff + Ann + Frankie</div>
+          <div class="room-detail">1st Floor · 2 bed / 2 bath · 5 pax · Kitchen</div>
+          <div class="room-payment"><span class="badge badge-paid">Paid 30/1 + 5/2</span></div>
+        </div>
       </div>
     </div>
 
@@ -909,124 +975,15 @@ Farm · TOTAL</div>
         <table class="data-table">
           <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Message & confirm those staying at venue / not staying</td><td>Both</td><td>Jan 2026</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>2</td><td>Pay venue deposit</td><td>Both</td><td>Aug 2025</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>3</td><td>Send out payment information to guests</td><td>Both</td><td>Nov 2025</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>4</td><td>Music enquiry</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>5</td><td>PA System</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>6</td><td>Read & sign venue contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>7</td><td>Read & sign photographer contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>8</td><td>Read & sign photobooth contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>9</td><td>Pay photographer deposit</td><td>Salomé</td><td>Oct 2025</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>10</td><td>Pay photobooth deposit</td><td>Salomé</td><td>Jan 2026</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>11</td><td>Hair & makeup enquiry</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>12</td><td>Mockup location plan for each day/event</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>13</td><td>Order hand fans</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>14</td><td>Order name cards</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td>Etsy</td></tr>
-            <tr><td>15</td><td>Order Alibaba sample favours</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>16</td><td>Pay florist deposit €1,200</td><td>Salomé</td><td>09 Mar 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Wise 09/03/26</td></tr>
-            <tr><td>17</td><td>Read & sign florist contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>18</td><td>Set up Wise bank account</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>19</td><td>Supplier meal breakdown added to budget</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>20</td><td>Create signage schedule</td><td>Salomé</td><td>Mar 2026</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>21</td><td>Send photos of outdoor area to AV vendor</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>22</td><td>Confirm payment schedule with band + sign</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>23</td><td>Read, sign & return band contract</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>24</td><td>Follow up Etsy hand fans order</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td>Delivered 5/3 ✅</td></tr>
-            <tr><td>25</td><td>Find wedding shoes</td><td>Both</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td>Iconic ordered 11 March ✅</td></tr>
-            <tr><td>26</td><td>Legal Stuff</td><td>Both</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Emailed Momentum, DS Family Law, Mandurah Legal. Waiting for Rhodri</td></tr>
-            <tr><td>27</td><td>Sort wedding rings</td><td>Both</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Rhodri Ring Size: W 1/2 
-He prefers Width: 7mm</td></tr>
-            <tr><td>28</td><td>Book MR  accommodation</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Airbnb — confirm with Ben & Candice</td></tr>
-            <tr><td>29</td><td>Lock in MR  time + confirm Ben & Candice</td><td>Both</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>30</td><td>Book  wine tour / bus</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Need to lock in if doing a tour / need a driver</td></tr>
-            <tr><td>31</td><td>Book flights to Rome (Qantas points out)</td><td>Rhodri</td><td>18 march 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Extra luggage: 3 checked bags + 2 extra for dress, signage & misc</td></tr>
-            <tr><td>32</td><td>Look into & book Airbnb for Rome (pre-venue days) + Siena after</td><td>Rhodri</td><td>Before April</td><td><span class="badge badge-working">Working on it</span></td><td>A few days in Rome before Il Verreno, then Siena post-wedding</td></tr>
-            <tr><td>33</td><td>Book dress alterations appointment</td><td>Salomé</td><td>April</td><td><span class="badge badge-done">Done ✅</span></td><td>Need shoes first — April 13th?</td></tr>
-            <tr><td>34</td><td>Confirm Emma's celebrant brief</td><td>Both</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>29th May - 1st June ( Possible meeting)</td></tr>
-            <tr><td>35</td><td>Order silk scarves (wedding favours)</td><td>Salomé</td><td>Before April</td><td><span class="badge badge-done">Done ✅</span></td><td>Arrived 4 May</td></tr>
-            <tr><td>36</td><td>Chair decorations decision (affects florist)</td><td>Both</td><td>01 Apr 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>⚠️ Florist needs answer by 1 Apr - no chair decorations</td></tr>
-            <tr><td>37</td><td>Finalise bridesmaids dresses — RESOLVE THIS</td><td>Salomé</td><td>URGENT</td><td><span class="badge badge-done">Done ✅</span></td><td>Have sent message to the girls asking for choice by end of the week</td></tr>
-            <tr><td>38</td><td>Sign AV contract + pay 30% deposit</td><td>Rhodri</td><td>Wed 11 Mar</td><td><span class="badge badge-done">Done ✅</span></td><td>Waiting on a few answers — sign Wednesday. Find out projector details.</td></tr>
-            <tr><td>39</td><td>Finalise bus pricing + sign contract</td><td>Both</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>€4,750 total — 30% at signing, 70% cash on day. Get payment breakdown + update budget.</td></tr>
-            <tr><td>40</td><td>Finalise bus timetable for guests</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Needed for March guest email with all details</td></tr>
-            <tr><td>41</td><td>Book lighting at Il Verreno for Wednesday night (17th)</td><td>Jer</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>Confirm with Jer</td></tr>
-            <tr><td>42</td><td>Update vendor payment plan + watch AUD/EUR rate</td><td>Salomé</td><td>Ongoing</td><td><span class="badge badge-working">Working on it</span></td><td>Decide if paying some vendors early is smarter</td></tr>
-            <tr><td>43</td><td>Finalise vendor staff meals count → update venue & budget</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>14 - see leist in vendor tab</td></tr>
-            <tr><td>44</td><td>Create & finalise room allocation</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>Done</td></tr>
-            <tr><td>45</td><td>Send guest info email — dietaries, footwear, event schedule</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Warn them: grass/pebbles — NO stilettos! Include bus schedule.</td></tr>
-            <tr><td>46</td><td>Update wedding website with all event details</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Welcome dinner, ceremony, pool day etc</td></tr>
-            <tr><td>47</td><td>List all cash vendors + organise cash plan for wedding day</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Started in notes — Band, AV, MUA, bus</td></tr>
-            <tr><td>48</td><td>Confirm what can be delivered/mailed to venue</td><td>Jer</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Pool toys, decor, signage etc — venue accepts parcels 7 days before</td></tr>
-            <tr><td>49</td><td>Check BYO snacks policy for recovery day</td><td>Both</td><td>TBC</td><td><span class="badge badge-done">Done ✅</span></td><td>Chips/snacks for after poolside food service ends</td></tr>
-            <tr><td>50</td><td>Finalise vendor numbers for venue (1 month before)</td><td>Salomé</td><td>17 May 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Band x4, Photo x4, Photobooth x1, Florist x3, AV x2</td></tr>
-            <tr><td>51</td><td>Send dietary requirements to venue</td><td>Salomé</td><td>17 Apr 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Due 2 months before — 17 April</td></tr>
-            <tr><td>52</td><td>Final seating numbers to venue</td><td>Salomé</td><td>04 Jun 2026</td><td><span class="badge badge-notstarted">Not Started</span></td><td>2 weeks before</td></tr>
-            <tr><td>53</td><td>Confirm groomsmen suits</td><td>Rhodri</td><td>Before April</td><td><span class="badge badge-done">Done ✅</span></td><td>Alex is sorting this</td></tr>
-            <tr><td>54</td><td>Find/book hair salon for pre-departure appointment</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>In case Nicolett can't do it (new baby)</td></tr>
-            <tr><td>55</td><td>Room mapping — onsite allocations</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Complex — multiple buildings, mobility/baby needs</td></tr>
-            <tr><td>56</td><td>Table seating chart</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Ask Salomé for layout plan</td></tr>
-            <tr><td>57</td><td>Playlists (welcome dinner + pool party)</td><td>Rhodri</td><td>March/April</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
-            <tr><td>58</td><td>Create photo list for photographer + notify family</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
-            <tr><td>59</td><td>Check Wednesday entertainment expects meals</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Florence Pianist — Rhodri confirmed no meal needed</td></tr>
-            <tr><td>61</td><td>Create welcome signs x2</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
-            <tr><td>62</td><td>Create bar signs for each event (x3)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
-            <tr><td>63</td><td>Create/update menu signage for reception</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
-            <tr><td>64</td><td>Create table cards with photos</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>65</td><td>Create station signage, guest book prompts, phonebook</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Order from Etsy — allow shipping time</td></tr>
-            <tr><td>66</td><td>Order name signs for tables (Etsy)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>68</td><td>Find local signage vendor in Italy</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>VistaPrint Rome?</td></tr>
-            <tr><td>69</td><td>Create signage for photobooth</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
-            <tr><td>70</td><td>Collect all guest images for seating letters</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>For slideshow + seating cards</td></tr>
-            <tr><td>71</td><td>Create reception slideshow (photos + )</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
-            <tr><td>72</td><td>Buy UE Boom / Hyper Boom speaker</td><td>Rhodri</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>$600 AUD — possible cashback. For welcome dinner + pool day.</td></tr>
-            <tr><td>73</td><td>Order photo/guest book for photobooth</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>ordered 26/4 - fox & fallow</td></tr>
-            <tr><td>74</td><td>Order bulk Alibaba favours (once sample approved)</td><td>Salomé</td><td>TBC</td><td><span class="badge badge-done">Done ✅</span></td><td>Waiting on sample to arrive before placing bulk order</td></tr>
-            <tr><td>75</td><td>Toilet freshening baskets for wedding day</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Nice touch — order online</td></tr>
-            <tr><td>76</td><td>Get knee pads for Jon 😂</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>You know why 😂</td></tr>
-            <tr><td>77</td><td>Organise parent gifts (Jayne, Brendan, Japie)</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Jayne - Necklace Bredan - Akubra</td></tr>
-            <tr><td>78</td><td>Organise gift for Emma (surprise celebrant)</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>TBC</td></tr>
-            <tr><td>79</td><td>Organise bridesmaids + groomsmen gifts</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Rhodri to sort boys (maybe watch?). Salomé TBC.</td></tr>
-            <tr><td>80</td><td>Write vows & letters</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
-            <tr><td>81</td><td>Choose 12 canapés for cocktail hour</td><td>Both</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Choose from venue list</td></tr>
-            <tr><td>82</td><td>Pick wedding cake flavour & design</td><td>Both</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Send final decision to venue</td></tr>
-            <tr><td>83</td><td>Find 70s pool outfits + toys + spares for non-dressed guests</td><td>Both</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Commit to the bit</td></tr>
-            <tr><td>84</td><td>Plan morning-of shopping list (breakfast, snacks, water)</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>For Airbnb</td></tr>
-            <tr><td>85</td><td>Buy pool decorations, camcorders, ring box & misc items</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Start a running list and order in batches</td></tr>
-            <tr><td>86</td><td>Order signage / misc to venue</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Venue accepts parcels max 7 days before arrival</td></tr>
-            <tr><td>87</td><td>Contact photographer (Filippo) - confirm arrival time</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Get email from Jer, confirm Thursday arrival time</td></tr>
-            <tr><td>88</td><td>Send photo list to photographer + notify family</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Family shots, couple shots, group shots</td></tr>
-            <tr><td>89</td><td>Photographer dietary requirements</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Ive emailed waiting on reply</td></tr>
-            <tr><td>90</td><td>Confirm photobooth arrival time (after 7:30pm, aiming 8pm)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Need to confirm with Miglianti</td></tr>
-            <tr><td>91</td><td>Confirm photobooth strip size (standard vs 10x15cm)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Affects guest book size</td></tr>
-            <tr><td>92</td><td>Central House - confirm arrival time Thursday</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>10:30 - 11:00</td></tr>
-            <tr><td>93</td><td>Central House - confirm power supply needs</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Normal power outlet, they will bring extension cords</td></tr>
-            <tr><td>94</td><td>Central House - dietary requirements for crew</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>2 members - no dietaries</td></tr>
-            <tr><td>95</td><td>Central House - confirm speaker movement ceremony→cocktail</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Background music</td></tr>
-            <tr><td>96</td><td>Central House - projector setup details</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Setup requirements</td></tr>
-            <tr><td>97</td><td>Central House - confirm equipment pickup timing</td><td>Rhodri</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>Their responsibility - DJ is also technician and will decide that night</td></tr>
-            <tr><td>98</td><td>Band - confirm arrival time (not during ceremony)</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Coordinate with Jer</td></tr>
-            <tr><td>99</td><td>Band - power requirements</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Power outlet - as discussed by Valentina in video</td></tr>
-            <tr><td>100</td><td>Band - confirm microphone for speeches</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Central house - 1 microphone bluetooth connection</td></tr>
-            <tr><td>101</td><td>Band - confirm they'll play guests in after ceremony</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>They will play from 5pm - have said guests will start arriving between 4:50pm - 5:10pm</td></tr>
-            <tr><td>102</td><td>Transfer company - backup plan if shuttles run later</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Confirmed - we will need to co-ordinate (can mention in welcome speech housekeeping stuff)</td></tr>
-            <tr><td>103</td><td>Transfer company - Thursday bridal party return to Airbnb</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Confirmed</td></tr>
-            <tr><td>104</td><td>Confirm with Jayne - can she come to Airbnb for wedding day?</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Hair & makeup location</td></tr>
-            <tr><td>105</td><td>Confirm hair & makeup start time with Alec</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>9am Start Time</td></tr>
-            <tr><td>106</td><td>Update Vendor Contact page with contract details for Jer</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Jer needs day-of access</td></tr>
-            <tr><td>107</td><td>Add to budget: esims, travel insurance, airport parking, wedding bands, Bali/Ibiza, car rental, Rome/Siena accom, luggage delivery, veil, jewelry, morning items</td><td>Salomé</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>Forgotten costs</td></tr>
-            <tr><td>108</td><td>Water shopping for Wednesday arrivals</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
-            <tr><td>109</td><td>Update website - Friday dinner plans (shuttle 7-10pm)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Set expectations</td></tr>
-            <tr><td>110</td><td>Update website - "No gifts please" message</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Add to website</td></tr>
-            <tr><td>111</td><td>Practice the dip kiss 😂</td><td>Both</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>You know you need to</td></tr>
-            <tr><td>112</td><td>Choose entrance to reception song</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Grand entrance music</td></tr>
-            <tr><td>113</td><td>Think about & write wedding speech</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
-            <tr><td>114</td><td>Buy portable phone charger (for music playlist)</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
-            <tr><td>115</td><td>Buy/make card box for reception</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Next to guest book</td></tr>
-            <tr><td>116</td><td>Buy electric pump for pool toys</td><td>Both</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>70s pool party</td></tr>
-            <tr><td>117</td><td>Buy bathroom bucket (TBC)</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Clarify purpose</td></tr>
-            <tr><td>118</td><td>Buy/confirm steamer availability</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>1 steamer & venue only has 2 irons</td></tr>
-            <tr><td>119</td><td>Order biodegradable petals for throwing</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Delivered 4 May</td></tr>
+            <tr><td>26</td><td>ILA</td><td>Salomé</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Emailed Momentum, DS Family Law, Mandurah Legal. Awaiting quotes.</td></tr>
+            <tr><td>27</td><td>Sort wedding rings</td><td>Both</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Rhodri ring size: W 1/2 · prefers width: 7mm. Waiting on Ezara quote.</td></tr>
+            <tr><td>28</td><td>Book Margaret River accommodation</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Airbnb booked — confirmed with Ben & Candice</td></tr>
+            <tr><td>29</td><td>Lock in MR ceremony time + confirm Ben & Candice</td><td>Both</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Confirmed</td></tr>
+            <tr><td>30</td><td>Book Margaret River wine tour / bus</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Locked in</td></tr>
+            <tr><td>31</td><td>Book flights to Rome (Qantas points)</td><td>Rhodri</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Extra luggage: 3 checked bags + 2 extra for dress, signage & misc</td></tr>
+            <tr><td>35</td><td>Order silk scarves (wedding favours)</td><td>Salomé</td><td>Before April</td><td><span class="badge badge-notstarted">Not Started</span></td><td>⚠️ Manufacturing lead time — do this NOW</td></tr>
+            <tr><td>36</td><td>Chair decorations decision → florist by 1 Apr</td><td>Both</td><td>1 Apr 2026</td><td><span class="badge badge-notstarted">Not Started</span></td><td>⚠️ Florist needs answer by 1 Apr — affects balance €2,340+</td></tr>
+            <tr><td>37</td><td>Finalise bridesmaids dresses</td><td>Salomé</td><td>URGENT</td><td><span class="badge badge-working">Working on it</span></td><td>Have sent message to the girls asking for choice by end of week</td></tr>
           </tbody>
         </table>
       </div>
@@ -1160,5 +1117,49 @@ if (sessionStorage.getItem('weddingAdmin')) {
   document.getElementById('admin-app').style.display = 'block';
 }
 </script>
+
+<script>
+// Dietary toggle
+let showingAllGuests = false;
+function toggleDietaryView() {
+  showingAllGuests = !showingAllGuests;
+  const rows = document.querySelectorAll('#tab-dietaries .data-table tbody tr');
+  rows.forEach(row => {
+    const dietary = row.cells[2].textContent.trim();
+    row.style.display = (showingAllGuests || (dietary && dietary !== 'None' && dietary !== '—')) ? '' : 'none';
+  });
+  event.target.textContent = showingAllGuests ? 'SHOW DIETARY ONLY' : 'SHOW ALL GUESTS';
+}
+
+// Task filtering
+function filterTasks(filter) {
+  document.querySelectorAll('.task-filter').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const rows = document.querySelectorAll('#tab-tasks .data-table tbody tr');
+  rows.forEach(row => {
+    const status = row.cells[4].textContent.toLowerCase();
+    const owner = row.cells[2].textContent.toLowerCase();
+    
+    let show = filter === 'all' ||
+      (filter === 'todo' && (status.includes('not started') || status.includes('to do'))) ||
+      (filter === 'working' && status.includes('working')) ||
+      (filter === 'done' && (status.includes('done') || status.includes('✅'))) ||
+      (filter === 'salome' && (owner.includes('salomé') || owner.includes('salome'))) ||
+      (filter === 'rhodri' && owner.includes('rhodri'));
+    
+    row.style.display = show ? '' : 'none';
+  });
+}
+
+// Room search
+function searchRooms() {
+  const input = document.getElementById('room-search').value.toLowerCase();
+  document.querySelectorAll('.room-card').forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(input) ? '' : 'none';
+  });
+}
+</script>
+
 </body>
 </html>
