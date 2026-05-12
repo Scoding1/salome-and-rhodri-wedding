@@ -122,371 +122,999 @@
     }
     .topbar-date {
       font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      color: var(--text-soft);
-    }
-    .topbar-logout {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-      cursor: pointer;
-    }
-    .topbar-logout:hover { color: var(--gold); }
-
-    /* Navigation */
-    .nav {
-      background: var(--bg2);
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-      display: flex;
-      gap: 0.5rem;
-    }
-    .nav-tab {
-      padding: 0.75rem 1.25rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-muted);
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
+    }
+    .topbar-right { display: flex; gap: 1rem; align-items: center; }
+    .logout-btn {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.3rem 0.7rem;
       cursor: pointer;
+      transition: color 0.2s;
+    }
+    .logout-btn:hover { color: var(--text); }
+
+    /* Nav tabs */
+    .nav-tabs {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 1rem;
+    }
+    .nav-tab {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
       transition: all 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Jost', sans-serif;
     }
     .nav-tab:hover { color: var(--text-soft); }
-    .nav-tab.active {
-      color: var(--gold-light);
-      border-bottom-color: var(--gold-light);
-    }
+    .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* Content */
-    .content {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
+    .content { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* Section header */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      margin-bottom: 0.25rem;
     }
-    .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.03em;
     }
 
     /* Cards */
     .card {
       background: var(--bg2);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
     }
     .card-title {
-      font-size: 0.65rem;
+      font-size: 0.72rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--text-soft);
       margin-bottom: 1rem;
     }
 
-    /* Stats Grid */
-    .stats-grid {
+    /* Stats row */
+    .stats-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
     }
-    .stat-box {
+    .stat-card {
       background: var(--bg3);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 1.25rem;
+      padding: 1rem;
       text-align: center;
     }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
     .stat-label {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 400;
-      color: var(--gold-light);
-      font-family: 'Cormorant Garamond', serif;
-    }
-    .stat-subtext {
-      font-size: 0.75rem;
       color: var(--text-soft);
-      margin-top: 0.25rem;
     }
 
     /* Tables */
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-    .data-table thead {
-      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
     }
     .data-table th {
-      text-align: left;
-      padding: 0.75rem 0.5rem;
-      font-weight: 400;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-soft);
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
     }
     .data-table td {
-      padding: 0.75rem 0.5rem;
-      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0.75rem;
+      border-bottom: 1px solid rgba(138,158,106,0.1);
+      vertical-align: top;
+      color: var(--text);
+      line-height: 1.6;
     }
-    .data-table tr:hover {
-      background: rgba(58,74,40,0.15);
-    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
 
     /* Badges */
     .badge {
       display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      letter-spacing: 0.05em;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
       font-weight: 400;
     }
-    .badge-done {
-      background: rgba(74,138,74,0.2);
-      color: var(--green);
+    .badge-paid { background: rgba(74,138,74,0.25); color: #90d890; border: 1px solid rgba(74,138,74,0.4); }
+    .badge-due { background: rgba(196,149,42,0.25); color: #e0b050; border: 1px solid rgba(196,149,42,0.4); }
+    .badge-tbc { background: rgba(90,110,58,0.2); color: var(--text-soft); border: 1px solid var(--border); }
+    .badge-confirmed { background: rgba(74,138,74,0.2); color: #90d890; border: 1px solid rgba(74,138,74,0.35); }
+    .badge-pending { background: rgba(196,149,42,0.2); color: #e0b050; border: 1px solid rgba(196,149,42,0.35); }
+    .badge-cash { background: rgba(138,90,42,0.25); color: #d8b888; border: 1px solid rgba(138,90,42,0.4); }
+    .badge-done { background: rgba(74,138,74,0.25); color: #90d890; border: 1px solid rgba(74,138,74,0.4); }
+    .badge-working { background: rgba(42,90,138,0.25); color: #90c0e0; border: 1px solid rgba(42,90,138,0.4); }
+    .badge-todo { background: rgba(138,90,42,0.2); color: #d8b888; border: 1px solid rgba(138,90,42,0.3); }
+    .badge-notstarted { background: rgba(90,90,90,0.25); color: #b0b0b0; border: 1px solid rgba(90,90,90,0.4); }
+
+    /* Priority dots */
+    .p-red { color: #c87a7a; }
+    .p-orange { color: var(--gold); }
+    .p-green { color: #7ac87a; }
+
+    /* Day headers */
+    .day-header {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      margin: 1.25rem 0 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
-    .badge-working {
-      background: rgba(42,90,138,0.2);
-      color: var(--blue);
+    .day-header-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
     }
-    .badge-notstarted {
-      background: rgba(138,158,106,0.1);
-      color: var(--text-muted);
-    }
-    .badge-todo {
-      background: rgba(196,149,42,0.2);
-      color: var(--gold);
-    }
-    .badge-accepted {
-      background: rgba(74,138,74,0.2);
-      color: var(--green);
-    }
-    .badge-declined {
-      background: rgba(138,58,58,0.2);
-      color: var(--red);
-    }
-    .badge-pending {
-      background: rgba(138,90,42,0.2);
-      color: var(--orange);
+    .day-header-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 400;
     }
 
-    /* Progress bar */
-    .progress-bar {
-      height: 8px;
-      background: var(--bg3);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 0.5rem;
+    /* Run sheet timeline */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(138,158,106,0.07);
+      align-items: start;
     }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--olive), var(--gold));
-      transition: width 0.3s ease;
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-time {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      padding-top: 0.1rem;
+    }
+    .timeline-activity { font-size: 0.82rem; color: var(--text); }
+    .timeline-detail { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .timeline-owner { font-size: 0.65rem; color: var(--olive-light); margin-top: 0.2rem; }
+
+    /* Group blocks */
+    .group-block {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+    .group-header {
+      background: var(--bg3);
+      padding: 0.6rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .group-title { font-size: 0.72rem; color: var(--gold-light); font-weight: 400; }
+    .group-meta { font-size: 0.65rem; color: var(--text-muted); }
+    .group-body { padding: 0.75rem 1rem; font-size: 0.78rem; color: var(--text-soft); line-height: 1.7; }
+
+    /* Room grid */
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+    }
+    .room-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+    }
+    .room-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--gold-light);
+      margin-bottom: 0.2rem;
+    }
+    .room-guests { font-size: 0.78rem; color: var(--text); margin-bottom: 0.4rem; }
+    .room-detail { font-size: 0.68rem; color: var(--text-muted); }
+    .room-payment { font-size: 0.65rem; margin-top: 0.4rem; }
+
+    /* Notes box */
+    .note-box {
+      background: rgba(196,149,42,0.08);
+      border: 1px solid rgba(196,149,42,0.2);
+      border-radius: 4px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* Two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .topbar { padding: 0.6rem 1rem; }
+      .topbar-title { font-size: 1rem; }
+      .topbar-date { display: none; }
+      .nav-tabs { padding: 0 0.5rem; }
+      .nav-tab { padding: 0.75rem 0.7rem; font-size: 0.65rem; letter-spacing: 0.1em; }
+      .content { padding: 1rem; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .room-grid { grid-template-columns: 1fr; }
+      .data-table { font-size: 0.82rem; }
+      .data-table th { font-size: 0.62rem; padding: 0.5rem 0.5rem; }
+      .data-table td { padding: 0.65rem 0.5rem; }
+      /* Hide less critical table columns on mobile */
+      .data-table .hide-mobile { display: none; }
+      .card { padding: 1rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .stat-num { font-size: 1.4rem; }
+      .stat-label { font-size: 0.62rem; letter-spacing: 0.05em; }
+      .nav-tab { padding: 0.7rem 0.5rem; font-size: 0.6rem; letter-spacing: 0.05em; }
+      /* Make tables scroll horizontally on mobile */
+      .card { overflow-x: auto; padding: 0.75rem; }
+      .data-table { min-width: 500px; }
+      .room-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Scroll to top */
+    .amount { font-family: 'Cormorant Garamond', serif; font-size: 1rem; }
+
+    /* Print friendly */
+    @media print {
+      .topbar, .nav-tabs { display: none; }
+      .section { display: block !important; page-break-before: always; }
     }
   </style>
 </head>
 <body>
 
-<!-- Login Screen -->
+<!-- ══════════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════════ -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-monogram">S & R</div>
-    <div class="login-title">Wedding Admin</div>
-    <input type="password" id="pwd-input" class="login-input" placeholder="Enter password" onkeypress="if(event.key==='Enter') checkPwd()" autofocus />
+    <div class="login-title">Wedding Admin · Private Access</div>
+    <input type="password" class="login-input" id="pwd-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPwd()" />
     <button class="login-btn" onclick="checkPwd()">Enter</button>
-    <div id="login-error" class="login-error">Incorrect password</div>
+    <div class="login-error" id="login-error">Incorrect password</div>
   </div>
 </div>
 
-<!-- Admin App -->
+<!-- ══════════════════════════════════
+     ADMIN APP
+══════════════════════════════════ -->
 <div id="admin-app">
+
   <div class="topbar">
-    <div class="topbar-title">S & R Wedding</div>
-    <div class="topbar-date">17–19 June 2026 · Il Verreno, Tuscany</div>
-    <a class="topbar-logout" onclick="logout()">Logout</a>
+    <div class="topbar-title">S & R — Wedding Admin</div>
+    <div class="topbar-right">
+      <span class="topbar-date">18 June 2026 · Il Verreno · Ambra</span>
+      <button class="logout-btn" onclick="logout()">Lock</button>
+    </div>
   </div>
 
-  <div class="nav">
-    <button class="nav-tab active" onclick="showTab('dashboard')">Dashboard</button>
-    <button class="nav-tab" onclick="showTab('guests')">Guests</button>
-    <button class="nav-tab" onclick="showTab('tasks')">Tasks</button>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('runsheet')">📅 Run Sheet</button>
+    <button class="nav-tab" onclick="showTab('suppliers')">🏢 Suppliers</button>
+    <button class="nav-tab" onclick="showTab('payments')">💸 Payments</button>
+    <button class="nav-tab" onclick="showTab('dietaries')">🍽️ Dietaries</button>
+    <button class="nav-tab" onclick="showTab('shuttle')">🚌 Shuttle</button>
+    <button class="nav-tab" onclick="showTab('rooms')">🏡 Rooms</button>
+    <button class="nav-tab" onclick="showTab('tasks')">✅ Tasks</button>
   </div>
 
   <div class="content">
-    <!-- Dashboard Tab -->
-    <div id="tab-dashboard" class="section active">
-      <div class="stats-grid">
-        <div class="stat-box">
-          <div class="stat-label">Total Guests</div>
-          <div class="stat-value">117</div>
-          <div class="stat-subtext">Confirmed: 77 · Declined: 39 · Pending: 1</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Tasks Complete</div>
-          <div class="stat-value">77</div>
-          <div class="stat-subtext">of 117 total · 66%</div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 66%"></div></div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Budget Paid</div>
-          <div class="stat-value">32%</div>
-          <div class="stat-subtext">$57,279 / $181,481 AUD</div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 32%"></div></div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Days to Go</div>
-          <div class="stat-value">37</div>
-          <div class="stat-subtext">Next payment: 17 May 2026</div>
-        </div>
-      </div>
 
-      <div class="card-title">📊 Task Overview</div>
-      <div class="card">
-        <div class="stats-grid">
-          <div class="stat-box">
-            <div class="stat-label">✅ Done</div>
-            <div class="stat-value">77</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">🔵 Working On It</div>
-            <div class="stat-value">15</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">⬜ Not Started</div>
-            <div class="stat-value">25</div>
-          </div>
-        </div>
-      </div>
+    <!-- ══ RUN SHEET ══ -->
+    <div class="section active" id="tab-runsheet">
+      <div class="section-title">Run Sheet</div>
+      <div class="section-sub">Wed 17 · Thu 18 · Fri 19 June 2026 · Il Verreno, Ambra · * = timing TBC</div>
 
-      <div class="card-title">💸 Payments Summary</div>
+      <!-- WEDNESDAY -->
+      <div class="day-header"><div class="day-header-dot"></div><div class="day-header-label">☀️ Wednesday 17 June — Welcome Pizza Night</div></div>
       <div class="card">
         <table class="data-table">
-          <thead>
-            <tr>
-              <th>Metric</th>
-              <th>AUD</th>
-              <th>EUR (Est.)</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Time</th><th>Activity</th><th>Food & Drinks</th><th>Owner</th><th>Notes</th></tr></thead>
           <tbody>
-            <tr>
-              <td>Total Budget</td>
-              <td>$181,481</td>
-              <td>€108,350</td>
-            </tr>
-            <tr>
-              <td>Total Paid</td>
-              <td>$57,279</td>
-              <td>€34,180</td>
-            </tr>
-            <tr>
-              <td>Total Due</td>
-              <td>$124,202</td>
-              <td>€74,170</td>
-            </tr>
-            <tr>
-              <td>% Paid</td>
-              <td colspan="2">31.6%</td>
-            </tr>
+            <tr><td class="timeline-time">5:00pm–7:00pm</td><td>Set up — Signage, Lights, AV</td><td>—</td><td>Couple + Jer</td><td>AV system · Outdoor lighting · Signage · Table setup. Lighting TBC</td></tr>
+            <tr><td>5:10pm–5:55pm</td><td>Guest transfers arrive (3 trips)</td><td>—</td><td>Brandi Bus</td><td>Trip 1 arrives 5:10pm · Trip 2 5:35pm · Trip 3 5:55pm — see 🚌 Shuttle tab</td></tr>
+            <tr><td>7:00pm–10:00pm</td><td>🍕 Pizza Night begins (3hr package)</td><td>7 pizza flavours + Nutella pizza · Beer x1, Wine x2, Cocktail x2 · Gelato cart</td><td>Caterer + bar staff</td><td>2 long tables for 50 + scattered seating. €108,350 total</td></tr>
+            <tr><td>8:30pm*</td><td>Welcome speech</td><td>—</td><td>Rhodri</td><td>Timing TBC. AV system needed</td></tr>
+            <tr><td>10:00pm–12:00am</td><td>Cash bar opens</td><td>Cash bar</td><td>Bar team</td><td>—</td></tr>
+            <tr><td>10:30pm–12:30am</td><td>Guest shuttles to accom (3 runs)</td><td>—</td><td>Brandi Bus</td><td>22:30 · 23:30 · 00:30 — final at midnight</td></tr>
           </tbody>
         </table>
-        <p style="margin-top: 1rem; font-size: 0.75rem; color: var(--text-muted);">
-          Exchange rate: 1.6479 AUD/EUR · Next payment due: 17 May 2026
-        </p>
       </div>
-    </div>
 
-    <!-- Guests Tab -->
-    <div id="tab-guests" class="section">
-      <div class="card-title">✅ Confirmed (77)</div>
+      <!-- THURSDAY -->
+      <div class="day-header"><div class="day-header-dot" style="background:var(--gold-light)"></div><div class="day-header-label">💍 Thursday 18 June — Wedding Day</div></div>
       <div class="card">
         <table class="data-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Group</th>
-              <th>Dietary</th>
-              <th>Song Requests</th>
-              <th>RSVP</th>
-            </tr>
-          </thead>
-          <tbody id="guests-accepted">
-            <!-- Guests will be loaded via JavaScript -->
+          <thead><tr><th>Time</th><th>Activity</th><th>Food & Drinks</th><th>Owner</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>11:00am*</td><td>Florist arrives & sets up</td><td>—</td><td>A to Z Florist</td><td>Ceremony + reception florals. Confirm arrival time</td></tr>
+            <tr><td>TBC*</td><td>Photobooth arrives & sets up</td><td>—</td><td>Miglianti Studio</td><td>Table · guestbook · audio · signage. Confirm arrival time</td></tr>
+            <tr><td>2:00pm*</td><td>Ceremony space setup</td><td>—</td><td>Jer + Venue</td><td>Chairs · sound test · welcome sign · toilet/reserved/direction signs · fans on chairs</td></tr>
+            <tr><td>2:00pm–3:40pm</td><td>Guest transfers arrive (3 trips)</td><td>—</td><td>Brandi Bus</td><td>Trip 1 departs 2:00pm arrives 2:45pm · Trip 2 3:00pm arrives 3:15pm · Trip 3 3:20pm arrives 3:40pm — see 🚌 Shuttle tab</td></tr>
+            <tr><td>3:15pm–3:50pm</td><td>💧 Water station</td><td>Water</td><td>Jer + Venue</td><td>Buy water day before. Set up table</td></tr>
+            <tr><td>3:40pm</td><td>✅ Final guests arrive</td><td>—</td><td>Brandi Bus</td><td>Trip 3 arrives — all offsite guests now at venue</td></tr>
+            <tr><td>3:45pm–3:55pm</td><td>Guests ushered to seats</td><td>—</td><td>Jer + Venue</td><td>—</td></tr>
+            <tr><td style="color:var(--gold-light);font-weight:500">4:00pm–4:45pm</td><td style="color:var(--gold-light)">💍 CEREMONY</td><td>—</td><td>Emma (celebrant) · Florist · Pianist · Sound tech</td><td>Ceremony signage · Seating · Fans · Biodegradable confetti</td></tr>
+            <tr><td>4:45pm–5:00pm</td><td>Guests ushered to pool for canapés</td><td>—</td><td>Jer + Emma + Venue</td><td>Confirm with Jer: bubble photos before or after?</td></tr>
+            <tr><td>5:00pm–5:05pm</td><td>📸 Group photo</td><td>—</td><td>Photographer + Jer</td><td>Grass in front of pool / ceremony space — confirm location</td></tr>
+            <tr><td>5:00pm–6:30pm</td><td>🎷 Band plays (outside breakfast building)</td><td>—</td><td>Gaje Gipsy Swing</td><td>—</td></tr>
+            <tr><td>5:05pm–6:45pm</td><td>🥂 Cocktail hour (pool area)</td><td>12 canapés · Prosecco · Cash bar</td><td>Catering + bar staff</td><td>⚠️ 12 canapés still to be chosen from venue list</td></tr>
+            <tr><td>5:10pm–5:30pm</td><td>📸 Family photos</td><td>—</td><td>Photographer + Jer</td><td>Tree area (bridal/groom party)</td></tr>
+            <tr><td>5:30pm–6:30pm</td><td>📸 Bridal photos</td><td>Small plate canapés + drinks basket</td><td>Photographer + Venue</td><td>Orchard (bride & groom)</td></tr>
+            <tr><td>4:50pm–6:30pm</td><td>🌸 Ceremony flowers → glasshouse</td><td>—</td><td>Florist</td><td>Repurpose ceremony florals for reception</td></tr>
+            <tr><td>6:30pm–7:00pm*</td><td>Band moves + sets up in glasshouse</td><td>—</td><td>Band + Venue</td><td>⚠️ Need to inform band of timing</td></tr>
+            <tr><td>6:30pm–6:45pm</td><td>💛 Bride & Groom quiet moment</td><td>1 cocktail each</td><td>—</td><td>A must before entering dinner!</td></tr>
+            <tr><td>6:30pm–6:45pm</td><td>Guests ushered to glasshouse</td><td>—</td><td>Venue + MC Chris + Jer</td><td>Seating chart · bar menu · ribbons · fairy lights · signage · photobooth</td></tr>
+            <tr><td>6:45pm–6:50pm</td><td>📢 MC housekeeping</td><td>—</td><td>MC (Chris)</td><td>Toilet · Photobooth · Bus schedule · Timeline</td></tr>
+            <tr><td>6:50pm</td><td>👰🤵 Bride & Groom entrance</td><td>—</td><td>Music + MC Chris</td><td>—</td></tr>
+            <tr><td>7:00pm–7:30pm</td><td>🎤 Speeches</td><td>—</td><td>MC (Chris)</td><td>Order: Japie · Brendan · Jana · Rhodri · Alex</td></tr>
+            <tr><td>7:00pm–12:00am</td><td>5-hour drinks package starts</td><td>Beer x1 · Wine x2 · Cocktail x3</td><td>Bar team</td><td>7pm–midnight</td></tr>
+            <tr><td>7:30pm–9:00pm</td><td>🍽️ Dinner service</td><td>Antipasto + 2 primi + main + wedding cake. 2–3 btls wine/table + water + coffee</td><td>Catering + bar staff</td><td>Duck Terrine → Ravioli Burrata → Panciotti Rabbit → Rack of Lamb</td></tr>
+            <tr><td>7:30pm–9:00pm</td><td>🎷 Band plays in glasshouse</td><td>—</td><td>Gaje Gipsy Swing</td><td>Start 5pm cocktail hour → move to glasshouse before guests ushered in. Short break over speeches then finish at 9pm. ⚠️ Need to inform band of timing.</td></tr>
+            <tr><td>7:30pm</td><td>📸 Photobooth opens</td><td>—</td><td>Miglianti Studio</td><td>Confirm finish time with Miglianti</td></tr>
+            <tr><td>TBC</td><td>Supplier meals served</td><td>3-course supplier meals</td><td>All vendors</td><td>Confirm timing with venue (photobooth + band earlier?)</td></tr>
+            <tr><td>9:15pm</td><td>🎂 Cake cutting</td><td>Wedding cake</td><td>Couple + MC Chris</td><td>Followed immediately by first dance</td></tr>
+            <tr><td>9:20pm</td><td>💃 First dance</td><td>—</td><td>Couple + MC Chris</td><td>—</td></tr>
+            <tr><td>10:00pm–11:30pm</td><td>🍮 Dessert buffet (13 options)</td><td>Dessert station</td><td>Venue + MC Chris</td><td>MC to announce</td></tr>
+            <tr><td>10:30pm</td><td>Remove alternate tables for dance floor</td><td>—</td><td>Venue</td><td>Keep 6 tables total — 2 top, 2 each side</td></tr>
+            <tr><td>9:00pm–2:00am</td><td>🎧 Band finishes / DJ takes over</td><td>Cash bar from 12am</td><td>Band + DJ</td><td>DJ takes over from 9pm through to 2am</td></tr>
+            <tr><td>00:30am–2:00am</td><td>🍔 Late-night snacks</td><td>Scrocchiarella + burrata/mortadella · Mini burgers · Mini pizzas</td><td>Venue</td><td>€35pp</td></tr>
+            <tr><td>11:00pm–2:00am</td><td>🚌 Night shuttles to accom</td><td>—</td><td>Brandi Bus</td><td>Multiple runs 11pm–2am. Guests choose time. Last ride 2:00am</td></tr>
+            <tr><td>1:45am</td><td>Last call of drinks</td><td>—</td><td>MC (Chris)</td><td>—</td></tr>
+            <tr><td>2:00am</td><td>Final shuttle leaves</td><td>—</td><td>Brandi Bus + MC Chris</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
 
-      <div class="card-title">❌ Declined (39)</div>
+      <!-- FRIDAY -->
+      <div class="day-header"><div class="day-header-dot" style="background:#7ab0c8"></div><div class="day-header-label">🌊 Friday 19 June — Recovery Pool Party</div></div>
       <div class="card">
         <table class="data-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Group</th>
-              <th>Dietary</th>
-              <th>Song Requests</th>
-              <th>RSVP</th>
-            </tr>
-          </thead>
-          <tbody id="guests-declined">
-            <!-- Guests will be loaded via JavaScript -->
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card-title" id="pending-section" style="display: none;">⏳ Pending (1)</div>
-      <div class="card" id="pending-card" style="display: none;">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Group</th>
-              <th>Dietary</th>
-              <th>Song Requests</th>
-              <th>RSVP</th>
-            </tr>
-          </thead>
-          <tbody id="guests-pending">
-            <!-- Guests will be loaded via JavaScript -->
+          <thead><tr><th>Time</th><th>Activity</th><th>Food & Drinks</th><th>Owner</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>12:00pm</td><td>Set up — Signage, Pool Toys, AV</td><td>—</td><td>Couple</td><td>Pool floaties · Signage · AV system</td></tr>
+            <tr><td>12:45pm–2:15pm</td><td>Guest transfers arrive (3 trips)</td><td>—</td><td>Brandi Bus</td><td>Trip 1 departs 12:45pm arrives 1:25pm · Trip 2 1:40pm arrives 1:55pm · Trip 3 2:00pm arrives 2:15pm — see 🚌 Shuttle tab</td></tr>
+            <tr><td>2:00pm–5:00pm</td><td>🌊 Pool Party 🕺 70's theme — FANCY DRESS COMPULSORY</td><td>Mixed sandwiches · Gelato cart (6 flavours) · Aperol Spritz + Sangria pitchers · Craft beer 3hr tap</td><td>Catering + bar staff</td><td>€3,750 total</td></tr>
+            <tr><td>5:00pm–7:00pm*</td><td>Cash bar + shuttles home</td><td>Cash bar</td><td>Bar staff + Brandi Bus</td><td>Finish time TBC</td></tr>
+            <tr><td>TBC</td><td>Friday evening dinner</td><td>TBC</td><td>TBC</td><td>Venue option: à la carte ~€80-90pp. Decision needed</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Tasks Tab -->
-    <div id="tab-tasks" class="section">
-      <div class="card-title">📋 All Tasks</div>
+    <!-- ══ SUPPLIERS ══ -->
+    <div class="section" id="tab-suppliers">
+      <div class="section-title">Suppliers & Vendors</div>
+      <div class="section-sub">All confirmed suppliers with contacts, payment status & key notes</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">14</div><div class="stat-label">Confirmed Suppliers</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $57,279</div><div class="stat-label">Paid to Date</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $124,202</div><div class="stat-label">Still Outstanding</div></div>
+        <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Pending Contract (Brandi Bus)</div></div>
+      </div>
+
       <div class="card">
         <table class="data-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Task</th>
-              <th>Owner</th>
-              <th>Deadline</th>
-              <th>Status</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody id="tasks-list">
-            <!-- Tasks will be loaded via JavaScript -->
+          <thead><tr><th>Supplier</th><th>Vendor</th><th>Category</th><th>Total (EUR)</th><th>Paid</th><th>Remaining</th><th>Status</th><th>Key Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Il Verreno</strong></td><td>Venue</td><td>€23,000</td><td>AUD $37,902</td><td>6366</td><td>Remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Il Verreno</strong></td><td>Catering</td><td>€38,555</td><td>AUD $63,535</td><td>Partly</td><td>Remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Filippo Toti</strong></td><td>Photography + Videography</td><td>€4,000</td><td>AUD $6,592</td><td>2509.07</td><td>€2,600 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Alec Cortiss</strong></td><td>Hair & Makeup</td><td>€1,200</td><td>$2,144 AUD</td><td>130</td><td>$2,014 AUD remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Miglianti Studio</strong></td><td>Photobooth</td><td>€976</td><td>AUD $1,608</td><td>200</td><td>€776 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Gaje Gipsy Swing</strong></td><td>Band</td><td>€2,000</td><td>AUD $3,296</td><td>200</td><td>€1,800 remaining (CASH)</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Florence Pianist</strong></td><td>Pianist (Wednesday)</td><td>€2,260</td><td>AUD $3,724</td><td>791</td><td>€1,469 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>A to Z Florist & Decor (Anastasia & Alina)</strong></td><td>Florist</td><td>€3,540</td><td>AUD $5,834</td><td>1977.48</td><td>€2,340 remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Centeral House</strong></td><td>AV + Lighting</td><td>€3,050</td><td>AUD $5,027</td><td>€1,000.40 PAID 11/03/26</td><td>€2,050 remaining (CASH day)</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Brandi Bus</strong></td><td>Transport / Shuttle</td><td>€5,225</td><td>AUD $8,610</td><td>TBC</td><td>3800</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Tuscan Bridal (Perth)</strong></td><td>Dress</td><td>$1,694 AUD</td><td>$1,694 AUD</td><td>$1,694 AUD</td><td>— PAID ✅</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>Edward McCan (Perth)</strong></td><td>Suit (Rhodri)</td><td>$2,400 AUD</td><td>$2,400 AUD</td><td>1680</td><td>$720 AUD remaining</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>TBC</strong></td><td>Dress alterations</td><td>$500 AUD est</td><td>$500 AUD est</td><td>—</td><td>$500 est</td><td><span class="badge badge-confirmed">✅ Confirmed</span></td><td></td></tr>
+            <tr><td><strong>TBC</strong></td><td>Bridesmaids dresses</td><td>$600+ AUD</td><td>$600+ AUD</td><td>—</td><td>$600+ est</td><td><span class="badge badge-pending">Working on it</span></td><td></td></tr>
+            <tr><td><strong>TBC</strong></td><td>Speaker (Hyper Boom)</td><td>$600 AUD</td><td>$600 AUD</td><td>—</td><td>$600</td><td><span class="badge badge-tbc">TBC</span></td><td></td></tr>
+            <tr><td><strong>Il Verreno</strong></td><td>Fairy Lights (17 Jun)</td><td>€600</td><td>—</td><td>—</td><td>€600</td><td><span class="badge badge-tbc">TBC</span></td><td></td></tr>
+            <tr><td><strong>Alibaba</strong></td><td>Favours</td><td>€303</td><td>$499 AUD est</td><td>73.23</td><td>$303 remaining</td><td><span class="badge badge-pending">Working on it</span></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+      <div class="card-title">💰 Cash on the Day — Prepare in Advance</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Vendor</th><th>Amount</th><th>Currency</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td>Gaje Gipsy Swing (band)</td><td>€1,800</td><td><span class="badge badge-cash">CASH EUR</span></td><td>Wedding day 18 Jun</td></tr>
+            <tr><td>Centeral House (AV)</td><td>€2,050</td><td><span class="badge badge-cash">CASH EUR</span></td><td>Wedding day 18 Jun (no VAT)</td></tr>
+            <tr><td>Brandi Bus (shuttle)</td><td>€3,800</td><td><span class="badge badge-cash">CASH EUR</span></td><td>Wedding day 18 Jun</td></tr>
+            <tr><td>Alec Cortiss (H&MU)</td><td>AUD $2,144</td><td><span class="badge badge-cash">CASH AUD</span></td><td>Wedding day 18 Jun</td></tr>
+            <tr><td><strong>Total cash needed</strong></td><td><strong>€7,650 + AUD $2,144</strong></td><td>—</td><td>Have ready by 17 Jun</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ PAYMENTS ══ -->
+    <div class="section" id="tab-payments">
+      <div class="section-title">Payment Schedule</div>
+      <div class="section-sub">EUR/AUD rate: 1.6479 (update on Wise) · Total budget: ~AUD $181,481</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">AUD $57,279</div><div class="stat-label">Total Paid</div></div>
+        <div class="stat-card"><div class="stat-num">AUD $124,202</div><div class="stat-label">Total Remaining</div></div>
+        <div class="stat-card"><div class="stat-num">32%</div><div class="stat-label">% Paid</div></div>
+        <div class="stat-card"><div class="stat-num">12/20</div><div class="stat-label">Rooms Paid</div></div>
+      </div>
+
+      <div class="note-box">💚 Il Verreno 50% venue payment (€10,000) PAID 17 Mar 2026. Next due: €10,000 on 17 May 2026 · Wise EUR Balance: ~€3,999 held @ 1.6479</div>
+
+      <div class="card-title">✅ PAID</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Date</th><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>2025-05-11</td><td>Destino Five</td><td>30% at booking -</td><td>—</td><td>$784</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2025-08-09</td><td>Tuscan Bridal</td><td>Wedding Dress — deposit</td><td>—</td><td>$847</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2025-08-21</td><td>Il Verreno</td><td>Venue deposit</td><td>—</td><td>€3,500</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2025-10-24</td><td>Filippo Toti</td><td>Photographer — deposit</td><td>—</td><td>€1,400</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2025-11-02</td><td>Alec Cortiss</td><td>Trial</td><td>—</td><td>€130</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2025-12-20</td><td>Edward McCan</td><td>Rhodri's Suit — 70% deposit</td><td>—</td><td>$1,680</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-01-04</td><td>Miglianti Studio</td><td>Deposit (incl. €100 travel)</td><td>—</td><td>€200</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-02-04</td><td>Gaje Gipsy Swing</td><td>10% deposit</td><td>—</td><td>€200</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-02-19</td><td>Etsy</td><td>Hand Fans</td><td>—</td><td>$146</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-02-27</td><td>Florence Pianist</td><td>35% deposit</td><td>—</td><td>€791</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-08</td><td>Alibaba</td><td>Sample order</td><td>—</td><td>$73</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-08</td><td>Etsy</td><td>Name Cards</td><td>—</td><td>$87</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-09</td><td>A to Z</td><td>Florist deposit — per contract</td><td>—</td><td>€1,200</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-11</td><td>Centeral House</td><td>30% deposit (sign Wednesday)</td><td>—</td><td>€1,000</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-11</td><td>Iconic</td><td>Salome Wedding Shoes</td><td>—</td><td>$125</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-12</td><td>Tuscan Bridal</td><td>Wedding Dress — balance at pickup</td><td>—</td><td>$847</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-15</td><td>Airbnb</td><td>Margaret River accommodation</td><td>—</td><td>$784</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-17</td><td>Brandi Bus</td><td>Shuttle — 30% at signing</td><td>—</td><td>€1,425</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-17</td><td>Il Verreno</td><td>50% venue payment</td><td>—</td><td>€10,000</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-22</td><td>Azazie</td><td>Bridesmaids dresses</td><td>—</td><td>$600</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-03-26</td><td>Hyper Boom</td><td>Speaker for Wed + Fri</td><td>—</td><td>$474</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-04-04</td><td>Alibaba</td><td>Bulk order</td><td>—</td><td>$348</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-04-05</td><td>Qatar</td><td>Bali to Rome via Doha Flights</td><td>—</td><td>$12,213</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-04-09</td><td>Edward McCan</td><td>Rhodri's Suit — 30% balance</td><td>—</td><td>$720</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-04-25</td><td>Ryanair</td><td>Departure time - 11:25
+Arrival time - 13:20</td><td>—</td><td>€193</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-04-25</td><td>Wizz Air Malta</td><td>Departure time - 8:00AM
+Arrival time - 9:55AM</td><td>—</td><td>$231</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-05-03</td><td>Florence Pianist</td><td>65% remaining balance</td><td>—</td><td>€1,469</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-05-07</td><td>Perth Airport</td><td>Car park K - 7:30am 11/6 to 10pm 1/7</td><td>—</td><td>$120</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-05-10</td><td>Booking.com</td><td>Pick up @ 3pm drop off @8:30am</td><td>—</td><td>$680</td><td><span class="badge badge-paid">PAID</span></td></tr>
+            <tr><td>2026-05-11</td><td>Etsy</td><td>Veil</td><td>—</td><td>$250</td><td><span class="badge badge-paid">PAID</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">🟠 DUE — Upcoming Payments</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Due Date</th><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD est.</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>2026-05-18</td><td>Adore bridal Alterations</td><td>Dress alterations</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-17</td><td>Filippo Toti</td><td>2nd payment</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Final 50% venue payment</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Catering 75% — Wed + Thu (77 pax)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Fairy Lights — 17 Jun</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-17</td><td>Il Verreno</td><td>Supplier Meals x 14</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-19</td><td>Airbnb</td><td>Montepulciano (Sleeps 7)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-23</td><td>Destino Five</td><td>70% remaining of the $2,613 AUD charge in euros (1,609.20)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-05-28</td><td>Anantara Bali</td><td>Booked via discovery w/ KP Travel perks</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-06-04</td><td>Miglianti Studio</td><td>Balance — 5hrs inclusive</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-06-10</td><td>Brandi Bus</td><td>Shuttle — 70% due 1 week before</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-06-15</td><td>A to Z</td><td>Remaining balance (may increase if chair deco added by 1 Apr)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>2026-06-18</td><td>Alec Cortiss</td><td>5x Girls + 1x Bridal — CASH</td><td>—</td><td>—</td><td><span class="badge badge-cash">CASH</span></td><td></td></tr>
+            <tr><td>2026-06-18</td><td>Centeral House</td><td>70% balance — CASH (no VAT)</td><td>—</td><td>—</td><td><span class="badge badge-cash">CASH</span></td><td></td></tr>
+            <tr><td>2026-06-18</td><td>Gaje Gipsy Swing</td><td>90% balance — CASH</td><td>—</td><td>—</td><td><span class="badge badge-cash">CASH</span></td><td></td></tr>
+            <tr><td>2026-06-20</td><td>Il Verreno</td><td>Catering 25% + Pool Party (77 pax)</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>Due</td><td>Freely Insurance</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>Due</td><td>TBC</td><td>Still to order</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>TBC</td><td>Booking.com</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>TBC</td><td>Filippo Toti</td><td>Final payment before delivery</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>TBC</td><td>Holafly</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>TBC</td><td>TBC</td><td>Remaining signage budget</td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+            <tr><td>TBC</td><td>tbc</td><td></td><td>—</td><td>—</td><td><span class="badge badge-due">DUE</span></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">⬜ TBC — Date Not Yet Confirmed</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Vendor</th><th>Description</th><th>EUR</th><th>AUD est.</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Brandi Bus</td><td>Shuttle — 30% deposit at signing</td><td>€1,683</td><td>$2,773</td><td><span class="badge badge-tbc">TBC</span></td><td>Sign contract when ready</td></tr>
+            <tr><td>Alibaba</td><td>Bulk favours order</td><td>—</td><td>$303</td><td><span class="badge badge-tbc">TBC</span></td><td>Once sample approved</td></tr>
+            <tr><td>Il Verreno</td><td>Fairy lights — 17 Jun</td><td>€600</td><td>$988</td><td><span class="badge badge-tbc">TBC</span></td><td>Confirm with venue</td></tr>
+            <tr><td>Hyper Boom</td><td>Speaker for Wed + Fri</td><td>—</td><td>$600</td><td><span class="badge badge-tbc">TBC</span></td><td>Rhodri to order</td></tr>
+            <tr><td>TBC</td><td>Bridesmaids dresses</td><td>—</td><td>$600+</td><td><span class="badge badge-tbc">TBC</span></td><td>Working on it — Azali</td></tr>
+            <tr><td>TBC</td><td>Remaining signage budget</td><td>€2,500 est</td><td>$4,120</td><td><span class="badge badge-tbc">TBC</span></td><td>Welcome signs, bar signs, menu, photobooth etc</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ DIETARIES ══ -->
+    <div class="section" id="tab-dietaries">
+      <div class="section-title">Dietary Requirements</div>
+      <div class="section-sub">77 guests attending · Flag all requirements to venue by 17 April 2026</div>
+
+      <div class="note-box">⚠️ Send dietary requirements to Il Verreno by 17 April 2026. Note: Deb Clancy — Regretfully Decline. Liam's group is now 3 not 4.</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">82</div><div class="stat-label">Confirmed Attending</div></div>
+        <div class="stat-card"><div class="stat-num">80</div><div class="stat-label">Joyfully Accept</div></div>
+        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Tentative (Liam & Rhys/Busé)</div></div>
+        <div class="stat-card"><div class="stat-num">32</div><div class="stat-label">Declined</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Attending Guests — Dietary Status</div>
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Name</th><th>Group</th><th>Dietary</th><th>Allergies</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Annie Probert</td><td>Annie Probert & Ellis Martin</td><td>dairy-free</td></tr>
+            <tr><td>Laura Davis</td><td>Charles & Laura Davis</td><td>Prawns</td></tr>
+            <tr><td>Chris Williams</td><td>Chris Williams & Alice Williams</td><td>Peanut Allergy</td></tr>
+            <tr><td>Erin Flemming</td><td>Erin Flemming & Emlyn Brosnan</td><td>- No shellfish.
+- No eggs - foods that may contain a small amount of egg white etc in small amounts are tolerable (eg bread) 
+- preferably gluten and dairy free but can tolerate small amounts, so can still eat these.</td></tr>
+            <tr><td>Jana Kruger</td><td>Jana Kruger</td><td>Nut intolerance</td></tr>
+            <tr><td>John Wood</td><td>John Wood & Janine Thomas</td><td>Allergic to Shellfish</td></tr>
+            <tr><td>Oisin Clancy</td><td>Oisin, Sue & Aidan Clancy</td><td>Horses</td></tr>
+            <tr><td>Natalie Murphy</td><td>Richard & Natalie Murphy</td><td>No tomatoes</td></tr>
+            <tr><td>Ann Bradbury</td><td>Sean Clancy & Ann Bradbury</td><td>artichoke or watermelon.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SHUTTLE ══ -->
+    <div class="section" id="tab-shuttle">
+      <div class="section-title">Shuttle Schedule</div>
+      <div class="section-sub">Brandi Bus — 19-pax minibus · Contract: €4,750 + 10% VAT = €5,225 · Group H (Annie & Ellis) — own transport, do NOT include</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">39</div><div class="stat-label">Guests Needing Shuttle</div></div>
+        <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Accommodation Groups</div></div>
+        <div class="stat-card"><div class="stat-num">€5,225</div><div class="stat-label">Total Contract (incl. VAT)</div></div>
+        <div class="stat-card"><div class="stat-num">Group G TBC</div><div class="stat-label">Ben & Candice — TBC</div></div>
+      </div>
+
+      <div class="note-box">⚠️ Group H (Annie Probert & Ellis Martin) staying at Castello di Leonina — own transport. Do NOT include in shuttle numbers.</div>
+
+      <!-- Accommodation Groups -->
+      <div class="card-title">Accommodation Groups & Key Contacts</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Group</th><th>Location</th><th>Address</th><th>Distance</th><th>Pax</th><th>Key Contact</th><th>Booked?</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A</strong></td><td>Airbnb Vepri</td><td>Vepri, 1, 52021 Bucine AR</td><td>9 min</td><td>8</td><td>Sean Clancy</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>B</strong></td><td>Airbnb Ambra</td><td>Via della Casina, 20, Ambra AR</td><td>5 min</td><td>4</td><td>Liam Clancy</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>C</strong></td><td>Agriturismo L'Incrociata</td><td>Loc. L'Incrociata 24, 52021 Pietraviva AR</td><td>9 min</td><td>9</td><td>James Bija / Paul Davies</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>D</strong></td><td>La Sevarella</td><td>Loc. Sevarella, 52021 Badia Agnano</td><td>13 min</td><td>10</td><td>Matthew Jeffreys</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>E</strong></td><td>Piazza Cisterna</td><td>Piazza Cisterna, 52021 Bucine</td><td>7 min</td><td>4</td><td>Richard Singleton / Sean Fogarty</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>F</strong></td><td>Casa Biffoli</td><td>Apartment 'Casa Biffoli', 52021 Badia Agnano</td><td>12 min</td><td>2</td><td>Joel Moore</td><td><span class="badge badge-confirmed">YES</span></td></tr>
+            <tr><td><strong>G</strong></td><td>TBC</td><td>TBC (likely near Group E)</td><td>TBC</td><td>2</td><td>TBC</td><td><span class="badge badge-tbc">TBC</span></td></tr>
+            <tr><td><strong>H</strong></td><td>Castello di Leonina</td><td>Strada di Leonina, 53041 Siena</td><td>Own</td><td>2</td><td>Annie Probert</td><td><span class="badge badge-confirmed">YES — OWN TRANSPORT</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Wed pickups -->
+      <div class="day-header"><div class="day-header-dot"></div><div class="day-header-label">☀️ Wednesday 17 June — Welcome Pizza Night Pickups</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Trip</th><th>Depart</th><th>Arrive</th><th>Stops & Guests</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Trip 1</strong></td><td>4:30pm</td><td>5:10pm</td><td><strong>Stop 1</strong> Piazza Cisterna (E): Sean F · Liz Fogarty · Alex & Richard Singleton<br><strong>Stop 2</strong> ~4:45 Casa Biffoli (F): Joel Moore · Deborah Michael<br><strong>Stop 3</strong> ~4:55 La Sevarella (D): Jamie & Hannah W · Matthew & Laura J · Chris & Alice W · Sam H · Beth R · Charles & Laura D<br><small style="color:var(--text-muted)">Key contacts: Sean Fogarty (E) · Joel Moore (F) · Matthew Jeffreys (D)</small></td></tr>
+            <tr><td><strong>Trip 2</strong></td><td>5:20pm</td><td>5:35pm</td><td><strong>Stop 1</strong> L'Incrociata (C): James & Jess · Dai & Emma · Richard & Nat · Paul W · Paul D · Jordan<br><strong>Stop 2</strong> ~5:25 Via della Casina (B): Liam · Sinead · Niamh · Niall Clancy<br><small style="color:var(--text-muted)">Key contacts: Paul Davies (C) · Liam Clancy (B)</small></td></tr>
+            <tr><td><strong>Trip 3</strong></td><td>5:45pm</td><td>5:55pm</td><td>Vepri (A): Sean & Ann Clancy · Eugene & Fioya Clancy · Liam · Oisin · Sue · Aidan<br><small style="color:var(--text-muted)">Key contact: Sean Clancy (A)</small></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.75rem; font-size:0.72rem; color:var(--text-muted)">↙ Drop-offs: Run 1 @ 10:30pm · Run 2 @ 11:30pm · Run 3 @ 12:30am</div>
+      </div>
+
+      <!-- Thu pickups -->
+      <div class="day-header"><div class="day-header-dot" style="background:var(--gold-light)"></div><div class="day-header-label">💍 Thursday 18 June — Wedding Day Pickups (ceremony 4pm, all arrive by 3:40pm)</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Trip</th><th>Depart</th><th>Arrive</th><th>Stops & Guests</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Trip 1</strong></td><td>2:00pm</td><td>2:45pm</td><td><strong>Stop 1</strong> Piazza Cisterna (E): Sean F · Liz Fogarty · Alex & Richard Singleton<br><strong>Stop 2</strong> ~2:20 Casa Biffoli (F): Joel Moore · Deborah Michael<br><strong>Stop 3</strong> ~2:25 La Sevarella (D): Jamie & Hannah W · Matthew & Laura J · Chris & Alice W · Sam H · Beth R · Charles & Laura D<br><small style="color:var(--text-muted)">Key contacts: Sean Fogarty (E) · Joel Moore (F) · Matthew Jeffreys (D)</small></td></tr>
+            <tr><td><strong>Trip 2</strong></td><td>3:00pm</td><td>3:15pm</td><td>Vepri (A): Sean & Ann Clancy · Eugene & Fioya Clancy · Liam · Oisin · Sue · Aidan<br><small style="color:var(--text-muted)">Key contact: Sean Clancy (A)</small></td></tr>
+            <tr><td><strong>Trip 3</strong></td><td>3:20pm</td><td>3:40pm ✓</td><td><strong>Stop 1</strong> L'Incrociata (C): James & Jess · Dai & Emma · Richard & Nat · Paul W · Paul D · Jordan<br><strong>Stop 2</strong> ~3:30 Via della Casina (B): Liam · Sinead · Niamh · Niall Clancy<br><small style="color:var(--text-muted)">Key contacts: Paul Davies (C) · Liam Clancy (B)</small></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.75rem; font-size:0.72rem; color:var(--text-muted)">↙ Night shuttles: Multiple runs 11pm–2am. Guests choose departure time. Last ride 2:00am.</div>
+      </div>
+
+      <!-- Fri pickups -->
+      <div class="day-header"><div class="day-header-dot" style="background:#7ab0c8"></div><div class="day-header-label">🌊 Friday 19 June — Pool Party Pickups</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Trip</th><th>Depart</th><th>Arrive</th><th>Stops & Guests</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Trip 1</strong></td><td>12:45pm</td><td>1:25pm</td><td><strong>Stop 1</strong> Piazza Cisterna (E): Sean F · Liz Fogarty · Alex & Richard Singleton<br><strong>Stop 2</strong> ~1:05 Casa Biffoli (F): Joel Moore · Deborah Michael<br><strong>Stop 3</strong> ~1:10 La Sevarella (D): Jamie & Hannah W · Matthew & Laura J · Chris & Alice W · Sam H · Beth R · Charles & Laura D<br><small style="color:var(--text-muted)">Key contacts: Sean Fogarty (E) · Joel Moore (F) · Matthew Jeffreys (D)</small></td></tr>
+            <tr><td><strong>Trip 2</strong></td><td>1:40pm</td><td>1:55pm</td><td>Vepri (A): Sean & Ann Clancy · Eugene & Fioya Clancy · Liam · Oisin · Sue · Aidan<br><small style="color:var(--text-muted)">Key contact: Sean Clancy (A)</small></td></tr>
+            <tr><td><strong>Trip 3</strong></td><td>2:00pm</td><td>2:15pm</td><td><strong>Stop 1</strong> L'Incrociata (C): James & Jess · Dai & Emma · Richard & Nat · Paul W · Paul D · Jordan<br><strong>Stop 2</strong> ~2:10 Via della Casina (B): Liam · Sinead · Niamh · Niall Clancy<br><small style="color:var(--text-muted)">Key contacts: Paul Davies (C) · Liam Clancy (B)</small></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.75rem; font-size:0.72rem; color:var(--text-muted)">↙ Evening drop-offs: 7pm–10pm multiple runs.</div>
+      </div>
+    </div>
+
+    <!-- ══ ROOMS ══ -->
+    <div class="section" id="tab-rooms">
+      <div class="section-title">Onsite Rooms — Il Verreno</div>
+      <div class="section-sub">20 rooms · 41 guests · 12/20 rooms paid · 2 cots needed (Civetta, Rosa) · Passport numbers required before June</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">20</div><div class="stat-label">Total Rooms</div></div>
+        <div class="stat-card"><div class="stat-num">41</div><div class="stat-label">Onsite Guests</div></div>
+        <div class="stat-card"><div class="stat-num">12/20</div><div class="stat-label">Rooms Paid</div></div>
+        <div class="stat-card"><div class="stat-num">2 cots</div><div class="stat-label">Civetta + Rosa</div></div>
+      </div>
+
+      <div class="note-box">⚠️ Passport numbers needed from all guests before June 2026. Rooming list due to venue 2 months before (April).</div>
+
+      <div class="card-title">Main Villa</div>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-name">DELUXE KING</div>
+          <div class="room-guests">UVA
+Grape</div>
+          <div class="room-detail">1</div>
+          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">FAMILY SUITE</div>
+          <div class="room-guests">GIGLI 1
+Lilies · GIGLI 2
+Lilies</div>
+          <div class="room-detail">2</div>
+          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">FAMILY SUITE</div>
+          <div class="room-guests">CAVALLI 1
+Horses · CAVALLI 2
+Horses · GRANAIO
+Granary</div>
+          <div class="room-detail">2</div>
+          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">APPARTMENT</div>
+          <div class="room-guests">CAPPELLA 1
+Chapel · CAPPELLA 2
+Chapel</div>
+          <div class="room-detail">2</div>
+          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">APPARTMENT</div>
+          <div class="room-guests">CASCINA 1
+Farmhouse · CASCINA 2
+Farmhouse</div>
+          <div class="room-detail">1</div>
+          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+        </div>
+        <div class="room-card">
+          <div class="room-name">APPARTMENT</div>
+          <div class="room-guests">FATTORIA 1
+Farm · FATTORIA 2
+Farm · TOTAL</div>
+          <div class="room-detail">2</div>
+          <div class="room-payment"><span class="badge badge-tbc">TBC</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- ══ TASKS ══ -->
+    <div class="section" id="tab-tasks">
+      <div class="section-title">Task List</div>
+      <div class="section-sub">85 tasks · 33 done · 25 in progress · 27 not started · Last updated from V18 Master Tracker</div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num" style="color:#7ac87a">33</div><div class="stat-label">✅ Done</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#7ab0c8">25</div><div class="stat-label">🔄 Working On It</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:var(--gold)">27</div><div class="stat-label">⬜ Not Started / To Do</div></div>
+        <div class="stat-card"><div class="stat-num" style="color:#c87a7a">8</div><div class="stat-label">🔴 Urgent</div></div>
+      </div>
+
+      <div class="note-box">🔴 Urgent now — Silk scarves (lead time!!) · Chair deco decision by 1 Apr · Bridesmaids dresses · Flights to Rome · Wedding rings · ⚠️ Rhodri to send Wednesday Pianist contract to Salomé ASAP</div>
+
+      <div class="card-title">🔴 Urgent — ASAP / Before 29 April</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Message & confirm those staying at venue / not staying</td><td>Both</td><td>Jan 2026</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>2</td><td>Pay venue deposit</td><td>Both</td><td>Aug 2025</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>3</td><td>Send out payment information to guests</td><td>Both</td><td>Nov 2025</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>4</td><td>Music enquiry</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>5</td><td>PA System</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>6</td><td>Read & sign venue contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>7</td><td>Read & sign photographer contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>8</td><td>Read & sign photobooth contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>9</td><td>Pay photographer deposit</td><td>Salomé</td><td>Oct 2025</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>10</td><td>Pay photobooth deposit</td><td>Salomé</td><td>Jan 2026</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>11</td><td>Hair & makeup enquiry</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>12</td><td>Mockup location plan for each day/event</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>13</td><td>Order hand fans</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>14</td><td>Order name cards</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td>Etsy</td></tr>
+            <tr><td>15</td><td>Order Alibaba sample favours</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>16</td><td>Pay florist deposit €1,200</td><td>Salomé</td><td>09 Mar 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Wise 09/03/26</td></tr>
+            <tr><td>17</td><td>Read & sign florist contract</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>18</td><td>Set up Wise bank account</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>19</td><td>Supplier meal breakdown added to budget</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>20</td><td>Create signage schedule</td><td>Salomé</td><td>Mar 2026</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>21</td><td>Send photos of outdoor area to AV vendor</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>22</td><td>Confirm payment schedule with band + sign</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>23</td><td>Read, sign & return band contract</td><td>Rhodri</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>24</td><td>Follow up Etsy hand fans order</td><td>Salomé</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td>Delivered 5/3 ✅</td></tr>
+            <tr><td>25</td><td>Find wedding shoes</td><td>Both</td><td>Done</td><td><span class="badge badge-done">Done ✅</span></td><td>Iconic ordered 11 March ✅</td></tr>
+            <tr><td>26</td><td>Legal Stuff</td><td>Both</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Emailed Momentum, DS Family Law, Mandurah Legal. Waiting for Rhodri</td></tr>
+            <tr><td>27</td><td>Sort wedding rings</td><td>Both</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Rhodri Ring Size: W 1/2 
+He prefers Width: 7mm</td></tr>
+            <tr><td>28</td><td>Book MR  accommodation</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Airbnb — confirm with Ben & Candice</td></tr>
+            <tr><td>29</td><td>Lock in MR  time + confirm Ben & Candice</td><td>Both</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>30</td><td>Book  wine tour / bus</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Need to lock in if doing a tour / need a driver</td></tr>
+            <tr><td>31</td><td>Book flights to Rome (Qantas points out)</td><td>Rhodri</td><td>18 march 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Extra luggage: 3 checked bags + 2 extra for dress, signage & misc</td></tr>
+            <tr><td>32</td><td>Look into & book Airbnb for Rome (pre-venue days) + Siena after</td><td>Rhodri</td><td>Before April</td><td><span class="badge badge-working">Working on it</span></td><td>A few days in Rome before Il Verreno, then Siena post-wedding</td></tr>
+            <tr><td>33</td><td>Book dress alterations appointment</td><td>Salomé</td><td>April</td><td><span class="badge badge-done">Done ✅</span></td><td>Need shoes first — April 13th?</td></tr>
+            <tr><td>34</td><td>Confirm Emma's celebrant brief</td><td>Both</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>29th May - 1st June ( Possible meeting)</td></tr>
+            <tr><td>35</td><td>Order silk scarves (wedding favours)</td><td>Salomé</td><td>Before April</td><td><span class="badge badge-done">Done ✅</span></td><td>Arrived 4 May</td></tr>
+            <tr><td>36</td><td>Chair decorations decision (affects florist)</td><td>Both</td><td>01 Apr 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>⚠️ Florist needs answer by 1 Apr - no chair decorations</td></tr>
+            <tr><td>37</td><td>Finalise bridesmaids dresses — RESOLVE THIS</td><td>Salomé</td><td>URGENT</td><td><span class="badge badge-done">Done ✅</span></td><td>Have sent message to the girls asking for choice by end of the week</td></tr>
+            <tr><td>38</td><td>Sign AV contract + pay 30% deposit</td><td>Rhodri</td><td>Wed 11 Mar</td><td><span class="badge badge-done">Done ✅</span></td><td>Waiting on a few answers — sign Wednesday. Find out projector details.</td></tr>
+            <tr><td>39</td><td>Finalise bus pricing + sign contract</td><td>Both</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>€4,750 total — 30% at signing, 70% cash on day. Get payment breakdown + update budget.</td></tr>
+            <tr><td>40</td><td>Finalise bus timetable for guests</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>Needed for March guest email with all details</td></tr>
+            <tr><td>41</td><td>Book lighting at Il Verreno for Wednesday night (17th)</td><td>Jer</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>Confirm with Jer</td></tr>
+            <tr><td>42</td><td>Update vendor payment plan + watch AUD/EUR rate</td><td>Salomé</td><td>Ongoing</td><td><span class="badge badge-working">Working on it</span></td><td>Decide if paying some vendors early is smarter</td></tr>
+            <tr><td>43</td><td>Finalise vendor staff meals count → update venue & budget</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>14 - see leist in vendor tab</td></tr>
+            <tr><td>44</td><td>Create & finalise room allocation</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>Done</td></tr>
+            <tr><td>45</td><td>Send guest info email — dietaries, footwear, event schedule</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Warn them: grass/pebbles — NO stilettos! Include bus schedule.</td></tr>
+            <tr><td>46</td><td>Update wedding website with all event details</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Welcome dinner, ceremony, pool day etc</td></tr>
+            <tr><td>47</td><td>List all cash vendors + organise cash plan for wedding day</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Started in notes — Band, AV, MUA, bus</td></tr>
+            <tr><td>48</td><td>Confirm what can be delivered/mailed to venue</td><td>Jer</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Pool toys, decor, signage etc — venue accepts parcels 7 days before</td></tr>
+            <tr><td>49</td><td>Check BYO snacks policy for recovery day</td><td>Both</td><td>TBC</td><td><span class="badge badge-done">Done ✅</span></td><td>Chips/snacks for after poolside food service ends</td></tr>
+            <tr><td>50</td><td>Finalise vendor numbers for venue (1 month before)</td><td>Salomé</td><td>17 May 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Band x4, Photo x4, Photobooth x1, Florist x3, AV x2</td></tr>
+            <tr><td>51</td><td>Send dietary requirements to venue</td><td>Salomé</td><td>17 Apr 2026</td><td><span class="badge badge-done">Done ✅</span></td><td>Due 2 months before — 17 April</td></tr>
+            <tr><td>52</td><td>Final seating numbers to venue</td><td>Salomé</td><td>04 Jun 2026</td><td><span class="badge badge-notstarted">Not Started</span></td><td>2 weeks before</td></tr>
+            <tr><td>53</td><td>Confirm groomsmen suits</td><td>Rhodri</td><td>Before April</td><td><span class="badge badge-done">Done ✅</span></td><td>Alex is sorting this</td></tr>
+            <tr><td>54</td><td>Find/book hair salon for pre-departure appointment</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>In case Nicolett can't do it (new baby)</td></tr>
+            <tr><td>55</td><td>Room mapping — onsite allocations</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Complex — multiple buildings, mobility/baby needs</td></tr>
+            <tr><td>56</td><td>Table seating chart</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Ask Salomé for layout plan</td></tr>
+            <tr><td>57</td><td>Playlists (welcome dinner + pool party)</td><td>Rhodri</td><td>March/April</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
+            <tr><td>58</td><td>Create photo list for photographer + notify family</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
+            <tr><td>59</td><td>Check Wednesday entertainment expects meals</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Florence Pianist — Rhodri confirmed no meal needed</td></tr>
+            <tr><td>61</td><td>Create welcome signs x2</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
+            <tr><td>62</td><td>Create bar signs for each event (x3)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
+            <tr><td>63</td><td>Create/update menu signage for reception</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td></td></tr>
+            <tr><td>64</td><td>Create table cards with photos</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>65</td><td>Create station signage, guest book prompts, phonebook</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Order from Etsy — allow shipping time</td></tr>
+            <tr><td>66</td><td>Order name signs for tables (Etsy)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>68</td><td>Find local signage vendor in Italy</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>VistaPrint Rome?</td></tr>
+            <tr><td>69</td><td>Create signage for photobooth</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td></td></tr>
+            <tr><td>70</td><td>Collect all guest images for seating letters</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>For slideshow + seating cards</td></tr>
+            <tr><td>71</td><td>Create reception slideshow (photos + )</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
+            <tr><td>72</td><td>Buy UE Boom / Hyper Boom speaker</td><td>Rhodri</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>$600 AUD — possible cashback. For welcome dinner + pool day.</td></tr>
+            <tr><td>73</td><td>Order photo/guest book for photobooth</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>ordered 26/4 - fox & fallow</td></tr>
+            <tr><td>74</td><td>Order bulk Alibaba favours (once sample approved)</td><td>Salomé</td><td>TBC</td><td><span class="badge badge-done">Done ✅</span></td><td>Waiting on sample to arrive before placing bulk order</td></tr>
+            <tr><td>75</td><td>Toilet freshening baskets for wedding day</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Nice touch — order online</td></tr>
+            <tr><td>76</td><td>Get knee pads for Jon 😂</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>You know why 😂</td></tr>
+            <tr><td>77</td><td>Organise parent gifts (Jayne, Brendan, Japie)</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Jayne - Necklace Bredan - Akubra</td></tr>
+            <tr><td>78</td><td>Organise gift for Emma (surprise celebrant)</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>TBC</td></tr>
+            <tr><td>79</td><td>Organise bridesmaids + groomsmen gifts</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Rhodri to sort boys (maybe watch?). Salomé TBC.</td></tr>
+            <tr><td>80</td><td>Write vows & letters</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
+            <tr><td>81</td><td>Choose 12 canapés for cocktail hour</td><td>Both</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Choose from venue list</td></tr>
+            <tr><td>82</td><td>Pick wedding cake flavour & design</td><td>Both</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Send final decision to venue</td></tr>
+            <tr><td>83</td><td>Find 70s pool outfits + toys + spares for non-dressed guests</td><td>Both</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Commit to the bit</td></tr>
+            <tr><td>84</td><td>Plan morning-of shopping list (breakfast, snacks, water)</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>For Airbnb</td></tr>
+            <tr><td>85</td><td>Buy pool decorations, camcorders, ring box & misc items</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Start a running list and order in batches</td></tr>
+            <tr><td>86</td><td>Order signage / misc to venue</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Venue accepts parcels max 7 days before arrival</td></tr>
+            <tr><td>87</td><td>Contact photographer (Filippo) - confirm arrival time</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Get email from Jer, confirm Thursday arrival time</td></tr>
+            <tr><td>88</td><td>Send photo list to photographer + notify family</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Family shots, couple shots, group shots</td></tr>
+            <tr><td>89</td><td>Photographer dietary requirements</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Ive emailed waiting on reply</td></tr>
+            <tr><td>90</td><td>Confirm photobooth arrival time (after 7:30pm, aiming 8pm)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Need to confirm with Miglianti</td></tr>
+            <tr><td>91</td><td>Confirm photobooth strip size (standard vs 10x15cm)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Affects guest book size</td></tr>
+            <tr><td>92</td><td>Central House - confirm arrival time Thursday</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>10:30 - 11:00</td></tr>
+            <tr><td>93</td><td>Central House - confirm power supply needs</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Normal power outlet, they will bring extension cords</td></tr>
+            <tr><td>94</td><td>Central House - dietary requirements for crew</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>2 members - no dietaries</td></tr>
+            <tr><td>95</td><td>Central House - confirm speaker movement ceremony→cocktail</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Background music</td></tr>
+            <tr><td>96</td><td>Central House - projector setup details</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Setup requirements</td></tr>
+            <tr><td>97</td><td>Central House - confirm equipment pickup timing</td><td>Rhodri</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>Their responsibility - DJ is also technician and will decide that night</td></tr>
+            <tr><td>98</td><td>Band - confirm arrival time (not during ceremony)</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Coordinate with Jer</td></tr>
+            <tr><td>99</td><td>Band - power requirements</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Power outlet - as discussed by Valentina in video</td></tr>
+            <tr><td>100</td><td>Band - confirm microphone for speeches</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Central house - 1 microphone bluetooth connection</td></tr>
+            <tr><td>101</td><td>Band - confirm they'll play guests in after ceremony</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>They will play from 5pm - have said guests will start arriving between 4:50pm - 5:10pm</td></tr>
+            <tr><td>102</td><td>Transfer company - backup plan if shuttles run later</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Confirmed - we will need to co-ordinate (can mention in welcome speech housekeeping stuff)</td></tr>
+            <tr><td>103</td><td>Transfer company - Thursday bridal party return to Airbnb</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Confirmed</td></tr>
+            <tr><td>104</td><td>Confirm with Jayne - can she come to Airbnb for wedding day?</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Hair & makeup location</td></tr>
+            <tr><td>105</td><td>Confirm hair & makeup start time with Alec</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>9am Start Time</td></tr>
+            <tr><td>106</td><td>Update Vendor Contact page with contract details for Jer</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Jer needs day-of access</td></tr>
+            <tr><td>107</td><td>Add to budget: esims, travel insurance, airport parking, wedding bands, Bali/Ibiza, car rental, Rome/Siena accom, luggage delivery, veil, jewelry, morning items</td><td>Salomé</td><td>ASAP</td><td><span class="badge badge-done">Done ✅</span></td><td>Forgotten costs</td></tr>
+            <tr><td>108</td><td>Water shopping for Wednesday arrivals</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
+            <tr><td>109</td><td>Update website - Friday dinner plans (shuttle 7-10pm)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Set expectations</td></tr>
+            <tr><td>110</td><td>Update website - "No gifts please" message</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Add to website</td></tr>
+            <tr><td>111</td><td>Practice the dip kiss 😂</td><td>Both</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>You know you need to</td></tr>
+            <tr><td>112</td><td>Choose entrance to reception song</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Grand entrance music</td></tr>
+            <tr><td>113</td><td>Think about & write wedding speech</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
+            <tr><td>114</td><td>Buy portable phone charger (for music playlist)</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td></td></tr>
+            <tr><td>115</td><td>Buy/make card box for reception</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Next to guest book</td></tr>
+            <tr><td>116</td><td>Buy electric pump for pool toys</td><td>Both</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>70s pool party</td></tr>
+            <tr><td>117</td><td>Buy bathroom bucket (TBC)</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Clarify purpose</td></tr>
+            <tr><td>118</td><td>Buy/confirm steamer availability</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-done">Done ✅</span></td><td>1 steamer & venue only has 2 irons</td></tr>
+            <tr><td>119</td><td>Order biodegradable petals for throwing</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Delivered 4 May</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">🟠 Admin & Logistics</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>32</td><td>Look into & book Airbnb for Rome + Siena after</td><td>Rhodri</td><td>Before April</td><td><span class="badge badge-working">Working on it</span></td><td>A few days in Rome before Il Verreno, then Siena post-wedding</td></tr>
+            <tr><td>33</td><td>Book dress alterations appointment</td><td>Salomé</td><td>April</td><td><span class="badge badge-done">Done ✅</span></td><td>April 13th</td></tr>
+            <tr><td>34</td><td>Confirm Emma's celebrant brief</td><td>Both</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>She needs everything well in advance</td></tr>
+            <tr><td>38</td><td>Sign AV contract + pay 30% deposit</td><td>Rhodri</td><td>Wed 11 Mar</td><td><span class="badge badge-done">Done ✅</span></td><td>Signed + paid 11 Mar</td></tr>
+            <tr><td>39</td><td>Finalise bus pricing + sign contract</td><td>Rhodri</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>€5,610 total — deposit €1,425 at signing, balance €3,800 cash on day</td></tr>
+            <tr><td>40</td><td>Finalise bus timetable for guests</td><td>Rhodri</td><td>This week</td><td><span class="badge badge-done">Done ✅</span></td><td>—</td></tr>
+            <tr><td>41</td><td>Book lighting at Il Verreno for Wed night (17th)</td><td>Rhodri</td><td>ASAP</td><td><span class="badge badge-working">Working on it</span></td><td>Confirm with Jer</td></tr>
+            <tr><td>42</td><td>Update vendor payment plan + watch AUD/EUR rate</td><td>Salomé</td><td>Ongoing</td><td><span class="badge badge-working">Working on it</span></td><td>Decide if paying some vendors early is smarter</td></tr>
+            <tr><td>43</td><td>Finalise vendor staff meals count</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Band x4, Photo x4, Photobooth x1, Florist x3, AV x4</td></tr>
+            <tr><td>44</td><td>Create & finalise room allocation + guest comms</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Complex — multiple buildings, mobility/baby needs</td></tr>
+            <tr><td>45</td><td>Send guest info email — dietaries, footwear, schedule</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Warn: grass/pebbles — NO stilettos! Include bus schedule.</td></tr>
+            <tr><td>46</td><td>Update wedding website with all event details</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Welcome dinner, ceremony, pool day etc</td></tr>
+            <tr><td>47</td><td>List all cash vendors + organise cash plan</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-working">Working on it</span></td><td>Band, AV, MUA, bus</td></tr>
+            <tr><td>49</td><td>Check BYO snacks policy for recovery day</td><td>Both</td><td>TBC</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Chips/snacks for after poolside food service ends</td></tr>
+            <tr><td>50</td><td>Finalise vendor numbers for venue (1 month before)</td><td>Salomé</td><td>17 May 2026</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Band x4, Photo x4, Photobooth x1, Florist x3, AV x4</td></tr>
+            <tr><td>51</td><td>Send dietary requirements to venue</td><td>Salomé</td><td>17 Apr 2026</td><td><span class="badge badge-notstarted">Not Started</span></td><td>⚠️ Deadline: 17 April — 2 months before</td></tr>
+            <tr><td>52</td><td>Final seating numbers to venue</td><td>Salomé</td><td>4 Jun 2026</td><td><span class="badge badge-notstarted">Not Started</span></td><td>2 weeks before</td></tr>
+            <tr><td>53</td><td>Confirm groomsmen suits</td><td>Rhodri</td><td>Before April</td><td><span class="badge badge-working">Working on it</span></td><td>Alex is sorting this</td></tr>
+            <tr><td>54</td><td>Find/book hair salon for pre-departure appointment</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>In case Nicolett can't do it (new baby)</td></tr>
+            <tr><td>55</td><td>Room mapping — onsite allocations</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Complex — multiple buildings, mobility/baby needs</td></tr>
+            <tr><td>56</td><td>Table seating chart</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>—</td></tr>
+            <tr><td>57</td><td>Playlists (welcome dinner + pool party)</td><td>Rhodri</td><td>March/April</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>59</td><td>Check Wednesday entertainment expects meals</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Florence Pianist — TBC</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">🎨 Design & Signage</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>60</td><td>Create welcome signs x2</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>61</td><td>Create bar signs for each event (x3)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>62</td><td>Create/update menu signage for reception</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>63</td><td>Create table cards with photos</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>—</td></tr>
+            <tr><td>64</td><td>Create station signage, guest book prompts, phonebook</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>Order from Etsy — allow shipping time</td></tr>
+            <tr><td>65</td><td>Order name signs for tables (Etsy)</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-done">Done ✅</span></td><td>Allow shipping time to Italy</td></tr>
+            <tr><td>68</td><td>Find local signage vendor in Italy</td><td>Salomé</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>VistaPrint Rome?</td></tr>
+            <tr><td>69</td><td>Create signage for photobooth</td><td>Salomé</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>—</td></tr>
+            <tr><td>70</td><td>Start collecting images of all guests</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-todo">To Do</span></td><td>For slideshow + seating cards</td></tr>
+            <tr><td>71</td><td>Collect all guest images for seating letters</td><td>Rhodri</td><td>Before May</td><td><span class="badge badge-working">Working on it</span></td><td>For slideshow + seating cards</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">🎁 Gifts & Personal</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>80</td><td>Organise parent gifts (Jayne, Brendan, Japie, Adel)</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>All 4 parents</td></tr>
+            <tr><td>82</td><td>Organise gift for Emma (surprise celebrant)</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>TBC</td></tr>
+            <tr><td>83</td><td>Organise bridesmaids + groomsmen gifts</td><td>Both</td><td>Before June</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Rhodri: boys (maybe watch?). Salomé TBC.</td></tr>
+            <tr><td>84</td><td>Write vows & letters</td><td>Both</td><td>Before May</td><td><span class="badge badge-notstarted">Not Started</span></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-title" style="margin-top:1rem">📋 Before June — Food, Fun & Details</div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>85</td><td>Choose 12 canapés for cocktail hour</td><td>Both</td><td><span class="badge badge-working">Working on it</span></td><td>Choose from venue list</td></tr>
+            <tr><td>86</td><td>Pick wedding cake flavour & design</td><td>Both</td><td><span class="badge badge-working">Working on it</span></td><td>Send final decision to venue</td></tr>
+            <tr><td>72</td><td>Create reception slideshow</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Outsource if needed — don't leave this late!</td></tr>
+            <tr><td>73</td><td>Buy Hyper Boom speaker</td><td>Rhodri</td><td><span class="badge badge-notstarted">Not Started</span></td><td>$600 AUD — for welcome dinner + pool day</td></tr>
+            <tr><td>74</td><td>Order photo/guest book for photobooth</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Ask photobooth for photo measurements first</td></tr>
+            <tr><td>75</td><td>Write seating letter messages (per couple)</td><td>Rhodri</td><td><span class="badge badge-working">Working on it</span></td><td>Lovely personal touch 💛</td></tr>
+            <tr><td>76</td><td>Order bulk Alibaba favours</td><td>Salomé</td><td><span class="badge badge-working">Working on it</span></td><td>Waiting on sample to arrive</td></tr>
+            <tr><td>77</td><td>Toilet freshening baskets</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Order online</td></tr>
+            <tr><td>78</td><td>Get knee pads for Jon 😂</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>You know why 😂</td></tr>
+            <tr><td>58</td><td>Collect all passport numbers (onsite guests)</td><td>Both</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Required by venue before June</td></tr>
+            <tr><td>88</td><td>Create photo list for photographer + notify family</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>—</td></tr>
+            <tr><td>91</td><td>Find 70s pool outfits + toys + spares for non-dressed guests</td><td>Both</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Commit to the bit 😂</td></tr>
+            <tr><td>93</td><td>Plan morning-of shopping list (breakfast, snacks, water)</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>For you + bridesmaids at the Airbnb</td></tr>
+            <tr><td>94</td><td>Buy pool decorations, camcorders, ring box & misc</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Start a running list and order in batches</td></tr>
+            <tr><td>95</td><td>Order signage / misc to venue</td><td>Salomé</td><td><span class="badge badge-notstarted">Not Started</span></td><td>Venue accepts parcels max 7 days before arrival</td></tr>
           </tbody>
         </table>
       </div>
@@ -498,2016 +1126,12 @@
 <script>
 const PASSWORD = 'verreno2026';
 
-// Guest data (embedded from spreadsheet)
-const guestData = {
-  "accepted": [
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Alex",
-      "last_name": "Clancy",
-      "group": "Alex Clancy",
-      "dietaries": "None",
-      "songs": "Althea and Donna- uptown top ranking"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Annie",
-      "last_name": "Probert",
-      "group": "Annie Probert & Ellis Martin",
-      "dietaries": "dairy-free",
-      "songs": "Saturday Love - Cherelle"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Ellis",
-      "last_name": "Martin",
-      "group": "Annie Probert & Ellis Martin",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Ceri",
-      "last_name": "Davis",
-      "group": "Ceri & Courtney Davis",
-      "dietaries": "None",
-      "songs": "Natasha beddingfield - unwritten"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Courtney",
-      "last_name": "Davis",
-      "group": "Ceri & Courtney Davis",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Charles",
-      "last_name": "Davis",
-      "group": "Charles & Laura Davis",
-      "dietaries": "None",
-      "songs": "Jet - are you gonna be my girl"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Laura",
-      "last_name": "Davis",
-      "group": "Charles & Laura Davis",
-      "dietaries": "Prawns",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Alice",
-      "last_name": "Charlton",
-      "group": "Chris  Williams & Alice Charlton",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Chris",
-      "last_name": "Williams",
-      "group": "Chris Williams & Alice Williams",
-      "dietaries": "Peanut Allergy",
-      "songs": "Bastille - Pompeii"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Dai",
-      "last_name": "Leonard",
-      "group": "Dai & Emma Leonard",
-      "dietaries": "None",
-      "songs": "Unwritten Natasha bedingfield"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Emma",
-      "last_name": "Leonard",
-      "group": "Dai Leonard & Emma Gracia",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Elisha",
-      "last_name": "Bell",
-      "group": "Elisha Bell & Ross Price",
-      "dietaries": "None",
-      "songs": "Murder on the Dance Floor\ud83e\udd38\ud83c\udffc\u200d\u2642\ufe0f"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Ross",
-      "last_name": "Price",
-      "group": "Elisha Bell & Ross Price",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Emlyn",
-      "last_name": "Brosnan",
-      "group": "Erin Flemming & Emlyn Brosnan",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Erin",
-      "last_name": "Flemming",
-      "group": "Erin Flemming & Emlyn Brosnan",
-      "dietaries": "- No shellfish.\n- No eggs - foods that may contain a small amount of egg white etc in small amounts are tolerable (eg bread) \n- preferably gluten and dairy free but can tolerate small amounts, so can still eat these.",
-      "songs": "Beautiful Crazy by Luke Combs"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Eugene",
-      "last_name": "Clancy",
-      "group": "Eugene, Fioya, Liam & Alba Clancy",
-      "dietaries": "None",
-      "songs": "Sweet Caroline, Neil diamond"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Fioya",
-      "last_name": "Clancy",
-      "group": "Eugene, Fioya, Liam & Alba Clancy",
-      "dietaries": "None",
-      "songs": "Far l'amore, Bob Sinclair, Barbra Streisand, Radio Edit."
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Liam",
-      "last_name": "Clancy",
-      "group": "Eugene, Fioya, Liam & Alba Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Frankie",
-      "last_name": "Morgan",
-      "group": "Frankie Morgan",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Francesca",
-      "last_name": "Thomas",
-      "group": "Gary & Francesca Thomas",
-      "dietaries": "None",
-      "songs": "Earth Wind and Fire - Boogie Wonderland"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Gary",
-      "last_name": "Thomas",
-      "group": "Gary & Francesca Thomas",
-      "dietaries": "None",
-      "songs": "Hush by Kula Shaker + Crazy by Seal "
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Greg",
-      "last_name": "Clancy",
-      "group": "Greg Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Carmel",
-      "last_name": "Bennet",
-      "group": "Ivan & Carmel Bennet",
-      "dietaries": "None",
-      "songs": "Sinatra The way you look tonight for Salome"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Ivan",
-      "last_name": "Bennet",
-      "group": "Ivan & Carmel Bennet",
-      "dietaries": "None",
-      "songs": "Louie Preema and Keely Smith anything"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "James",
-      "last_name": "Bija",
-      "group": "James Bija & Jess Rees",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jess",
-      "last_name": "Rees",
-      "group": "James Bija & Jess Rees",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Hannah",
-      "last_name": "Williams",
-      "group": "Jamie & Hannah Williams",
-      "dietaries": "None",
-      "songs": "I just might- Bruno Mars"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jamie",
-      "last_name": "Williams",
-      "group": "Jamie & Hannah Williams",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jana",
-      "last_name": "Kruger",
-      "group": "Jana Kruger",
-      "dietaries": "Nut intolerance",
-      "songs": "Hung up - Madonna"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Japie",
-      "last_name": "Kruger",
-      "group": "Japie Kruger",
-      "dietaries": "None",
-      "songs": "It started with a kiss. Hot chocolate"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jason",
-      "last_name": "Landeg",
-      "group": "Jason Landeg",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Brendan",
-      "last_name": "Clancy",
-      "group": "Jayne & Brendan Clancy",
-      "dietaries": "None",
-      "songs": "Chuck Berry Teenage Wedding"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jayne",
-      "last_name": "Clancy",
-      "group": "Jayne & Brendan Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Ann",
-      "last_name": "Hopkins",
-      "group": "Jeff & Ann Hopkins",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jeff",
-      "last_name": "Hopkins",
-      "group": "Jeff & Ann Hopkins",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jemaine",
-      "last_name": "Finlay",
-      "group": "Jemaine Finlay",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Andreas",
-      "last_name": "Gerlitz",
-      "group": "Jeremy Hopkins & Andreas Gerlitz",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jeremy",
-      "last_name": "Hopkins",
-      "group": "Jeremy Hopkins & Andreas Gerlitz",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Deborah",
-      "last_name": "Michael",
-      "group": "Joel Moore & Deborah Michael",
-      "dietaries": "None",
-      "songs": "Pink pony club + Radio head creep + cranberries zombie. "
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Joel",
-      "last_name": "Moore",
-      "group": "Joel Moore & Deborah Michael",
-      "dietaries": "None",
-      "songs": "Joel would love it if you could play Ken lee, what what I. The butt and chocolate rain."
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Johan",
-      "last_name": "Kruger",
-      "group": "Johan & Minke Kruger",
-      "dietaries": "None",
-      "songs": "Walking on a dream"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Minke",
-      "last_name": "Kruger",
-      "group": "Johan & Minke Kruger",
-      "dietaries": "None",
-      "songs": "Ain\u2019t no mountain high enough"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Janine",
-      "last_name": "Thomas",
-      "group": "John Wood & Janine Thomas",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "John",
-      "last_name": "Wood",
-      "group": "John Wood & Janine Thomas",
-      "dietaries": "Allergic to Shellfish",
-      "songs": "Things can only get Better"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Emma",
-      "last_name": "Clancy",
-      "group": "Jon & Emma Clancy",
-      "dietaries": "None",
-      "songs": "gimmie gimmie gimmie - ABBA"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jon",
-      "last_name": "Clancy",
-      "group": "Jon & Emma Clancy",
-      "dietaries": "None",
-      "songs": "Rasputin - let\u2019s break his knees"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jordan",
-      "last_name": "Grigg",
-      "group": "Jordan Grigg ",
-      "dietaries": "None",
-      "songs": "Funky Town"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Niamh",
-      "last_name": "Clancy",
-      "group": "Liam, Deb, Sinead & Niamh Clancy",
-      "dietaries": "None",
-      "songs": "Ain\u2019t no mountain high enough - Marvin Gaye.   S club party- s club.    Dancing in the dark- rhianna"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Liam",
-      "last_name": "Clancy",
-      "group": "Liam, Sinead & Niamh Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Sinead",
-      "last_name": "Clancy",
-      "group": "Liam, Sinead & Niamh Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Laura",
-      "last_name": "Jeffreys",
-      "group": "Matthew & Laura Jeffreys",
-      "dietaries": "None",
-      "songs": "Zombie - The Cranberries"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Matthew",
-      "last_name": "Jeffreys",
-      "group": "Matthew & Laura Jeffreys",
-      "dietaries": "None",
-      "songs": "Shackles - Mary Mary"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Natalie",
-      "last_name": "Jehring",
-      "group": "Natalie Jehring",
-      "dietaries": "None",
-      "songs": "Like a G6, Far East Movement + Satisfaction, David Guetta, Benny Benassi"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Nathan",
-      "last_name": "Schipper",
-      "group": "Nathan Schipper",
-      "dietaries": "None",
-      "songs": "The Best Tina Turner"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Niall",
-      "last_name": "Clancy",
-      "group": "Niall Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jo",
-      "last_name": "Clancy",
-      "group": "Nick & Jo Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Nick",
-      "last_name": "Clancy",
-      "group": "Nick & Jo Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Jeremy",
-      "last_name": "Adams",
-      "group": "Nicki & Jeremy Adams",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Nicki",
-      "last_name": "Adams",
-      "group": "Nicki & Jeremy Adams",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Aidan",
-      "last_name": "Clancy",
-      "group": "Oisin, Sue & Aidan Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Oisin",
-      "last_name": "Clancy",
-      "group": "Oisin, Sue & Aidan Clancy",
-      "dietaries": "Horses",
-      "songs": "The Time warp (original version)"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Sue",
-      "last_name": "Clancy",
-      "group": "Oisin, Sue & Aidan Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Paul",
-      "last_name": "Davies",
-      "group": "Paul & Zoe Davies",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Paul",
-      "last_name": "Warlow",
-      "group": "Paul Warlow",
-      "dietaries": "None",
-      "songs": "Red light spells danger billy ocean"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Alex",
-      "last_name": "Singlewood",
-      "group": "Richard & Alex Singlewood",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Richard",
-      "last_name": "Singlewood",
-      "group": "Richard & Alex Singlewood",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Natalie",
-      "last_name": "Murphy",
-      "group": "Richard & Natalie Murphy",
-      "dietaries": "No tomatoes",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Richard",
-      "last_name": "Murphy",
-      "group": "Richard & Natalie Murphy",
-      "dietaries": "None",
-      "songs": "Discoland gerry cinamon"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Beth",
-      "last_name": "Roscilli",
-      "group": "Sam Hughes & Beth Roscilli",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Sam",
-      "last_name": "Hughes",
-      "group": "Sam Hughes & Beth Roscilli",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Sarah",
-      "last_name": "Dermody",
-      "group": "Sarah Dermody",
-      "dietaries": "None",
-      "songs": "Get low - lil jon"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Claire",
-      "last_name": "Gleeson",
-      "group": "Scott Coleman & Claire Gleeson",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Scott",
-      "last_name": "Coleman",
-      "group": "Scott Coleman & Claire Gleeson",
-      "dietaries": "None",
-      "songs": "A bitta Celine Dion!"
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Liz",
-      "last_name": "Fogarty",
-      "group": "Sean & Liz Fogarty",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Sean",
-      "last_name": "Fogarty",
-      "group": "Sean & Liz Fogarty",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Ann",
-      "last_name": "Bradbury",
-      "group": "Sean Clancy & Ann Bradbury",
-      "dietaries": "artichoke or watermelon.",
-      "songs": ""
-    },
-    {
-      "rsvp": "Joyfully Accept",
-      "first_name": "Sean",
-      "last_name": "Clancy",
-      "group": "Sean Clancy & Ann Bradbury",
-      "dietaries": "None",
-      "songs": ""
-    }
-  ],
-  "declined": [
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Adel",
-      "last_name": "Kruger",
-      "group": "Adel",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Alba",
-      "last_name": "Clancy",
-      "group": "Eugene, Fioya, Liam & Alba Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Amy",
-      "last_name": "Grinter",
-      "group": "Amy & Mike Grinter",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Ben",
-      "last_name": "Sawyer",
-      "group": "Ben & Candice Sawyer",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Beth",
-      "last_name": "Brooks",
-      "group": "Richard & Beth Brooks",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Bus\u00e9",
-      "last_name": "Thomas",
-      "group": "Rhys & Bus\u00e9 Thomas",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Candice",
-      "last_name": "Sawyer",
-      "group": "Ben & Candice Sawyer",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Catherine",
-      "last_name": "Hopkins",
-      "group": "Dafydd & Catherine Hopkins",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Coco",
-      "last_name": "Grotegoed-Olney",
-      "group": "Jordan Grigg & Coco Grotegoed-Olney",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Dafydd",
-      "last_name": "Hopkins",
-      "group": "Dafydd & Catherine Hopkins",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Damian",
-      "last_name": "Clancy",
-      "group": "Jo, Dan, Damian & Gaynor Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Dan",
-      "last_name": "Clancy",
-      "group": "Jo, Dan, Damian & Gaynor Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Dane",
-      "last_name": "Clancy",
-      "group": "Dane Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Deb",
-      "last_name": "Clancy",
-      "group": "Liam, Deb, Sinead & Niamh Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Declan",
-      "last_name": "Clancy",
-      "group": "Declan & Heulwen Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Ffion",
-      "last_name": "Williams",
-      "group": "Richard & Ffion Williams",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Flora",
-      "last_name": "Hosford",
-      "group": "Gethin & Flora Hosford",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Frans",
-      "last_name": "Badenhorst",
-      "group": "Frans & Tina Badenhorst",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Gaynor",
-      "last_name": "Clancy",
-      "group": "Jo, Dan, Damian & Gaynor Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Gethin",
-      "last_name": "Hosford",
-      "group": "Gethin & Flora Hosford",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Heulwen",
-      "last_name": "Clancy",
-      "group": "Declan & Heulwen Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "James",
-      "last_name": "Lindsey",
-      "group": "James Lindsey",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Jessica",
-      "last_name": "Robertson",
-      "group": "Jessica & Alex Robertson",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Joanna",
-      "last_name": "Clancy",
-      "group": "Jo, Dan, Damian & Gaynor Clancy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Lola",
-      "last_name": "Kennedy",
-      "group": "Scott Clancy & Lola Kennedy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Luke",
-      "last_name": "English",
-      "group": "Luke & Mina English",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Mel ",
-      "last_name": "Butler",
-      "group": "Mellisa Butler",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Mike",
-      "last_name": "Grinter",
-      "group": "Amy & Mike Grinter",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Mina",
-      "last_name": "English",
-      "group": "Luke & Mina English",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Natasha",
-      "last_name": "Whittaker",
-      "group": "Natasha Whittaker",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Reuben",
-      "last_name": "Clancy-Jones",
-      "group": "Reuben Clancy-Jones & Rhianna O'Reilly",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Rhianna",
-      "last_name": "O'Reilly",
-      "group": "Reuben Clancy-Jones & Rhianna O'Reilly",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Rhys",
-      "last_name": "Thomas",
-      "group": "Rhys & Bus\u00e9 Thomas",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Richard",
-      "last_name": "Brooks",
-      "group": "Richard & Beth Brooks",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Richard",
-      "last_name": "Williams",
-      "group": "Richard & Ffion Williams",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Robyn",
-      "last_name": "Hattingh",
-      "group": "Robyn Hattingh",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Scott",
-      "last_name": "Clancy",
-      "group": "Scott Clancy & Lola Kennedy",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Tina",
-      "last_name": "Badenhorst",
-      "group": "Frans & Tina Badenhorst",
-      "dietaries": "None",
-      "songs": ""
-    },
-    {
-      "rsvp": "Regretfully Decline",
-      "first_name": "Zoe",
-      "last_name": "Davies",
-      "group": "Paul & Zoe Davies",
-      "dietaries": "None",
-      "songs": ""
-    }
-  ],
-  "pending": [
-    {
-      "rsvp": "77",
-      "first_name": "TOTALS",
-      "last_name": "",
-      "group": "",
-      "dietaries": "None",
-      "songs": ""
-    }
-  ]
-};
-
-// Task data (embedded from spreadsheet)
-const taskData = [
-  {
-    "num": "1",
-    "name": "Message & confirm those staying at venue / not staying",
-    "category": "Logistics",
-    "owner": "Both",
-    "deadline": "Jan 2026",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "2",
-    "name": "Pay venue deposit",
-    "category": "Payments",
-    "owner": "Both",
-    "deadline": "Aug 2025",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "3",
-    "name": "Send out payment information to guests",
-    "category": "Accommodation",
-    "owner": "Both",
-    "deadline": "Nov 2025",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "4",
-    "name": "Music enquiry",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "5",
-    "name": "PA System",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "6",
-    "name": "Read & sign venue contract",
-    "category": "Venue",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "7",
-    "name": "Read & sign photographer contract",
-    "category": "Photography",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "8",
-    "name": "Read & sign photobooth contract",
-    "category": "Photobooth",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "9",
-    "name": "Pay photographer deposit",
-    "category": "Payments",
-    "owner": "Salom\u00e9",
-    "deadline": "Oct 2025",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "10",
-    "name": "Pay photobooth deposit",
-    "category": "Payments",
-    "owner": "Salom\u00e9",
-    "deadline": "Jan 2026",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "11",
-    "name": "Hair & makeup enquiry",
-    "category": "Beauty",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "12",
-    "name": "Mockup location plan for each day/event",
-    "category": "Logistics",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "13",
-    "name": "Order hand fans",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "14",
-    "name": "Order name cards",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": "Etsy"
-  },
-  {
-    "num": "15",
-    "name": "Order Alibaba sample favours",
-    "category": "Favours",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "16",
-    "name": "Pay florist deposit \u20ac1,200",
-    "category": "Payments",
-    "owner": "Salom\u00e9",
-    "deadline": "09 Mar 2026",
-    "status": "Done",
-    "notes": "Wise 09/03/26"
-  },
-  {
-    "num": "17",
-    "name": "Read & sign florist contract",
-    "category": "Flowers",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "18",
-    "name": "Set up Wise bank account",
-    "category": "Finance",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "19",
-    "name": "Supplier meal breakdown added to budget",
-    "category": "Catering",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "20",
-    "name": "Create signage schedule",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Mar 2026",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "21",
-    "name": "Send photos of outdoor area to AV vendor",
-    "category": "Logistics",
-    "owner": "Rhodri",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "22",
-    "name": "Confirm payment schedule with band + sign",
-    "category": "Payments",
-    "owner": "Rhodri",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "23",
-    "name": "Read, sign & return band contract",
-    "category": "Payments",
-    "owner": "Rhodri",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "24",
-    "name": "Follow up Etsy hand fans order",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": "Delivered 5/3 \u2705"
-  },
-  {
-    "num": "25",
-    "name": "Find wedding shoes",
-    "category": "Attire",
-    "owner": "Both",
-    "deadline": "Done",
-    "status": "Done",
-    "notes": "Iconic ordered 11 March \u2705"
-  },
-  {
-    "num": "26",
-    "name": "Legal Stuff",
-    "category": "Legal",
-    "owner": "Both",
-    "deadline": "ASAP",
-    "status": "Working on it",
-    "notes": "Emailed Momentum, DS Family Law, Mandurah Legal. Waiting for Rhodri"
-  },
-  {
-    "num": "27",
-    "name": "Sort wedding rings",
-    "category": "Attire",
-    "owner": "Both",
-    "deadline": "ASAP",
-    "status": "Working on it",
-    "notes": "Rhodri Ring Size: W 1/2 \nHe prefers Width: 7mm"
-  },
-  {
-    "num": "28",
-    "name": "Book MR  accommodation",
-    "category": "MR",
-    "owner": "Rhodri",
-    "deadline": "This week",
-    "status": "Done",
-    "notes": "Airbnb \u2014 confirm with Ben & Candice"
-  },
-  {
-    "num": "29",
-    "name": "Lock in MR  time + confirm Ben & Candice",
-    "category": "MR",
-    "owner": "Both",
-    "deadline": "This week",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "30",
-    "name": "Book  wine tour / bus",
-    "category": "MR",
-    "owner": "Rhodri",
-    "deadline": "This week",
-    "status": "Done",
-    "notes": "Need to lock in if doing a tour / need a driver"
-  },
-  {
-    "num": "31",
-    "name": "Book flights to Rome (Qantas points out)",
-    "category": "Travel",
-    "owner": "Rhodri",
-    "deadline": "18 march 2026",
-    "status": "Done",
-    "notes": "Extra luggage: 3 checked bags + 2 extra for dress, signage & misc"
-  },
-  {
-    "num": "32",
-    "name": "Look into & book Airbnb for Rome (pre-venue days) + Siena after",
-    "category": "Travel",
-    "owner": "Rhodri",
-    "deadline": "Before April",
-    "status": "Working on it",
-    "notes": "A few days in Rome before Il Verreno, then Siena post-wedding"
-  },
-  {
-    "num": "33",
-    "name": "Book dress alterations appointment",
-    "category": "Attire",
-    "owner": "Salom\u00e9",
-    "deadline": "April",
-    "status": "Done",
-    "notes": "Need shoes first \u2014 April 13th?"
-  },
-  {
-    "num": "34",
-    "name": "Confirm Emma's celebrant brief",
-    "category": "MR Ceremony",
-    "owner": "Both",
-    "deadline": "Before May",
-    "status": "Working on it",
-    "notes": "29th May - 1st June ( Possible meeting)"
-  },
-  {
-    "num": "35",
-    "name": "Order silk scarves (wedding favours)",
-    "category": "Favours",
-    "owner": "Salom\u00e9",
-    "deadline": "Before April",
-    "status": "Done",
-    "notes": "Arrived 4 May"
-  },
-  {
-    "num": "36",
-    "name": "Chair decorations decision (affects florist)",
-    "category": "Flowers",
-    "owner": "Both",
-    "deadline": "01 Apr 2026",
-    "status": "Done",
-    "notes": "\u26a0\ufe0f Florist needs answer by 1 Apr - no chair decorations"
-  },
-  {
-    "num": "37",
-    "name": "Finalise bridesmaids dresses \u2014 RESOLVE THIS",
-    "category": "Attire",
-    "owner": "Salom\u00e9",
-    "deadline": "URGENT",
-    "status": "Done",
-    "notes": "Have sent message to the girls asking for choice by end of the week"
-  },
-  {
-    "num": "38",
-    "name": "Sign AV contract + pay 30% deposit",
-    "category": "Payments",
-    "owner": "Rhodri",
-    "deadline": "Wed 11 Mar",
-    "status": "Done",
-    "notes": "Waiting on a few answers \u2014 sign Wednesday. Find out projector details."
-  },
-  {
-    "num": "39",
-    "name": "Finalise bus pricing + sign contract",
-    "category": "Transport",
-    "owner": "Both",
-    "deadline": "ASAP",
-    "status": "Done",
-    "notes": "\u20ac5,610 total \u2014 30% at signing, 70% cash on day. Get payment breakdown + update budget."
-  },
-  {
-    "num": "40",
-    "name": "Finalise bus timetable for guests",
-    "category": "Transport",
-    "owner": "Rhodri",
-    "deadline": "This week",
-    "status": "Done",
-    "notes": "Needed for March guest email with all details"
-  },
-  {
-    "num": "41",
-    "name": "Book lighting at Il Verreno for Wednesday night (17th)",
-    "category": "Logistics",
-    "owner": "Jer",
-    "deadline": "ASAP",
-    "status": "Done",
-    "notes": "Confirm with Jer"
-  },
-  {
-    "num": "42",
-    "name": "Update vendor payment plan + watch AUD/EUR rate",
-    "category": "Finance",
-    "owner": "Salom\u00e9",
-    "deadline": "Ongoing",
-    "status": "Working on it",
-    "notes": "Decide if paying some vendors early is smarter"
-  },
-  {
-    "num": "43",
-    "name": "Finalise vendor staff meals count \u2192 update venue & budget",
-    "category": "Catering",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "14 - see leist in vendor tab"
-  },
-  {
-    "num": "44",
-    "name": "Create & finalise room allocation",
-    "category": "Accommodation",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Done",
-    "notes": "Done"
-  },
-  {
-    "num": "45",
-    "name": "Send guest info email \u2014 dietaries, footwear, event schedule",
-    "category": "Guests",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Warn them: grass/pebbles \u2014 NO stilettos! Include bus schedule."
-  },
-  {
-    "num": "46",
-    "name": "Update wedding website with all event details",
-    "category": "Marketing",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Welcome dinner, ceremony, pool day etc"
-  },
-  {
-    "num": "47",
-    "name": "List all cash vendors + organise cash plan for wedding day",
-    "category": "Finance",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Working on it",
-    "notes": "Started in notes \u2014 Band, AV, MUA, bus"
-  },
-  {
-    "num": "48",
-    "name": "Confirm what can be delivered/mailed to venue",
-    "category": "Logistics",
-    "owner": "Jer",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Pool toys, decor, signage etc \u2014 venue accepts parcels 7 days before"
-  },
-  {
-    "num": "49",
-    "name": "Check BYO snacks policy for recovery day",
-    "category": "Logistics",
-    "owner": "Both",
-    "deadline": "TBC",
-    "status": "Done",
-    "notes": "Chips/snacks for after poolside food service ends"
-  },
-  {
-    "num": "50",
-    "name": "Finalise vendor numbers for venue (1 month before)",
-    "category": "Logistics",
-    "owner": "Salom\u00e9",
-    "deadline": "17 May 2026",
-    "status": "Done",
-    "notes": "Band x4, Photo x4, Photobooth x1, Florist x3, AV x2"
-  },
-  {
-    "num": "51",
-    "name": "Send dietary requirements to venue",
-    "category": "Catering",
-    "owner": "Salom\u00e9",
-    "deadline": "17 Apr 2026",
-    "status": "Done",
-    "notes": "Due 2 months before \u2014 17 April"
-  },
-  {
-    "num": "52",
-    "name": "Final seating numbers to venue",
-    "category": "Catering",
-    "owner": "Salom\u00e9",
-    "deadline": "04 Jun 2026",
-    "status": "Not Started",
-    "notes": "2 weeks before"
-  },
-  {
-    "num": "53",
-    "name": "Confirm groomsmen suits",
-    "category": "Attire",
-    "owner": "Rhodri",
-    "deadline": "Before April",
-    "status": "Done",
-    "notes": "Alex is sorting this"
-  },
-  {
-    "num": "54",
-    "name": "Find/book hair salon for pre-departure appointment",
-    "category": "Beauty",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "In case Nicolett can't do it (new baby)"
-  },
-  {
-    "num": "55",
-    "name": "Room mapping \u2014 onsite allocations",
-    "category": "Accommodation",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Complex \u2014 multiple buildings, mobility/baby needs"
-  },
-  {
-    "num": "56",
-    "name": "Table seating chart",
-    "category": "Tables",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Ask Salom\u00e9 for layout plan"
-  },
-  {
-    "num": "57",
-    "name": "Playlists (welcome dinner + pool party)",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "March/April",
-    "status": "Working on it",
-    "notes": ""
-  },
-  {
-    "num": "58",
-    "name": "Create photo list for photographer + notify family",
-    "category": "Photography",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Working on it",
-    "notes": ""
-  },
-  {
-    "num": "59",
-    "name": "Check Wednesday entertainment expects meals",
-    "category": "Catering",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Florence Pianist \u2014 Rhodri confirmed no meal needed"
-  },
-  {
-    "num": "61",
-    "name": "Create welcome signs x2",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Working on it",
-    "notes": ""
-  },
-  {
-    "num": "62",
-    "name": "Create bar signs for each event (x3)",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Working on it",
-    "notes": ""
-  },
-  {
-    "num": "63",
-    "name": "Create/update menu signage for reception",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Working on it",
-    "notes": ""
-  },
-  {
-    "num": "64",
-    "name": "Create table cards with photos",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "65",
-    "name": "Create station signage, guest book prompts, phonebook",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Working on it",
-    "notes": "Order from Etsy \u2014 allow shipping time"
-  },
-  {
-    "num": "66",
-    "name": "Order name signs for tables (Etsy)",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": ""
-  },
-  {
-    "num": "68",
-    "name": "Find local signage vendor in Italy",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "VistaPrint Rome?"
-  },
-  {
-    "num": "69",
-    "name": "Create signage for photobooth",
-    "category": "Signage",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "done",
-    "notes": ""
-  },
-  {
-    "num": "70",
-    "name": "Collect all guest images for seating letters",
-    "category": "Tables",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Working on it",
-    "notes": "For slideshow + seating cards"
-  },
-  {
-    "num": "71",
-    "name": "Create reception slideshow (photos + )",
-    "category": "Design",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": ""
-  },
-  {
-    "num": "72",
-    "name": "Buy UE Boom / Hyper Boom speaker",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "ASAP",
-    "status": "Done",
-    "notes": "$600 AUD \u2014 possible cashback. For welcome dinner + pool day."
-  },
-  {
-    "num": "73",
-    "name": "Order photo/guest book for photobooth",
-    "category": "Photobooth",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Done",
-    "notes": "ordered 26/4 - fox & fallow"
-  },
-  {
-    "num": "74",
-    "name": "Order bulk Alibaba favours (once sample approved)",
-    "category": "Favours",
-    "owner": "Salom\u00e9",
-    "deadline": "TBC",
-    "status": "Done",
-    "notes": "Waiting on sample to arrive before placing bulk order"
-  },
-  {
-    "num": "75",
-    "name": "Toilet freshening baskets for wedding day",
-    "category": "Misc",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "Nice touch \u2014 order online"
-  },
-  {
-    "num": "76",
-    "name": "Get knee pads for Jon \ud83d\ude02",
-    "category": "Misc",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "You know why \ud83d\ude02"
-  },
-  {
-    "num": "77",
-    "name": "Organise parent gifts (Jayne, Brendan, Japie)",
-    "category": "Gifts",
-    "owner": "Both",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "Jayne - Necklace Bredan - Akubra"
-  },
-  {
-    "num": "78",
-    "name": "Organise gift for Emma (surprise celebrant)",
-    "category": "Gifts",
-    "owner": "Both",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "TBC"
-  },
-  {
-    "num": "79",
-    "name": "Organise bridesmaids + groomsmen gifts",
-    "category": "Gifts",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "Rhodri to sort boys (maybe watch?). Salom\u00e9 TBC."
-  },
-  {
-    "num": "80",
-    "name": "Write vows & letters",
-    "category": "Ceremony",
-    "owner": "Both",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": ""
-  },
-  {
-    "num": "81",
-    "name": "Choose 12 canap\u00e9s for cocktail hour",
-    "category": "Catering",
-    "owner": "Both",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Choose from venue list"
-  },
-  {
-    "num": "82",
-    "name": "Pick wedding cake flavour & design",
-    "category": "Catering",
-    "owner": "Both",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Send final decision to venue"
-  },
-  {
-    "num": "83",
-    "name": "Find 70s pool outfits + toys + spares for non-dressed guests",
-    "category": "Pool Party",
-    "owner": "Both",
-    "deadline": "Before June",
-    "status": "Working on it",
-    "notes": "Commit to the bit"
-  },
-  {
-    "num": "84",
-    "name": "Plan morning-of shopping list (breakfast, snacks, water)",
-    "category": "Logistics",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "For Airbnb"
-  },
-  {
-    "num": "85",
-    "name": "Buy pool decorations, camcorders, ring box & misc items",
-    "category": "Misc",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "Start a running list and order in batches"
-  },
-  {
-    "num": "86",
-    "name": "Order signage / misc to venue",
-    "category": "Logistics",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "Venue accepts parcels max 7 days before arrival"
-  },
-  {
-    "num": "87",
-    "name": "Contact photographer (Filippo) - confirm arrival time",
-    "category": "Photography",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Get email from Jer, confirm Thursday arrival time"
-  },
-  {
-    "num": "88",
-    "name": "Send photo list to photographer + notify family",
-    "category": "Photography",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Working on it",
-    "notes": "Family shots, couple shots, group shots"
-  },
-  {
-    "num": "89",
-    "name": "Photographer dietary requirements",
-    "category": "Catering",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Ive emailed waiting on reply"
-  },
-  {
-    "num": "90",
-    "name": "Confirm photobooth arrival time (after 7:30pm, aiming 8pm)",
-    "category": "Photobooth",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Need to confirm with Miglianti"
-  },
-  {
-    "num": "91",
-    "name": "Confirm photobooth strip size (standard vs 10x15cm)",
-    "category": "Photobooth",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Affects guest book size"
-  },
-  {
-    "num": "92",
-    "name": "Central House - confirm arrival time Thursday",
-    "category": "AV",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "10:30 - 11:00"
-  },
-  {
-    "num": "93",
-    "name": "Central House - confirm power supply needs",
-    "category": "AV",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Normal power outlet, they will bring extension cords"
-  },
-  {
-    "num": "94",
-    "name": "Central House - dietary requirements for crew",
-    "category": "Catering",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "2 members - no dietaries"
-  },
-  {
-    "num": "95",
-    "name": "Central House - confirm speaker movement ceremony\u2192cocktail",
-    "category": "AV",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Background music"
-  },
-  {
-    "num": "96",
-    "name": "Central House - projector setup details",
-    "category": "AV",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Setup requirements"
-  },
-  {
-    "num": "97",
-    "name": "Central House - confirm equipment pickup timing",
-    "category": "AV",
-    "owner": "Rhodri",
-    "deadline": "Before June",
-    "status": "Done",
-    "notes": "Their responsibility - DJ is also technician and will decide that night"
-  },
-  {
-    "num": "98",
-    "name": "Band - confirm arrival time (not during ceremony)",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Coordinate with Jer"
-  },
-  {
-    "num": "99",
-    "name": "Band - power requirements",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Power outlet - as discussed by Valentina in video"
-  },
-  {
-    "num": "100",
-    "name": "Band - confirm microphone for speeches",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Central house - 1 microphone bluetooth connection"
-  },
-  {
-    "num": "101",
-    "name": "Band - confirm they'll play guests in after ceremony",
-    "category": "Entertainment",
-    "owner": "Rhodri",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "They will play from 5pm - have said guests will start arriving between 4:50pm - 5:10pm"
-  },
-  {
-    "num": "102",
-    "name": "Transfer company - backup plan if shuttles run later",
-    "category": "Transport",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Confirmed - we will need to co-ordinate (can mention in welcome speech housekeeping stuff)"
-  },
-  {
-    "num": "103",
-    "name": "Transfer company - Thursday bridal party return to Airbnb",
-    "category": "Transport",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Confirmed"
-  },
-  {
-    "num": "104",
-    "name": "Confirm with Jayne - can she come to Airbnb for wedding day?",
-    "category": "Beauty",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "Hair & makeup location"
-  },
-  {
-    "num": "105",
-    "name": "Confirm hair & makeup start time with Alec",
-    "category": "Beauty",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "9am Start Time"
-  },
-  {
-    "num": "106",
-    "name": "Update Vendor Contact page with contract details for Jer",
-    "category": "Logistics",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "Jer needs day-of access"
-  },
-  {
-    "num": "107",
-    "name": "Add to budget: esims, travel insurance, airport parking, wedding bands, Bali/Ibiza, car rental, Rome/Siena accom, luggage delivery, veil, jewelry, morning items",
-    "category": "Finance",
-    "owner": "Salom\u00e9",
-    "deadline": "ASAP",
-    "status": "Done",
-    "notes": "Forgotten costs"
-  },
-  {
-    "num": "108",
-    "name": "Water shopping for Wednesday arrivals",
-    "category": "Logistics",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": ""
-  },
-  {
-    "num": "109",
-    "name": "Update website - Friday dinner plans (shuttle 7-10pm)",
-    "category": "Marketing",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "Set expectations"
-  },
-  {
-    "num": "110",
-    "name": "Update website - \"No gifts please\" message",
-    "category": "Marketing",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "Add to website"
-  },
-  {
-    "num": "111",
-    "name": "Practice the dip kiss \ud83d\ude02",
-    "category": "Ceremony",
-    "owner": "Both",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "You know you need to"
-  },
-  {
-    "num": "112",
-    "name": "Choose entrance to reception song",
-    "category": "Entertainment",
-    "owner": "Both",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "Grand entrance music"
-  },
-  {
-    "num": "113",
-    "name": "Think about & write wedding speech",
-    "category": "Ceremony",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": ""
-  },
-  {
-    "num": "114",
-    "name": "Buy portable phone charger (for music playlist)",
-    "category": "Misc",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": ""
-  },
-  {
-    "num": "115",
-    "name": "Buy/make card box for reception",
-    "category": "Misc",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Not Started",
-    "notes": "Next to guest book"
-  },
-  {
-    "num": "116",
-    "name": "Buy electric pump for pool toys",
-    "category": "Pool Party",
-    "owner": "Both",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "70s pool party"
-  },
-  {
-    "num": "117",
-    "name": "Buy bathroom bucket (TBC)",
-    "category": "Misc",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Not Started",
-    "notes": "Clarify purpose"
-  },
-  {
-    "num": "118",
-    "name": "Buy/confirm steamer availability",
-    "category": "Attire",
-    "owner": "Salom\u00e9",
-    "deadline": "Before June",
-    "status": "Done",
-    "notes": "1 steamer & venue only has 2 irons"
-  },
-  {
-    "num": "119",
-    "name": "Order biodegradable petals for throwing",
-    "category": "Ceremony",
-    "owner": "Salom\u00e9",
-    "deadline": "Before May",
-    "status": "Done",
-    "notes": "Delivered 4 May"
-  }
-];
-
 function checkPwd() {
   const val = document.getElementById('pwd-input').value;
   if (val === PASSWORD) {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-app').style.display = 'block';
     sessionStorage.setItem('weddingAdmin', '1');
-    loadData();
   } else {
     document.getElementById('login-error').style.display = 'block';
     document.getElementById('pwd-input').value = '';
@@ -2530,76 +1154,10 @@ function showTab(id) {
   window.scrollTo(0, 0);
 }
 
-function loadData() {
-  // Load guests
-  const acceptedBody = document.getElementById('guests-accepted');
-  const declinedBody = document.getElementById('guests-declined');
-  const pendingBody = document.getElementById('guests-pending');
-
-  acceptedBody.innerHTML = guestData.accepted.map(g => 
-    `<tr>
-      <td>${g.first_name} ${g.last_name}</td>
-      <td>${g.group}</td>
-      <td>${g.dietaries}</td>
-      <td>${g.songs || '—'}</td>
-      <td><span class="badge badge-accepted">${g.rsvp}</span></td>
-    </tr>`
-  ).join('');
-
-  declinedBody.innerHTML = guestData.declined.map(g => 
-    `<tr>
-      <td>${g.first_name} ${g.last_name}</td>
-      <td>${g.group}</td>
-      <td>${g.dietaries}</td>
-      <td>${g.songs || '—'}</td>
-      <td><span class="badge badge-declined">${g.rsvp}</span></td>
-    </tr>`
-  ).join('');
-
-  if (guestData.pending.length > 0) {
-    document.getElementById('pending-section').style.display = 'block';
-    document.getElementById('pending-card').style.display = 'block';
-    pendingBody.innerHTML = guestData.pending.map(g => 
-      `<tr>
-        <td>${g.first_name} ${g.last_name}</td>
-        <td>${g.group}</td>
-        <td>${g.dietaries}</td>
-        <td>${g.songs || '—'}</td>
-        <td><span class="badge badge-pending">Pending</span></td>
-      </tr>`
-    ).join('');
-  }
-
-  // Load tasks
-  const tasksBody = document.getElementById('tasks-list');
-  
-  function getBadgeClass(status) {
-    const s = status.toLowerCase();
-    if (s === 'done') return 'badge badge-done';
-    if (s === 'working on it') return 'badge badge-working';
-    if (s === 'not started') return 'badge badge-notstarted';
-    if (s === 'to do') return 'badge badge-todo';
-    return 'badge';
-  }
-
-  tasksBody.innerHTML = taskData.map(t => {
-    const statusText = t.status.toLowerCase() === 'done' ? 'Done ✅' : t.status;
-    return `<tr>
-      <td>${t.num}</td>
-      <td>${t.name}</td>
-      <td>${t.owner}</td>
-      <td>${t.deadline}</td>
-      <td><span class="${getBadgeClass(t.status)}">${statusText}</span></td>
-      <td>${t.notes}</td>
-    </tr>`;
-  }).join('');
-}
-
 // Auto-login if session active
 if (sessionStorage.getItem('weddingAdmin')) {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('admin-app').style.display = 'block';
-  loadData();
 }
 </script>
 </body>
