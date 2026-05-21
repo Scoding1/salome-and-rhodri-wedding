@@ -11,14 +11,14 @@
     gtag('config', 'G-DJN02LYBYE');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Salomé & Rhodri — Tuscany 2026</title>
+  <title>Salomé & Rhodri - Tuscany 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400&family=Great+Vibes&display=swap" rel="stylesheet" />
 
   <style>
     /* ─────────────────────────────────────────
-       PALETTE — pulled directly from invitation
+       PALETTE - pulled directly from invitation
        Parchment bg · Olive text · Tuscan golds
     ───────────────────────────────────────── */
     :root {
@@ -84,7 +84,7 @@
         var(--parchment);
     }
 
-    /* Cypress trees — SVG drawn background elements */
+    /* Cypress trees - SVG drawn background elements */
     .cypress {
       position: absolute;
       bottom: 0;
@@ -1267,6 +1267,19 @@
         min-height: 44px;
       }
     }
+    /* ── LUCIDE ICONS ── */
+    .travel-icon svg, .tip-icon svg {
+      display: block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .travel-icon { color: var(--gold); }
+    .travel-icon svg { width: 26px; height: 26px; }
+    .tip-icon { color: var(--olive-mid); }
+    .tip-icon svg { width: 22px; height: 22px; }
   </style>
 </head>
 <body>
@@ -1333,7 +1346,7 @@
     </div>
 
     <div class="hero-btns">
-      <a href="#rsvp" class="btn btn-primary">Dietary Requests ↓</a>
+      <a href="#rsvp" class="btn btn-primary">Song Request ↓</a>
       <a href="#schedule" class="btn btn-secondary">Schedule</a>
       <a href="#venue" class="btn btn-secondary">Venue</a>
       <a href="#tips" class="btn btn-secondary">Info</a>
@@ -1360,61 +1373,18 @@
 
   <div class="reveal">
     <div class="rsvp-eyebrow">A Little Favour</div>
-    <div class="rsvp-heading">Tell Us Your Details</div>
-    <div class="rsvp-sub">We can't wait to celebrate with you all in Tuscany! Just two quick things before the big day: let us know about any dietary requirements (please do be specific!) and drop us a song that'll get you on the dance floor. 💛</div>
+    <div class="rsvp-heading">Song Request</div>
+    <div class="rsvp-sub">Drop us a song that'll get you on the dance floor - we want the best possible playlist for the night. 💛</div>
   </div>
 
   <div id="rsvpForm" class="reveal">
 
-    <div class="form-section-label">🌿 Dietary Requirements</div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Person 1 Name</label>
-        <input type="text" class="form-input" id="f-p1name" placeholder="Name" />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Dietary Requirement</label>
-        <select class="form-select" id="f-p1diet">
-          <option value="none">No restrictions</option>
-          <option value="vegetarian">Vegetarian</option>
-          <option value="vegan">Vegan</option>
-          <option value="gluten-free">Gluten Free</option>
-          <option value="dairy-free">Dairy Free</option>
-          <option value="halal">Halal</option>
-          <option value="kosher">Kosher</option>
-          <option value="other">Other (specify below)</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Person 2 Name <span style="opacity:0.4;">(if applicable)</span></label>
-        <input type="text" class="form-input" id="f-p2name" placeholder="Name" />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Dietary Requirement</label>
-        <select class="form-select" id="f-p2diet">
-          <option value="none">No restrictions</option>
-          <option value="vegetarian">Vegetarian</option>
-          <option value="vegan">Vegan</option>
-          <option value="gluten-free">Gluten Free</option>
-          <option value="dairy-free">Dairy Free</option>
-          <option value="halal">Halal</option>
-          <option value="kosher">Kosher</option>
-          <option value="other">Other (specify below)</option>
-        </select>
-      </div>
-    </div>
+    <div class="form-section-label">🎵 Song Request</div>
 
     <div class="form-group">
-      <label class="form-label">Allergies or anything else we should know</label>
-      <textarea class="form-textarea" id="f-allergy" placeholder="e.g. nut allergy, coeliac, lactose intolerant — please be as specific as possible"></textarea>
+      <label class="form-label">Your Name</label>
+      <input type="text" class="form-input" id="f-p1name" placeholder="Name" />
     </div>
-
-    <div class="form-divider"></div>
-    <div class="form-section-label">🎵 Song Request</div>
 
     <div class="form-group">
       <label class="form-label">Give us a song that'll get you on the dance floor</label>
@@ -1449,24 +1419,24 @@
     <div class="section-heading">Schedule of Events</div>
   </div>
 
-  <!-- SAT 13 JUNE -->
+  <!-- FRI 12 JUNE -->
   <div class="day-block reveal">
     <div class="day-header">
       <div class="day-date">
-        <div class="day-date-n">13</div>
+        <div class="day-date-n">12</div>
         <div class="day-date-m">Jun</div>
       </div>
       <div class="day-info">
-        <div class="day-name">Saturday</div>
+        <div class="day-name">Friday</div>
         <div class="day-sub">Arrival · Rome</div>
       </div>
     </div>
     <div class="event-card ev-travel">
-      <div class="ev-time">From the 13th, come and go as you please</div>
+      <div class="ev-time">From the 12th, come and go as you please</div>
       <div class="ev-title">We'll be in Rome, come join us! 🇮🇹</div>
-      <div class="ev-desc">We're arriving in Rome on Saturday the 13th and will be there for a few days before heading to Tuscany on Wednesday. No agenda, no structure, just us exploring, eating, and shaking off the jet lag. If you're around, come find us! We'll be messaging the group with whatever we end up doing — a walking tour one morning, a museum, dinner somewhere good, and you're welcome to join for any of it or none of it. Zero pressure, just the more the merrier. 💛</div>
+      <div class="ev-desc">We're arriving in Rome on Friday the 12th and will be staying in Trastevere. We'll be there for a few days before heading to Tuscany on Wednesday. No agenda, no structure, just us exploring, eating, and shaking off the jet lag. If you're around, come find us! We'll be messaging the group with whatever we end up doing - a walking tour one morning, a museum, dinner somewhere good, and you're welcome to join for any of it or none of it. Zero pressure, just the more the merrier. 💛</div>
       <div class="ev-tags">
-        <span class="ev-tag loc">📍 Rome, Italy</span>
+        <span class="ev-tag loc">📍 Trastevere, Rome</span>
       </div>
     </div>
   </div>
@@ -1486,14 +1456,14 @@
     <div class="event-card ev-welcome">
       <div class="ev-time">7:00 PM – 10:00 PM</div>
       <div class="ev-title">Welcome Dinner Pizza Party 🍕</div>
-      <div class="ev-desc">Arrive, check in, and join everyone for a relaxed evening at the venue. Pizza, good wine, and the first chance to meet everyone before the big day. Come as you are, no dress code, just good energy.</div>
+      <div class="ev-desc">Check in from <strong>3:00 PM</strong> for those staying at Il Verreno. For off-site guests, the first shuttles arrive at the venue from <strong>5:00 PM</strong>. The evening officially kicks off at <strong>7:00 PM</strong> - pizza, good wine, and the first chance to meet everyone before the big day. Come as you are, no dress code, just good energy.</div>
       <div class="ev-tags">
         <span class="ev-tag loc">📍 Il Verreno, Cucina Donnaluisa</span>
       </div>
     </div>
   </div>
 
-  <!-- THU 18 JUNE — THE DAY -->
+  <!-- THU 18 JUNE - THE DAY -->
   <div class="day-block reveal">
     <div class="day-header">
       <div class="day-date wedding-day">
@@ -1509,8 +1479,8 @@
       <div class="ev-time">4:00 PM onwards</div>
       <div class="ev-title">Ceremony &amp; Reception</div>
       <div class="ev-desc">The big day! As the ceremony doesn't start until 4pm, anyone staying offsite is more than welcome to come and join us at the venue for the morning or early afternoon, hang out by the pool, have some lunch, and soak it all in before the main event.</div>
-      <div class="ev-desc" style="margin-top:0.4rem; opacity:0.9;">👗 <strong>Dress Code:</strong> Garden Cocktail</div>
-      <div class="ev-desc" style="margin-top:0.5rem; font-style:italic; opacity:0.85;">🚌 <strong>Off-site guests:</strong> Your shuttle pick-up time will be sent to you directly. Pickups begin from <strong>2:00 PM</strong>.</div>
+      <div class="ev-desc" style="margin-top:0.4rem; opacity:0.9;"><strong>Dress Code:</strong> Garden Cocktail</div>
+      <div class="ev-desc" style="margin-top:0.5rem; font-style:italic; opacity:0.85;"><strong>Off-site guests:</strong> Your shuttle pick-up time will be sent to you directly. Pickups begin from <strong>2:00 PM</strong>.</div>
       <div class="ev-tags">
         <span class="ev-tag loc">📍 Il Verreno, Garden</span>
         <span class="ev-tag dress-g">Garden Cocktail</span>
@@ -1533,11 +1503,32 @@
     <div class="event-card ev-party">
       <div class="ev-time">2:00 PM – 5:00 PM</div>
       <div class="ev-title">70's Pool Party &amp; BBQ 🕺🪩</div>
-      <div class="ev-desc">The perfect way to round off the weekend — a 70's-themed pool party. Fancy dress is compulsory (think ABBA, Saturday Night Fever, Studio 54 — commit to the bit!), we'll be getting in the water so pack your swimmers, and bring a change of clothes for the evening as shuttles run from <strong>7:00 PM – 10:00 PM</strong>.</div>
+      <div class="ev-desc">The perfect way to round off the weekend - a 70's-themed pool party. Fancy dress is compulsory (think ABBA, Saturday Night Fever, Studio 54 - commit to the bit!), we'll be getting in the water so pack your swimmers.</div>
+      <div class="ev-desc" style="margin-top:0.5rem;">The pool party wraps up at <strong>5:00 PM</strong>. There are no set dinner plans after that - once the pool bar closes at <strong>7:00 PM</strong>, the on-site restaurant is open and you can order food and drinks there until <strong>10:00 PM</strong>.</div>
+      <div class="ev-desc" style="margin-top:0.5rem; font-style:italic; opacity:0.85;"><strong>Off-site guests:</strong> Shuttles home run from <strong>7:00 PM – 10:00 PM</strong> - make sure you pack a change of clothes for the evening!</div>
       <div class="ev-tags">
         <span class="ev-tag loc">📍 Il Verreno, Pool</span>
         <span class="ev-tag dress-r">70's Retro Pool Party 🪩</span>
       </div>
+    </div>
+  </div>
+
+  <!-- SAT 20 JUNE -->
+  <div class="day-block reveal">
+    <div class="day-header">
+      <div class="day-date">
+        <div class="day-date-n">20</div>
+        <div class="day-date-m">Jun</div>
+      </div>
+      <div class="day-info">
+        <div class="day-name">Saturday</div>
+        <div class="day-sub">Check-out · Il Verreno</div>
+      </div>
+    </div>
+    <div class="event-card ev-travel">
+      <div class="ev-time">Check-out by 11:00 AM</div>
+      <div class="ev-title">Safe travels! 💛</div>
+      <div class="ev-desc">Check-out from Il Verreno is by <strong>11:00 AM</strong>. Thank you so much for being part of our wedding weekend - we hope you have the most amazing time in Tuscany and beyond!</div>
     </div>
   </div>
 
@@ -1547,7 +1538,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══════ VENUE ═══════ -->
 <div class="venue-bg">
 <div class="section" id="venue">
 
@@ -1609,7 +1599,15 @@
   <div class="tips-grid">
 
     <div class="tip-card reveal">
-      <div class="tip-icon">🚌</div>
+      <div class="tip-icon"><i data-lucide="gift"></i></div>
+      <div>
+        <div class="tip-title">No Presents, Please!</div>
+        <div class="tip-body">Your presence is the only gift we need - honestly, the fact that you've made the trip to Tuscany to celebrate with us means everything. Please, no presents! 💛</div>
+      </div>
+    </div>
+
+    <div class="tip-card reveal">
+      <div class="tip-icon"><i data-lucide="bus"></i></div>
       <div>
         <div class="tip-title">Getting To & From Events</div>
         <div class="tip-body">We're running a <strong>shuttle service</strong> for all off-site guests between events, no need to stress about transport! Your individual pick-up time will be sent to you directly ahead of the wedding. We just ask that you're ready and waiting when your shuttle arrives, so we can keep everyone on schedule and no one gets left behind! 🚌</div>
@@ -1617,7 +1615,7 @@
     </div>
 
     <div class="tip-card reveal">
-      <div class="tip-icon">☀️</div>
+      <div class="tip-icon"><i data-lucide="sun"></i></div>
       <div>
         <div class="tip-title">Tuscany in June</div>
         <div class="tip-body">June in Tuscany is warm and sunny. Expect daytime temperatures around <strong>25–32°C</strong>. Evenings can be pleasantly cooler, especially outdoors, so a light wrap or jacket for later in the night is a good idea.</div>
@@ -1625,34 +1623,19 @@
     </div>
 
     <div class="tip-card reveal">
-      <div class="tip-icon">👠</div>
+      <div class="tip-icon"><i data-lucide="sparkles"></i></div>
       <div>
         <div class="tip-title">What to Wear on Your Feet</div>
-        <div class="tip-body">A heads up for our shoe lovers: the venue grounds include <strong>pebbles, grass, and paved stone paths</strong>, so the terrain is beautifully rustic but a little uneven underfoot, and we'd strongly recommend leaving the stilettos at home for this one! Block heels, wedges, sandals, or flats will serve you much better — and your feet will thank you at midnight. 💛</div>
+        <div class="tip-body">A heads up for our shoe lovers: the venue grounds include <strong>pebbles, grass, and paved stone paths</strong>, so the terrain is beautifully rustic but a little uneven underfoot, and we'd strongly recommend leaving the stilettos at home for this one! Block heels, wedges, sandals, or flats will serve you much better - and your feet will thank you at midnight. 💛</div>
       </div>
     </div>
 
-    <div class="tip-card reveal">
-      <div class="tip-icon">🪩</div>
-      <div>
-        <div class="tip-title">Pool Party — Friday 19 June 🪩</div>
-        <div class="tip-body">Friday is our 70's pool party and fancy dress is non-negotiable. Think flares, disco glam, bold prints — ABBA, Studio 54, Saturday Night Fever. We'll be jumping in the pool so pack your swimmers, and bring a change of clothes for later in the day as it cools down in the evening. Shuttles back to your accommodation run from <strong>7:00 PM – 10:00 PM</strong>.</div>
-      </div>
-    </div>
 
     <div class="tip-card reveal">
-      <div class="tip-icon">🛂</div>
+      <div class="tip-icon"><i data-lucide="globe"></i></div>
       <div>
-        <div class="tip-title">Visas & Entry Requirements</div>
-        <div class="tip-body">Good news — <strong>Australian and UK passport holders don't need a visa</strong> for short trips to Italy. You can stay for up to <strong>90 days within any 180-day period</strong> across the Schengen Area (which includes most of Europe). If you're coming just for the wedding, you're all set!</div>
-      </div>
-    </div>
-
-    <div class="tip-card reveal">
-      <div class="tip-icon">📘</div>
-      <div>
-        <div class="tip-title">Passport Validity</div>
-        <div class="tip-body">Make sure your passport is <strong>valid for at least 3 months after your return date</strong> — that's the official rule for entering Italy and the Schengen Area. To be safe, we'd recommend having at least <strong>6 months validity</strong>, as some airlines enforce stricter requirements. If in doubt, renew it now to avoid any last-minute stress!</div>
+        <div class="tip-title">Visas & Passport</div>
+        <div class="tip-body"><strong>Australian and UK passport holders don't need a visa</strong> for Italy - stays of up to 90 days in the Schengen Area are all fine. Just make sure your passport has at least <strong>6 months of validity</strong> remaining beyond your return date, as airlines can be strict about this even if the official Schengen rule is 3 months.</div>
       </div>
     </div>
 
@@ -1674,7 +1657,7 @@
   <div class="travel-grid">
 
     <div class="travel-card reveal">
-      <div class="travel-icon">✈️</div>
+      <div class="travel-icon"><i data-lucide="plane"></i></div>
       <div class="travel-title">Nearest Airports</div>
       <div class="travel-body">
         <div class="travel-row"><span class="travel-label">Florence (FLR)</span><span class="travel-dist">~1hr drive</span></div>
@@ -1685,7 +1668,7 @@
     </div>
 
     <div class="travel-card reveal">
-      <div class="travel-icon">🚗</div>
+      <div class="travel-icon"><i data-lucide="car"></i></div>
       <div class="travel-title">By Car (Recommended)</div>
       <div class="travel-body">
         <p>Driving is hands-down the best way to experience Tuscany. From the A1 motorway, exit at <strong>Valdarno</strong> (coming from Florence) or <strong>Valdichiana</strong> (coming from Rome), then follow signs toward Bucine and Ambra.</p>
@@ -1694,22 +1677,22 @@
     </div>
 
     <div class="travel-card reveal">
-      <div class="travel-icon">🚂</div>
+      <div class="travel-icon"><i data-lucide="train-front"></i></div>
       <div class="travel-title">By Train</div>
       <div class="travel-body">
-        <p>The nearest useful stations are <strong>Arezzo</strong> (~40 min drive to venue) and <strong>Montevarchi</strong> (~30 min drive). Both are well connected from Florence and Rome.</p>
-        <div class="travel-row" style="margin-top:0.75rem"><span class="travel-label">Florence → Arezzo</span><span class="travel-dist">~40 min</span></div>
-        <div class="travel-row"><span class="travel-label">Rome → Arezzo</span><span class="travel-dist">~2h (via Trenitalia)</span></div>
-        <p class="travel-note">🚌 There is a local bus from <strong>Bucine station → Ambra village</strong> (Autolinee Toscane, ~16 min, every 4 hrs, Mon–Sat) but it doesn't reach the venue itself, so you'd still need a short taxi or lift from Ambra. We wouldn't rely on this as your main plan, but it's there if needed!</p>
+        <p>The closest station to the venue is <strong>Bucine</strong> (~15 min drive). If you're coming from Rome, <strong>Arezzo</strong> (~40 min drive) has the better direct connections.</p>
+        <div class="travel-row" style="margin-top:0.75rem"><span class="travel-label">Florence SMN → Bucine</span><span class="travel-dist">~1 hr (regional)</span></div>
+        <div class="travel-row"><span class="travel-label">Rome Termini → Arezzo</span><span class="travel-dist">~2 hr (Intercity direct)</span></div>
+        <div class="travel-row"><span class="travel-label">Rome → Bucine</span><span class="travel-dist">~3 hr 20 min (change at Florence)</span></div>
+        <p class="travel-note">Taxis in this area are very few and far between - please don't count on being able to get one from the station. If you're travelling without a car, use the group chat to coordinate a lift with another guest!</p>
       </div>
     </div>
 
     <div class="travel-card reveal">
-      <div class="travel-icon">💡</div>
+      <div class="travel-icon"><i data-lucide="info"></i></div>
       <div class="travel-title">A Few Tips</div>
       <div class="travel-body">
-        <p><strong>Car hire:</strong> Book early. Tuscany in June fills up fast. We'd recommend sorting this well in advance.</p>
-        <p><strong>International licence:</strong> If hiring in Italy, check whether you need an International Driving Permit (usually required + costs very little).</p>
+        <p><strong>International licence:</strong> If hiring a car in Italy, check whether you need an International Driving Permit alongside your regular licence - most hire companies require one and they cost very little to get.</p>
         <p><strong>GPS dead zones:</strong> The Tuscan hills can have patchy signal. Screenshot your route beforehand just in case.</p>
         <p><strong>City rules:</strong> Florence and Rome have restricted traffic zones (ZTL), so avoid driving into the centre unless you know where to park.</p>
       </div>
@@ -1856,7 +1839,7 @@
       " onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--olive-pale)'">
         <div style="font-size:2rem;margin-bottom:0.5rem;">🖼️</div>
         <div style="font-size:0.95rem;color:var(--text-mid);font-weight:400;">Tap to choose photos</div>
-        <div style="font-size:0.78rem;color:var(--text-soft);margin-top:0.3rem;">JPG, PNG, HEIC — multiple files OK</div>
+        <div style="font-size:0.78rem;color:var(--text-soft);margin-top:0.3rem;">JPG, PNG, HEIC - multiple files OK</div>
       </label>
       <input type="file" id="photo-file-input" accept="image/*" multiple style="display:none" onchange="handlePhotoSelect(this)" />
     </div>
@@ -1886,7 +1869,7 @@
 </div>
 
 <div class="already-done-band reveal">
-  <p>Already filled in your details? You're all set, we can't wait to see you! 💛 <a href="#rsvp" style="color:var(--gold-light);text-decoration:underline;">Fill in your details here</a> if you haven't yet.</p>
+  <p>Already sent us a song request? You're all set, we can't wait to see you! 💛 <a href="#rsvp" style="color:var(--gold-light);text-decoration:underline;">Drop a song request here</a> if you haven't yet.</p>
 </div>
 
 <!-- ═══════ FOOTER ═══════ -->
@@ -1899,7 +1882,7 @@
 <!-- ═══════ FLOATING NAV ═══════ -->
 <nav class="floatnav" id="floatnav">
   <a href="#home"          class="fnav-btn active" data-s="home">Home</a>
-  <a href="#rsvp"          class="fnav-btn" data-s="rsvp">Dietary</a>
+  <a href="#rsvp"          class="fnav-btn" data-s="rsvp">Song Request</a>
   <a href="#schedule"      class="fnav-btn" data-s="schedule">Schedule</a>
   <a href="#venue"         class="fnav-btn" data-s="venue">Venue</a>
   <a href="#tips"          class="fnav-btn" data-s="tips">Info</a>
@@ -1939,16 +1922,12 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
   ro.observe(el);
 });
 
-/* ── RSVP FORM — submits silently to Google Forms ── */
+/* ── RSVP FORM - submits silently to Google Forms ── */
 async function submitForm() {
   const btn = document.getElementById('submitBtn');
 
   // Field values
   const name    = document.getElementById('f-p1name').value.trim();
-  const p1diet  = document.getElementById('f-p1diet').value;
-  const p2name  = document.getElementById('f-p2name').value.trim();
-  const p2diet  = document.getElementById('f-p2diet').value;
-  const allergy = document.getElementById('f-allergy').value.trim();
   const song    = document.getElementById('f-song').value.trim();
   const notes   = document.getElementById('f-notes').value.trim();
 
@@ -1963,7 +1942,7 @@ async function submitForm() {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ p1name: name, p1diet, p2name, p2diet, allergy, song, notes })
+      body: JSON.stringify({ p1name: name, song, notes })
     });
     document.getElementById('rsvpForm').style.display = 'none';
     document.getElementById('formSuccess').classList.add('visible');
@@ -2010,7 +1989,7 @@ function handlePhotoSelect(input) {
   }
 
   if (tooBig.length) {
-    status.textContent = `${tooBig.length} file${tooBig.length > 1 ? 's' : ''} skipped (over 10MB) — ${selectedFiles.length} ready to upload.`;
+    status.textContent = `${tooBig.length} file${tooBig.length > 1 ? 's' : ''} skipped (over 10MB) - ${selectedFiles.length} ready to upload.`;
   } else {
     status.textContent = `${selectedFiles.length} photo${selectedFiles.length > 1 ? 's' : ''} ready to upload.`;
   }
@@ -2049,7 +2028,7 @@ async function submitPhotos() {
     btn.disabled = false;
     btn.textContent = 'Send to Salomé & Rhodri 💛';
     status.textContent = e.message.includes('preset') || e.message.includes('Upload preset')
-      ? 'Upload not configured yet — please send via WhatsApp for now!'
+      ? 'Upload not configured yet - please send via WhatsApp for now!'
       : 'Something went wrong, please try again or send via WhatsApp.';
   }
 }
@@ -2069,5 +2048,7 @@ const so = new IntersectionObserver(entries => {
   if (el) so.observe(el);
 });
 </script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
